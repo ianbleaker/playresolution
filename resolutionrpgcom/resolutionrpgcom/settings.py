@@ -76,8 +76,11 @@ WSGI_APPLICATION = 'resolutionrpgcom.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'resolutionrpg_com',
+        'USER': 'resolutionrpg',
+        'PASSWORD': 'Continuity!@4dmHT',
+        'HOST': 'mysql.resolutionrpg.com',
     }
 }
 
@@ -87,7 +90,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 USE_I18N = True
 
@@ -100,3 +103,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.dirname(BASE_DIR) + '/public/static/'
