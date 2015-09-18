@@ -1,0 +1,21 @@
+{% extends "chargen/base.html" %}
+{% load staticfiles %}
+
+{% block title %}CharGen{% endblock %}
+
+{% block sidebar %}
+{% endblock sidebar %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'chargen/style.css' %}" >
+    <script src="{% static 'chargen/chargen.js' %}"></script>
+{% endblock head %}
+
+{% block content %}
+<div id="chargen">
+    <div id="chargen-character"></div>
+    <div id="chargen-lifepath"></div>
+    <div id="chargen-pointbuy"></div>
+</div>
+
+{% endblock %}
