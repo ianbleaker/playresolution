@@ -1,0 +1,25 @@
+{% extends "rules/base.html" %}
+{% load staticfiles %}
+
+{% block title %}CharGen{% endblock %}
+
+{% block sidebar %}
+{% endblock sidebar %}
+
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+This is some sort of.. index page for rules!!
+{% for section in sections %}
+<div id="{{section.slug}}" class="tier-{{section.tier}}">
+    <div id="{{section.slug}}-title" class="section-title">
+        {{section.title}}
+    </div>
+    <div id="{{section.slug}}-content" class="section-content">
+        {{section.content|safe}}
+    </div>
+</div>
+
+{% endfor %}
+{% endblock %}
