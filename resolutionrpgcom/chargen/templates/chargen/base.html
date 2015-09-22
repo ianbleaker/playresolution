@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>
+    {% block title %}Resolution RPG{% endblock title %}
+    </title>
+
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.5/css/bootstrap.min.css' %}" >
+    <link href="{% static 'material-design/css/roboto.min.css' %}" rel="stylesheet">
+    <link href="{% static 'material-design/css/material.min.css' %}" rel="stylesheet">
+    <link href="{% static 'material-design/css/ripples.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/sitewide.css' %}" >
+    {% block head %}{% endblock head%}
+</head>
+<body>
+    <div id="sidebar">
+        {% block topbar %}
+        {% endblock topbar %}
+    </div>
+
+    <div id="content">
+        {% block content %}
+        base only here!
+        {% endblock content %}
+    </div>
+
+</body>
+    <script src="{% static 'jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'bootstrap-3.3.5/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'material-design/js/ripples.min.js' %}"></script>
+    <script src="{% static 'material-design/js/material.min.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            // This command is used to initialize some elements and make them work properly
+            $.material.init();
+        });
+    </script>
+</html>
