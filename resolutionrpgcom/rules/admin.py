@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django import forms
 from .models import *
+from django.core.exceptions import ObjectDoesNotExist
 
 # Register your models here.
 
@@ -20,16 +21,17 @@ class SectionParentChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         section_depth = Section.list_section_relations()
         prepend = section_depth[obj.title]
-
-        model_id = self.initial['model_id']
-        current_model = Section.objects.get(id=model_id)
-        children = current_model.list_all_children()
-
         disabled = ''
-        if obj.title in children:
-            disabled = '[child]disable_option'
-        if obj.title == current_model.title:
-            disabled = '[current]disable_option'
+        model_id = self.initial['model_id']
+        try:
+            current_model = Section.objects.get(id=model_id)
+            children = current_model.list_all_children()
+            if obj.title in children:
+                disabled = '[child]disable_option'
+            if obj.title == current_model.title:
+                disabled = '[current]disable_option'
+        except ObjectDoesNotExist:
+            pass
 
         if obj.type != 'n':
             content_type = "(" + obj.type + ")"
