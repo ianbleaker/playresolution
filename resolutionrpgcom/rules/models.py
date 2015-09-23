@@ -2,6 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 from ordered_model.models import OrderedModel
+from django.db import transaction
 
 
 # Create your models here.
@@ -71,6 +72,18 @@ class Section(OrderedModel):
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        super(Section, self).save(*args, **kwargs)
+        self.update_all_depths()
+
+    @transaction.atomic
+    def update_all_depths(self):
+        sections = Section.objects.all()
+        relations = Section.list_section_relations()
+        for section in sections:
+            if section.depth_string != relations[section.title]:
+                Section.objects.filter(id=section.id).update(depth_string=relations[section.title])
+
     @staticmethod
     def list_section_relations():
         child_list = {}
@@ -94,27 +107,6 @@ class Section(OrderedModel):
 
         return child_list
 
-    def list_all_children(self):
-        child_list = []
-        sections = Section.objects.filter(parent=self)
-
-        def get_children(child):
-            child_list.append(child.title)
-
-            children = Section.objects.filter(parent=child)
-            for sub_child in children:
-                get_children(sub_child)
-
-        for section in sections:
-            get_children(section)
-
-        return child_list
-
-    def sibling_depth(self):
-        sibling_list = self.list_section_relations()
-        string = sibling_list[self.title]
-        return string
-
     def has_parent(self):
         try:
             parent = self.parent.title
@@ -123,20 +115,8 @@ class Section(OrderedModel):
             answer = False
         return answer
 
-    def get_parents(self):
-        parents = []
-        section = self
-        while section.has_parent():
-            parents.append(section.parent)
-            section = section.parent
-        return parents
-
     def tier(self):
-        tier_number = 0
-        section = self
-        while section.has_parent():
-            tier_number += 1
-            section = section.parent
+        tier_number = len(self.depth_string.split('.'))
         return tier_number
 
     def slug(self):
@@ -158,6 +138,7 @@ class Section(OrderedModel):
     parent = models.ForeignKey('self', null=True, blank=True)
     type = models.CharField(max_length=2, choices=TYPE_CHOICES, default=NORMAL)
     content = RichTextField(blank=True, null=True)
+    depth_string = models.CharField(max_length=19, blank=True, null=True)
     order_with_respect_to = 'parent'
 
     class Meta:

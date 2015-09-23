@@ -49,7 +49,11 @@ class DisableableSelect(Select):
         # Normalize to strings.
         selected_choices = set(force_text(v) for v in selected_choices)
         output = []
-        for option_value, option_label in chain(self.choices, choices):
+
+        def sort_chained(chained_choices):
+            return chained_choices[1]
+
+        for option_value, option_label in sorted(chain(self.choices, choices), key=sort_chained):
             if isinstance(option_label, (list, tuple)):
                 output.append(format_html('<optgroup label="{}">', force_text(option_value)))
                 for option in option_label:

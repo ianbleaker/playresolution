@@ -124,6 +124,6 @@ STATICFILES_DIRS = (
 )
 
 # ckeditor jquery
-CKEDITOR_JQUERY_URL = '/public/static/js/jquery.2.1.4.min.js'
+#CKEDITOR_JQUERY_URL = '/public/static/js/jquery.2.1.4.min.js'
 
 from hidden import *
