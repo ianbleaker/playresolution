@@ -2,6 +2,8 @@ from django.contrib import admin
 from django import forms
 from .models import *
 from django.core.exceptions import ObjectDoesNotExist
+from .py.subclasses import DisableableSelect
+from ordered_model.admin import OrderedModelAdmin
 
 # Register your models here.
 
@@ -47,6 +49,8 @@ class SectionAdminForm(forms.ModelForm):
         super(SectionAdminForm, self).__init__(*args, **kwargs)
         self.fields['parent'].initial = {'model_id': self.instance.id}
 
+    queryset = Section.objects.all().reverse()
+
     parent = SectionParentChoiceField(
         queryset=Section.objects.all(),
         required=False,
@@ -59,8 +63,9 @@ class SectionAdminForm(forms.ModelForm):
 
 
 # include written form to include choice field change
-class SectionAdmin(admin.ModelAdmin):
+class SectionAdmin(OrderedModelAdmin):
     form = SectionAdminForm
-    list_display = ('title', 'sibling_depth', 'type', 'terse')
+    list_display = ('title', 'type', 'terse', 'sibling_depth', 'parent_id', 'order', 'move_up_down_links')
+
 
 admin.site.register(Section, SectionAdmin)

@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
-from .py.subclasses import DisableableSelect
+from ordered_model.models import OrderedModel
 
 
 # Create your models here.
@@ -67,7 +67,7 @@ class SkillDescriptor(models.Model):
     name = models.CharField(max_length=50, default='type')
 
 
-class Section(models.Model):
+class Section(OrderedModel):
     def __str__(self):
         return self.title
 
@@ -82,7 +82,7 @@ class Section(models.Model):
             child_list[child.title] = depth_string
 
             depth.append(1)
-            children = Section.objects.filter(parent=child)
+            children = Section.objects.filter(parent=child).order_by('order')
             for sub_child in children:
                 get_children(sub_child)
                 depth[-1] += 1
@@ -158,6 +158,7 @@ class Section(models.Model):
     parent = models.ForeignKey('self', null=True, blank=True)
     type = models.CharField(max_length=2, choices=TYPE_CHOICES, default=NORMAL)
     content = RichTextField(blank=True, null=True)
+    order_with_respect_to = 'parent'
 
     class Meta:
-        order_with_respect_to = 'parent'
+        pass

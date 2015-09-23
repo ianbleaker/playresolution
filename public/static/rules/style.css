@@ -1,0 +1,60 @@
+.tier-0 {
+
+}
+.tier-0 .section-title {
+    font-size: 1.9em;
+}
+
+.tier-1 {
+    padding-left: 1em;
+}
+.tier-1 .section-title {
+    font-size: 1.7em;
+}
+
+.tier-2 {
+    padding-left: 2em;
+}
+.tier-2 .section-title {
+    font-size: 1.6em;
+}
+
+.tier-3 {
+    padding-left: 3em;
+}
+.tier-3 .section-title {
+    font-size: 1.5em;
+}
+
+.tier-4 {
+    padding-left: 4em;
+}
+.tier-4 .section-title {
+    font-size: 1.4em;
+}
+
+.tier-5 {
+    padding-left: 5em;
+}
+.tier-5 .section-title {
+    font-size: 1.3em;
+}
+
+.tier-6 {
+    padding-left: 6em;
+}
+.tier-6 .section-title {
+    font-size: 1.2em;
+}
+
+.section-content {
+    padding-left: .5em;
+    font-size: 1.2em;
+}
+
+#content {
+    min-width: 400px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
