@@ -1,5 +1,12 @@
-.tier-1 {
+.active {
+    background-color: #2196F3;
+}
+.active a {
+    color: white;
+}
 
+.tier-1 {
+    padding-top: 5em;
 }
 .tier-1 .section-title {
     font-size: 1.9em;
@@ -47,14 +54,42 @@
     font-size: 1.2em;
 }
 
+.type-n .section-title {
+    font-weight: 500;
+}
+
+.type-ex .section-title {
+    display: none;
+}
+
+.type-ex .section-content {
+    padding-left: 0;
+    font-style: italic;
+}
+
 .section-content {
     padding-left: .5em;
     font-size: 1.2em;
+    margin-bottom: 1.8em;
 }
 
 #content {
-    min-width: 400px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#rules-nav {
+    float: left;
+    position: fixed;
+}
+
+#rules-text {
+    margin-left: 300px;
+    background-color: white;
+}
+
+.rule-section {
+    line-height: 2.2em;
+    margin-left: 1em;
+    margin-right: 2em;
 }

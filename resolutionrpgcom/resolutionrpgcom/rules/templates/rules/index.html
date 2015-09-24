@@ -1,0 +1,31 @@
+{% extends "rules/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Rules{% endblock %}
+
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+    <div id="rules-nav" class="col-md-3">
+        <ul class = "nav nav-stacked">
+            {% for section in sections %}
+                {%  if section.tier == 1 %}
+                    <li role="presentation"><a href="#{{section.slug}}">{{section.title}}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="rules-text" class="col-md-9 shadow-z-2">
+        {% for section in sections %}
+            <div id="{{section.slug}}" class="rule-section tier-{{section.tier}} type-{{section.type}}">
+                <div id="{{section.slug}}-title" class="section-title">
+                    {{section.title}}
+                </div>
+                <div id="{{section.slug}}-content" class="section-content">
+                    {{section.content|safe}}
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+{% endblock %}

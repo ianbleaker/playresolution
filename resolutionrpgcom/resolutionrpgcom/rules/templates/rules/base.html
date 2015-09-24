@@ -13,22 +13,19 @@
     <link href="{% static 'material-design/css/ripples.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/sitewide.css' %}" >
     <link rel="stylesheet" href="{% static 'rules/style.css' %}" >
-    {% block head %}{% endblock head%}
+    {% block head %}{% endblock head %}
 </head>
-<body>
-    <div id="sidebar">
-        {% block topbar %}
-        {% endblock topbar %}
+<body data-spy="scroll" data-target="#rules-nav" data-offset="100">
+    {% include "navbar.html" %}
+    <div id="content" class="container-fluid">
+        <div class="row">
+            {% block content %}
+                base only here!
+            {% endblock content %}
+        </div>
     </div>
-
-    <div id="content">
-        {% block content %}
-        base only here!
-        {% endblock content %}
-    </div>
-
 </body>
-    <script src="{% static 'jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
     <script src="{% static 'bootstrap-3.3.5/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'material-design/js/ripples.min.js' %}"></script>
     <script src="{% static 'material-design/js/material.min.js' %}"></script>

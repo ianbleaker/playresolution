@@ -94,12 +94,15 @@ class Section(OrderedModel):
             depth_string = '.'.join([str(i) for i in depth])
             child_list[child.title] = depth_string
 
-            depth.append(1)
             children = Section.objects.filter(parent=child).order_by('order')
-            for sub_child in children:
-                get_children(sub_child)
-                depth[-1] += 1
-            depth.pop()
+            if children.exists():
+                depth.append(1)
+                for sub_child in children:
+                    get_children(sub_child)
+                    depth[-1] += 1
+                depth.pop()
+            else:
+                child_list[child.title] += "<"
 
         for section in sections:
             get_children(section)
@@ -110,6 +113,14 @@ class Section(OrderedModel):
     def has_parent(self):
         try:
             parent = self.parent.title
+            answer = True
+        except AttributeError:
+            answer = False
+        return answer
+
+    def has_child(self):
+        try:
+            child = self.parent.title
             answer = True
         except AttributeError:
             answer = False
