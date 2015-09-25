@@ -4,15 +4,15 @@
 
 {% block title %}Rules{% endblock %}
 
-{% block body_tags %}data-spy="scroll" data-target="#rules-nav" data-offset="140"{% endblock body_tags %}
+{% block body_tags %}data-spy="scroll" data-target=".scrollspy-active-rules" data-offset="140"{% endblock body_tags %}
 
 {% block content %}
-    <div id="rules-nav" class="col-md-3 shadow-z-1">
+    <div id="rules-nav" class="scrollspy-active-rules shadow-z-1">
         <ul class = "nav nav-stacked">
             {{ sections | child_nav_list }}
         </ul>
     </div>
-    <div id="rules-text" class="col-md-9 shadow-z-2">
+    <div id="rules-text" class="shadow-z-2">
         {% for section in sections %}
             <div id="{{section.slug}}" class="rule-section tier-{{section.tier}} type-{{section.type}}">
                 <div id="{{section.slug}}-title" class="section-title">
@@ -24,4 +24,5 @@
             </div>
     {% endfor %}
     </div>
+
 {% endblock content %}
