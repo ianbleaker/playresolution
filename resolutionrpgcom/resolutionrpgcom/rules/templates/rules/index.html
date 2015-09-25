@@ -1,19 +1,15 @@
 {% extends "rules/base.html" %}
 {% load staticfiles %}
+{% load rules_tags %}
 
 {% block title %}Rules{% endblock %}
 
-{% block head %}
-{% endblock head %}
+{% block body_tags %}data-spy="scroll" data-target="#rules-nav" data-offset="140"{% endblock body_tags %}
 
 {% block content %}
-    <div id="rules-nav" class="col-md-3">
+    <div id="rules-nav" class="col-md-3 shadow-z-1">
         <ul class = "nav nav-stacked">
-            {% for section in sections %}
-                {%  if section.tier == 1 %}
-                    <li role="presentation"><a href="#{{section.slug}}">{{section.title}}</a></li>
-                {% endif %}
-            {% endfor %}
+            {{ sections | child_nav_list }}
         </ul>
     </div>
     <div id="rules-text" class="col-md-9 shadow-z-2">
@@ -28,4 +24,4 @@
             </div>
     {% endfor %}
     </div>
-{% endblock %}
+{% endblock content %}
