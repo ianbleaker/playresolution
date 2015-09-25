@@ -16,6 +16,7 @@ sys.path.append(cwd)
 sys.path.append(cwd + '/resolutionrpgcom')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -38,12 +39,22 @@ DATABASES = {
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
+    },
+    'rules': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
     }
 }
+
+DATABASE_ROUTERS = ['rules.routers.RulesRouter']
 
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,6 +62,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'ordered_model',
     'chargen',
     'rules',
 )
@@ -71,7 +83,9 @@ ROOT_URLCONF = 'resolutionrpgcom.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': (
+            os.path.join(PROJECT_ROOT, 'global_templates').replace('\\', '/'),
+        ),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,6 +93,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.request'
             ],
         },
     },
@@ -112,6 +127,6 @@ STATICFILES_DIRS = (
 )
 
 # ckeditor jquery
-CKEDITOR_JQUERY_URL = '/public/static/js/jquery.2.1.4.min.js'
+#CKEDITOR_JQUERY_URL = '/public/static/js/jquery.2.1.4.min.js'
 
 from hidden import *
