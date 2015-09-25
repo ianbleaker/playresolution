@@ -1,9 +1,6 @@
-resolutionrpgcom/hidden.py
-/__pycache__/
-/resolutionrpgcom/__pycache__/
-/resolutionrpgcom/**/__pycache__/
+**/hidden.py
+**/__pycache__/
 passenger_wsgi.py
 passenger_wsgi.pyc
 tmp/
-**/py/__pycache__/
 *.pyc
