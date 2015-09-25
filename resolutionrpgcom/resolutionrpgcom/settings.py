@@ -11,12 +11,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import sys
 
-cwd = os.getcwd()
-sys.path.append(cwd)
-sys.path.append(cwd + '/resolutionrpgcom')
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(PROJECT_ROOT, ".."))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
