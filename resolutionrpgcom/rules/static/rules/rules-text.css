@@ -1,3 +1,5 @@
+
+
 .tier-1 {
     margin-top: 2em;
 }
@@ -101,12 +103,13 @@
 }
 
 #rules-text {
-    float: right;
+    margin-top: 20px;
     position: relative;
     z-index: 5;
-    margin-left: 260px;
     background-color: white;
     padding: 1em;
+    right: 0;
+
 }
 
 .rule-section {
