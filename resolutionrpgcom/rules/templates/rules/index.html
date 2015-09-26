@@ -14,11 +14,11 @@
     </div>
     <div id="rules-text" class="shadow-z-2">
         {% for section in sections %}
-            <div id="{{section.slug}}" class="rule-section tier-{{section.tier}} type-{{section.type}}">
-                <div id="{{section.slug}}-title" class="section-title">
+            <div id="{{section.slug}}" class="rule-section tier-{{section.tier}} section-type-{{section.type}}">
+                <div id="{{section.slug}}-title" class="section-title section-title-{{ section.type }}">
                     {{section.title}}
                 </div>
-                <div id="{{section.slug}}-content" class="section-content">
+                <div id="{{section.slug}}-content" class="section-content section-content-{{ section.type }}">
                     {{section.content|safe}}
                 </div>
             </div>

@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="accd68da-e926-47c6-900f-dc0144cc902d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/global_templates/base.html" afterPath="$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/global_templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/base.html" afterPath="$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/index.html" afterPath="$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/scrollSettings.js" afterPath="$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/scrollSettings.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/style.css" afterPath="$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\Cloud\Dropbox\Personal\Code\resolutionrpg.com\resolutionrpgcom\rules\static\rules\scrollSettings.js" afterPath="$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/rules.js" />
     </list>
     <ignored path="playresolution.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,31 +42,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/global_templates/base.html">
+      <file leaf-file-name="rules.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/rules.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.0">
-              <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="15" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scrollSettings.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/scrollSettings.js">
+      <file leaf-file-name="rules-text.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/rules-text.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7945055">
+              <caret line="97" column="1" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rules-nav.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/rules-nav.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+              <caret line="44" column="29" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.769231">
+              <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -73,11 +95,9 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154">
-              <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
-              <folding>
-                <element signature="e#435#942#0#HTML" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-10.461538">
+              <caret line="16" column="89" selection-start-line="16" selection-start-column="89" selection-end-line="16" selection-end-column="89" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -87,10 +107,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="Html5" />
         <option value="JavaScript File" />
         <option value="Python Script" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -122,7 +142,6 @@
         <option value="$PROJECT_DIR$/resolutionrpgcom/rules/admin.py" />
         <option value="$PROJECT_DIR$/resolutionrpgcom/rules/models.py" />
         <option value="$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/navbar.html" />
-        <option value="$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/base.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/.gitignore" />
         <option value="$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/settings.py" />
@@ -135,10 +154,14 @@
         <option value="$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/rules/templatetags/rules_tags.py" />
         <option value="$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/rules/static/rules/style.css" />
         <option value="$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/rules/templates/rules/index.html" />
-        <option value="$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/global_templates/base.html" />
-        <option value="$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/index.html" />
         <option value="$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/scrollSettings.js" />
+        <option value="$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/global_templates/base.html" />
         <option value="$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/style.css" />
+        <option value="$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/rules-nav.css" />
+        <option value="$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/base.html" />
+        <option value="$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/index.html" />
+        <option value="$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/rules.js" />
+        <option value="$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/rules-text.css" />
       </list>
     </option>
   </component>
@@ -264,6 +287,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="templatetags" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="playresolution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resolutionrpg.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resolutionrpgcom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -295,6 +340,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="rules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="playresolution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resolutionrpg.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resolutionrpgcom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resolutionrpgcom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="playresolution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resolutionrpg.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resolutionrpgcom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resolutionrpgcom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="global_templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -559,7 +644,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1294" height="1047" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27073553" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -732,6 +817,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/global_templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.115384616">
+          <caret line="6" column="72" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/templatetags/rules_tags.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#27#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/global_templates/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -740,28 +843,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resolutionrpgcom/resolutionrpgcom/global_templates/base.html">
+    <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.0">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/templates/rules/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154">
-          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
-          <folding>
-            <element signature="e#435#942#0#HTML" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-10.461538">
+          <caret line="16" column="89" selection-start-line="16" selection-start-column="89" selection-end-line="16" selection-end-column="89" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/scrollSettings.js">
+    <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/rules-nav.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <caret line="44" column="29" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -769,7 +870,23 @@
     <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="15" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/rules.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resolutionrpgcom/rules/static/rules/rules-text.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7945055">
+          <caret line="97" column="1" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
           <folding />
         </state>
       </provider>
