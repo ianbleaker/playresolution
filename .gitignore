@@ -3,4 +3,6 @@
 passenger_wsgi.py
 passenger_wsgi.pyc
 tmp/
+public/
 *.pyc
+.idea/

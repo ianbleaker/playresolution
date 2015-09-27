@@ -5,6 +5,8 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'rules/style.css' %}" >
+    <link rel="stylesheet" href="{% static 'rules/rules-nav.css' %}" >
+    <link rel="stylesheet" href="{% static 'rules/rules-text.css' %}" >
 {% endblock head %}
 
 {% block body_tags %}{% endblock body_tags %}
@@ -12,7 +14,10 @@
 {% block content %}{% endblock content %}
 
 {% block after_body %}
+    {% comment %}
     <script src="{% static 'js/jquery.scrollTo.min.js' %}"></script>
     <script src="{% static 'js/jquery.localScroll.min.js' %}"></script>
-    <script src="{% static 'rules/scrollSettings.js' %}"></script>
+    {% endcomment %}
+    <script src="{% static 'rules/rules.js' %}"></script>
+    <script src="{% static 'js/scrollspy.js' %}"></script>
 {% endblock after_body %}

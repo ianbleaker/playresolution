@@ -4,27 +4,25 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
     {% block title %}Resolution RPG{% endblock title %}
     </title>
 
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'bootstrap-3.3.5/css/bootstrap.min.css' %}" >
-    <link href="{% static 'material-design/css/roboto.min.css' %}" rel="stylesheet">
-    <link href="{% static 'material-design/css/material.min.css' %}" rel="stylesheet">
-    <link href="{% static 'material-design/css/ripples.min.css' %}" rel="stylesheet">
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}" >
     <link rel="stylesheet" href="{% static 'css/sitewide.css' %}" >
     {% block head %}{% endblock head %}
 
 </head>
 
 <body {% block body_tags %}{% endblock %}>
-    <div class="container-fluid">
-        <div class="row">
-            {% include "navbar.html" %}
-        </div>
-        <div id="content" class="container-fluid">
+            {% include "rules/rulesnavbar.html" %}
+        <div id="content" class="container">
             <div class="row">
                 {% block content %}
                     base only here!
@@ -36,15 +34,10 @@
 </body>
 
     <script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
-    <script src="{% static 'bootstrap-3.3.5/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'material-design/js/ripples.min.js' %}"></script>
-    <script src="{% static 'material-design/js/material.min.js' %}"></script>
-    <script>
-        $(document).ready(function() {
-            // This command is used to initialize some elements and make them work properly
-            $.material.init();
-        });
-    </script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'materialize/js/materialize.min.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollTo.min.js' %}"></script>
+    <script src="{% static 'js/jquery.localScroll.min.js' %}"></script>
     {% block after_body %}{% endblock after_body %}
 
 </html>
