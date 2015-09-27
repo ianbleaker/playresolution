@@ -40,6 +40,7 @@ def child_nav_list(sections, autoescape=True):
 
     return mark_safe('\n'.join(output))
 
+
 @register.filter(is_safe=True, needs_autoescape=True)
 def section_text(sections, autoescape=True):
     if autoescape:

@@ -8,7 +8,7 @@
     z-index: 1;
     padding-left: 0;
     padding-right: 0;
-    width: 17.955%;
+    width: 18.1%;
     max-width: 328px;
 }
 
@@ -86,8 +86,8 @@
 }
 /* make non-top-level links be smaller */
 #rules-nav li ul li a {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     color: rgba(0,0,0,.64);
 }
 /* default hovered link */

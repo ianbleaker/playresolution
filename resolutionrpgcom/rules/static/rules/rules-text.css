@@ -1,119 +1,31 @@
-
-
-.tier-1 {
-    margin-top: 2em;
-}
-.tier-1 .section-title {
-    font-size: 1.9em;
-}
-
-.tier-2 {
-    padding-left: 1em;
-}
-.tier-2 .section-title {
-    font-size: 1.7em;
-}
-
-.tier-3 {
-    padding-left: 2em;
-}
-.tier-3 .section-title {
-    font-size: 1.6em;
-}
-
-.tier-4 {
-    padding-left: 3em;
-}
-.tier-4 .section-title {
-    font-size: 1.5em;
-}
-
-.tier-5 {
-    padding-left: 4em;
-}
-.tier-5 .section-title {
-    font-size: 1.4em;
-}
-
-.tier-6 {
-    padding-left: 5em;
-}
-.tier-6 .section-title {
-    font-size: 1.3em;
-}
-
-.tier-7 {
-    padding-left: 6em;
-}
-.tier-7 .section-title {
-    font-size: 1.2em;
-}
-
-.type-n .section-title {
-    font-weight: 500;
-}
-
-.rule-section.section-type-ex {
-    margin-left: 2em;
-    padding-left: 0;
-}
-
-.rule-section .well.section-content-ex {
-    background-color: #00BFA5;
-}
-
-.section-type-ex .section-title {
-    display: inline-block;
-    border-radius: 50%;
-    height: 60px;
-    width: 60px;
-    float: right;
-    position: relative;
-    word-wrap: normal;
-    top: -30px;
-    right: 10px;
-    background-color: #2196F3;
-}
-.section-type-ex .section-title i {
-    font-size: 40px;
-    color: white;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 58px;
-    height: 100%;
-    width: 100%;
-}
-
-.section-type-ex .section-content {
-    font-style: italic;
-    line-height: 1.5em;
-    font-size: 1em;
-    color: white;
-    text-align: justify;
-    margin-bottom: 1.8em;
-}
-
-.section-content {
-    padding-left: .5em;
-    font-size: 1.2em;
-    margin-bottom: 1.8em;
-}
-.section-content.section-content-ex p {
-    margin-bottom: 0;
-}
-
 #rules-text {
-    margin-top: 20px;
     position: relative;
     z-index: 5;
     background-color: white;
-    padding: 1em;
-    right: 0;
+    overflow: hidden;
+    margin-top: 20px;
+    font-size: 1.2em;
+    padding: 10px 20px 20px;
+    line-height: 1.6em;
 
 }
-
-.rule-section {
-    line-height: 2.2em;
-    margin-left: 1em;
-    margin-right: 2em;
+.section-content {
 }
+
+@media only screen and (max-width: 500px) {
+    #content {
+        width:100%;
+        overflow: hidden;
+    }
+    #rules-text {
+        width: 100%;
+    }
+    .section-content {
+        font-size: 1em;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+}
+
+
+
