@@ -1,0 +1,49 @@
+@import 'defaults';
+
+#rules-text {
+    position: relative;
+    z-index: 5;
+    background-color: $text-background-color;
+    overflow: hidden;
+    margin-top: 20px;
+    font-size: 1.2em;
+    padding: 10px 20px 20px;
+    line-height: 1.6em;
+
+}
+
+.rule-section {
+  &.tier-1 {
+    padding-bottom: 30px;
+    >.section-title {
+      font-size: 1.6em;
+    }
+  }
+  &.tier-1:not(:first-child) {
+    border-top: 1px solid $divider-color;
+    padding-top: 50px;
+  }
+  .section-title {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+    #content {
+        width:100%;
+        overflow: hidden;
+    }
+    #rules-text {
+        margin-top: 0;
+        padding-top: 20px;
+        width: 100%;
+    }
+    .section-content {
+        font-size: 1em;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+}
+
+
+

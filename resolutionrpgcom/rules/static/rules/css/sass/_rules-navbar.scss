@@ -1,0 +1,53 @@
+nav {
+
+  a {
+    &:hover {
+      text-decoration: none;
+      &.brand-logo {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  #resolution-logo {
+    margin-left: 56px;
+    position: absolute;
+    text-align: left;
+  }
+
+  #menu-expand-button {
+    padding-right: 10px;
+    cursor: pointer;
+  }
+
+  #bookmarks-button {
+    padding-left: 10px;
+    margin-right: -56px;
+    cursor: pointer;
+  }
+
+  #mobile-nav-buttons {
+    a {
+      padding-left: 5px;
+    }
+    i {
+      display: inline-block;
+      vertical-align: middle;
+      padding-right: 17px;
+    }
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  nav #resolution-logo {
+    margin-left: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+}

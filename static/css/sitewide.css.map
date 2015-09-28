@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,IAAK;EACH,WAAW,EAAE,oBAAoB;EACjC,SAAS,EAAE,IAAI;EACf,gBAAgB,ECSC,IAAI;EDRrB,KAAK,ECCM,mBAAgB;;ADE7B,yCAA0C;EACxC,IAAK;IACL,SAAS,EAAE,IAAI;AAIjB,GAAI;EACF,gBAAgB,ECdG,OAAO",
+"sources": ["sass/sitewide.scss","sass/_color-scheme.scss"],
+"names": [],
+"file": "sitewide.css"
+}

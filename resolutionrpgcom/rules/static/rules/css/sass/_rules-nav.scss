@@ -1,15 +1,19 @@
+@import "defaults";
+
 .nav>li>a:focus {
     background-color: inherit;
 }
 #rules-nav {
     margin-top: 50px;
-    background-color: white;
     position: fixed;
     z-index: 1;
     padding-left: 0;
     padding-right: 0;
-    width: 17.955%;
+    width: 18.1%;
     max-width: 328px;
+}
+#rules-nav ul {
+    background-color: $text-background-color;
 }
 
 /* ======================== */
@@ -36,7 +40,7 @@
 }
 /* make the default active link have border */
 #rules-nav li > ul > li.active > a {
-    border-left: 4px solid #2196F3;
+    border-left: 4px solid $primary-color-dark;
 }
 /* remove space between links */
 #rules-nav .nav-stacked>li+li {
@@ -46,25 +50,20 @@
 /* ++ TOP LEVEL LINKS ++ */
 /* current top-level link */
 #rules-nav > ul > li.active > a {
-    background-color: #2196F3 !important;
-    color: white;
+    background-color: $primary-color-dark !important;
+    color: $text-color-opposite;
     margin-left: -20px;
 }
 /* other top level links */
 #rules-nav > ul > li > a {
     margin-left: -10px;
-    color: white;
-}
-#rules-nav > ul > li:nth-child(even) > a {
-    background-color:#00BFA5;
-}
-#rules-nav > ul > li:nth-child(odd) > a {
-    background-color:#4DB6AC;
+    color: $text-color-opposite;
+    background-color: $primary-color;
 }
 /* top level hover embiggener */
  #rules-nav > ul > li:hover > a {
     margin-left: -40px;
-    color: white;
+    color: $text-color-opposite;
 }
 #rules-nav > ul > li:hover ul{
     max-height: 600px;
@@ -86,11 +85,11 @@
 }
 /* make non-top-level links be smaller */
 #rules-nav li ul li a {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: rgba(0,0,0,.64);
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: $text-color-secondary;
 }
 /* default hovered link */
 #rules-nav li ul li a:hover {
-    background-color: #64B5F6;
+    background-color: $secondary-color-light;
 }

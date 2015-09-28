@@ -1,0 +1,164 @@
+.nav > li > a:focus {
+  background-color: inherit; }
+
+#rules-nav {
+  margin-top: 50px;
+  position: fixed;
+  z-index: 1;
+  padding-left: 0;
+  padding-right: 0;
+  width: 18.1%;
+  max-width: 328px; }
+
+#rules-nav ul {
+  background-color: white; }
+
+/* ======================== */
+/*        RULES NAV         */
+/* ======================== */
+/* ++ TRANSITIONS ++ */
+#rules-nav a {
+  -webkit-transition: all 300ms, background-color 200ms ease-out;
+  transition: all 300ms, background-color 200ms ease-out;
+  display: block;
+  padding-right: 12px;
+  box-sizing: border-box; }
+
+#rules-nav ul {
+  -webkit-transition: all 800ms;
+  transition: all 800ms; }
+
+/* ++ DEFAULTS ++ */
+#rules-nav ul, #rules-nav li {
+  margin: 0;
+  padding: 0;
+  display: block; }
+
+/* make the default active link have border */
+#rules-nav li > ul > li.active > a {
+  border-left: 4px solid #0288D1; }
+
+/* remove space between links */
+#rules-nav .nav-stacked > li + li {
+  margin-top: 0; }
+
+/* ++ TOP LEVEL LINKS ++ */
+/* current top-level link */
+#rules-nav > ul > li.active > a {
+  background-color: #0288D1 !important;
+  color: white;
+  margin-left: -20px; }
+
+/* other top level links */
+#rules-nav > ul > li > a {
+  margin-left: -10px;
+  color: white;
+  background-color: #03A9F4; }
+
+/* top level hover embiggener */
+#rules-nav > ul > li:hover > a {
+  margin-left: -40px;
+  color: white; }
+
+#rules-nav > ul > li:hover ul {
+  max-height: 600px; }
+
+/* ++ SUB-LISTS ++ */
+/* lists in lists get additional padding */
+#rules-nav li li a {
+  padding-left: 15px; }
+
+#rules-nav li li li a {
+  padding-left: 30px; }
+
+#rules-nav li li li li a {
+  padding-left: 45px; }
+
+#rules-nav li li li li li a {
+  padding-left: 60px; }
+
+/* slide transition for opening top level sub list */
+#rules-nav ul > li > ul {
+  max-height: 0;
+  overflow: hidden; }
+
+#rules-nav ul > li.active > ul, #rules-nav ul > li.focus > ul {
+  max-height: 600px; }
+
+/* make non-top-level links be smaller */
+#rules-nav li ul li a {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: rgba(0, 0, 0, 0.54); }
+
+/* default hovered link */
+#rules-nav li ul li a:hover {
+  background-color: #B9F6CA; }
+
+#rules-text {
+  position: relative;
+  z-index: 5;
+  background-color: white;
+  overflow: hidden;
+  margin-top: 20px;
+  font-size: 1.2em;
+  padding: 10px 20px 20px;
+  line-height: 1.6em; }
+
+.rule-section.tier-1 {
+  padding-bottom: 30px; }
+  .rule-section.tier-1 > .section-title {
+    font-size: 1.6em; }
+.rule-section.tier-1:not(:first-child) {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 50px; }
+.rule-section .section-title {
+  font-size: 1.2em; }
+
+@media only screen and (max-width: 500px) {
+  #content {
+    width: 100%;
+    overflow: hidden; }
+
+  #rules-text {
+    margin-top: 0;
+    padding-top: 20px;
+    width: 100%; }
+
+  .section-content {
+    font-size: 1em;
+    padding-left: 6px;
+    padding-right: 6px; } }
+nav a:hover {
+  text-decoration: none; }
+  nav a:hover.brand-logo {
+    text-decoration: underline; }
+nav #resolution-logo {
+  margin-left: 56px;
+  position: absolute;
+  text-align: left; }
+nav #menu-expand-button {
+  padding-right: 10px;
+  cursor: pointer; }
+nav #bookmarks-button {
+  padding-left: 10px;
+  margin-right: -56px;
+  cursor: pointer; }
+nav #mobile-nav-buttons a {
+  padding-left: 5px; }
+nav #mobile-nav-buttons i {
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 17px; }
+
+@media only screen and (max-width: 600px) {
+  nav #resolution-logo {
+    margin-left: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); } }
+
+/*# sourceMappingURL=rules.css.map */

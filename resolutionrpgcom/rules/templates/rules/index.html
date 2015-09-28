@@ -13,15 +13,6 @@
             </ul>
     </div>
     <div id="rules-text" class="col m12 l9 offset-l3 z-depth-2">
-        {% for section in sections %}
-            <div id="{{section.slug}}" class="rule-section tier-{{section.tier}} section-type-{{section.type}} scrollspy">
-                <div id="{{section.slug}}-title" class="section-title section-title-{{ section.type }}">
-                    {{section.title}}
-                </div>
-                <div id="{{section.slug}}-content" class="section-content section-content-{{ section.type }}">
-                    {{section.content|safe}}
-                </div>
-            </div>
-        {% endfor %}
+        {{ sections | section_text }}
     </div>
 {% endblock content %}

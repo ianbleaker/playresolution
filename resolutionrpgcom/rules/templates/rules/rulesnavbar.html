@@ -1,20 +1,27 @@
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Logo</a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li>
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li>
-          </ul>
+            <a id="bookmarks-button" class="button-collapse" data-activates="mobile-bookmarks-menu"><i class="material-icons">bookmark</i></a>
+            <a id="resolution-logo" href="#!">resolutionRPG</a>
+            <a id="menu-expand-button" class="right hide-on-med-and-up button-collapse" data-activates="mobile-nav-buttons"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-small-and-down">
+                <li><a href="#" class="tooltipped active" data-position="bottom" data-delay="10" data-tooltip="Rules"><i class="material-icons">subject</i></a></li>
+                <li><a href="#" class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="Genetics"><i class="material-icons">accessibility</i></a></li>
+                <li><a href="#" class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="Traits"><i class="material-icons">face</i></a></li>
+                <li><a href="#" class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="Gear"><i class="material-icons">local_mall</i></a></li>
+                <li><a href="#" class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="Create"><i class="material-icons">create</i></a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-nav-buttons">
+                <li><a href="#" class="active"><i class="material-icons">subject</i> Text</a></li>
+                <li><a href="#"><i class="material-icons">accessibility</i> Genetics</a></li>
+                <li><a href="#"><i class="material-icons">face</i> Traits</a></li>
+                <li><a href="#"><i class="material-icons">local_mall</i> Gear</a></li>
+                <li><a href="#"><i class="material-icons">create</i> Create Character</a></li>
+            </ul>
         </div>
     </nav>
 </div>
+<ul id="mobile-bookmarks-menu" class="side-nav">
+    <li><a href="#!">First Sidebar Link</a></li>
+    <li><a href="#!">Second Sidebar Link</a></li>
+</ul>
