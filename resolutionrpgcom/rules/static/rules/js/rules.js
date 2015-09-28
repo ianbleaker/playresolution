@@ -2,9 +2,8 @@
  * Created by ian on 9/24/2015.
  */
 $( document).ready(function(){
-	$(".button-collapse").sideNav({
-        edge: 'right'
-    });
+	$("#bookmarks-button").sideNav();
+    $("#menu-expand-button").sideNav({edge: 'right'});
     $('#rules-nav').localScroll({
 		//target: '#content', // could be a selector or a jQuery object too.
         offset: -130,

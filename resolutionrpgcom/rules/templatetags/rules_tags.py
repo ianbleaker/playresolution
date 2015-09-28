@@ -52,7 +52,7 @@ def section_text(sections, autoescape=True):
 
     def format_children(item, tabs=1):
         indent = '\t' * tabs
-        output.append('%s<div id="%s" class="rule-section section-type-%s scrollspy">' % (indent, slugify(item.title), section.type))
+        output.append('%s<div id="%s" class="rule-section section-type-%s tier-%s scrollspy">' % (indent, item.slug(), section.type, item.tier()))
         tabs += 1
         output.append('%s<div id="%s-title" class="section-title">%s</div>' % (indent, slugify(item.title), item.title))
         output.append('%s<div id="%s-content" class="section-content">%s</div>' % (indent, slugify(item.title), item.content))

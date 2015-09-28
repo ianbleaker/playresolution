@@ -1,4 +1,13 @@
 body {
-    background-color: #eee;
-    position: relative;
-}
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  background-color: #eee;
+  color: rgba(0, 0, 0, 0.87); }
+
+@media only screen and (max-width: 900px) {
+  body {
+    font-size: 14px; } }
+nav {
+  background-color: #0288D1; }
+
+/*# sourceMappingURL=sitewide.css.map */
