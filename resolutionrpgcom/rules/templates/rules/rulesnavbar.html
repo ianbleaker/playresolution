@@ -1,15 +1,15 @@
 <div class="navbar-fixed">
-    <nav>
+    <nav id="rules-top-nav">
         <div class="nav-wrapper">
-            <a id="bookmarks-button" class="button-collapse" data-activates="mobile-bookmarks-menu"><i class="material-icons">bookmark</i></a>
+            <a id="left-menu-button" class="button-collapse" data-activates="left-menu"><i class="material-icons">menu</i></a>
             <a id="resolution-logo" href="#!">resolutionRPG</a>
-            <a id="menu-expand-button" class="right hide-on-med-and-up button-collapse" data-activates="mobile-nav-buttons"><i class="material-icons">menu</i></a>
+
             <ul id="top-nav-buttons" class="right hide-on-small-and-down">
-                <li><a href="/rules/" class="tooltipped active" data-position="bottom" data-delay="10" data-tooltip="Rules"><i class="material-icons">subject</i><div class="current-location"></div></a></li>
-                <li><a href="#" class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="Genetics"><i class="material-icons">accessibility</i><div class="current-location"></div></a></li>
-                <li><a href="#" class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="Traits"><i class="material-icons">face</i><div class="current-location"></div></a></li>
-                <li><a href="#" class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="Gear"><i class="material-icons">local_mall</i><div class="current-location"></div></a></li>
-                <li><a href="#" class="tooltipped" data-position="bottom" data-delay="10" data-tooltip="Create"><i class="material-icons">create</i><div class="current-location"></div></a></li>
+                <li><a id="rules-a" href="/rules/" class="rules-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Rules"><i class="material-icons">subject</i><div class="current-location"></div></a></li>
+                <li><a id="genetics-a" href="#" class="genetics-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Genetics"><i class="material-icons">accessibility</i><div class="current-location"></div></a></li>
+                <li><a id="traits-a" href="#" class="traits-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Traits"><i class="material-icons">face</i><div class="current-location"></div></a></li>
+                <li><a id="gear-a" href="#" class="gear-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Gear"><i class="material-icons">local_mall</i><div class="current-location"></div></a></li>
+                <li><a id="create-a" href="#" class="create-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Create"><i class="material-icons">create</i><div class="current-location"></div></a></li>
             </ul>
             <ul class="side-nav" id="mobile-nav-buttons">
                 <li><a href="#" class="active"><i class="material-icons">subject</i> Text</a></li>
@@ -21,7 +21,15 @@
         </div>
     </nav>
 </div>
-<ul id="mobile-bookmarks-menu" class="side-nav">
-    <li><a href="#!">First Sidebar Link</a></li>
-    <li><a href="#!">Second Sidebar Link</a></li>
-</ul>
+<div id="rules-fab" class="hide-on-med-and-up fixed-action-btn" style="bottom: 24px; right: 24px;">
+    <a class="btn-floating btn-large">
+        <i class="large material-icons">keyboard_arrow_up</i>
+    </a>
+    <ul>
+        <li><a class="create-a btn-floating"><i class="material-icons">create</i></i></a></li>
+        <li><a class="gear-a btn-floating"><i class="material-icons">local_mall</i></a></li>
+        <li><a class="traits-a btn-floating"><i class="material-icons">face</i></a></li>
+        <li><a class="genetics-a btn-floating"><i class="material-icons">accessibility</i></a></li>
+        <li><a class="rules-a btn-floating"><i class="material-icons">subject</i></a></li>
+    </ul>
+</div>

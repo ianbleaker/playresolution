@@ -21,16 +21,8 @@
 </head>
 
 <body {% block body_tags %}{% endblock %}>
-            {% include "rules/rulesnavbar.html" %}
-        <div id="content" class="container">
-            <div class="row">
-                {% block content %}
-                    base only here!
-                {% endblock content %}
-            </div>
-        </div>
-        </div>
-    </div>
+{% block content %}
+{% endblock content %}
 </body>
 
     <script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>

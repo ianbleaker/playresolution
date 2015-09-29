@@ -4,15 +4,20 @@
 
 {% block title %}Rules{% endblock %}
 
-{% block body_tags %}data-spy="scroll" data-target=".scrollspy-active-rules" data-offset="135"{% endblock body_tags %}
-
-{% block content %}
-    <div id="rules-nav" class="col hide-on-med-and-down l3 scrollspy-active-rules z-depth-1">
-            <ul class = "nav">
-                {{ sections | child_nav_list }}
-            </ul>
+{% block left-menu-content %}
+    <div id="bookmarks-menu">
+        {{ sections | section_bookmark_list }}
     </div>
-    <div id="rules-text" class="col m12 l9 offset-l3 z-depth-2">
+{% endblock left-menu-content %}
+
+{% block page-content %}
+    <div id="rules-text">
         {{ sections | section_text }}
     </div>
-{% endblock content %}
+{% endblock page-content %}
+
+{% block script %}
+    <script>
+        setActiveLink("rules");
+    </script>
+{% endblock script %}

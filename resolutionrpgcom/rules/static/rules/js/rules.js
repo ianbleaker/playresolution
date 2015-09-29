@@ -2,7 +2,7 @@
  * Created by ian on 9/24/2015.
  */
 $( document).ready(function(){
-	$("#bookmarks-button").sideNav();
+	$("#left-menu-button").sideNav();
     $("#menu-expand-button").sideNav({edge: 'right'});
     $('#rules-nav').localScroll({
 		//target: '#content', // could be a selector or a jQuery object too.
@@ -17,3 +17,6 @@ $( document).ready(function(){
 		}
 	});
 });
+function setActiveLink(linkTitle){
+	$("."+linkTitle+"-a").addClass("active");
+}

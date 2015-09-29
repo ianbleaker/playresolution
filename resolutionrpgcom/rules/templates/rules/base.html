@@ -7,15 +7,23 @@
     <link rel="stylesheet" href="{% static 'rules/css/rules.css' %}" >
 {% endblock head %}
 
-{% block body_tags %}{% endblock body_tags %}
-
-{% block content %}{% endblock content %}
+{% block content %}
+    <div id="left-menu" class="side-nav">
+        {% block left-menu-content %}{% endblock left-menu-content %}
+    </div>
+    <div class="row">
+        {% include "rules/rulesnavbar.html" %}
+        <div class="container">
+            <div class="col s12">
+                    {% block page-content %}
+                    {% endblock page-content %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
 
 {% block after_body %}
-    {% comment %}
-    <script src="{% static 'js/jquery.scrollTo.min.js' %}"></script>
-    <script src="{% static 'js/jquery.localScroll.min.js' %}"></script>
-    {% endcomment %}
     <script src="{% static 'rules/js/rules.js' %}"></script>
-    <script src="{% static 'js/scrollspy.js' %}"></script>
+    {% block script %}
+    {% endblock script %}
 {% endblock after_body %}

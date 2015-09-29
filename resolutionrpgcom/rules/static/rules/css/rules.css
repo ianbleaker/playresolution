@@ -103,7 +103,6 @@
 #rules-text {
   position: relative;
   z-index: 5;
-  background-color: white;
   overflow: hidden;
   margin-top: 20px;
   font-size: 1.2em;
@@ -147,16 +146,15 @@ nav a:hover {
   text-decoration: none; }
   nav a:hover.brand-logo {
     text-decoration: underline; }
+nav #left-menu-button {
+  margin-left: 10px;
+  cursor: pointer; }
 nav #resolution-logo {
-  margin-left: 56px;
+  margin-left: 10px;
   position: absolute;
   text-align: left; }
 nav #menu-expand-button {
   padding-right: 10px;
-  cursor: pointer; }
-nav #bookmarks-button {
-  padding-left: 10px;
-  margin-right: -56px;
   cursor: pointer; }
 nav #mobile-nav-buttons a {
   padding-left: 5px; }
@@ -179,5 +177,55 @@ nav #top-nav-buttons a:hover {
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
     transform: translateX(-50%); } }
+#rules-fab > a > i {
+  font-size: 40px;
+  -webkit-transition: all 400ms;
+  transition: all 400ms; }
+
+#rules-fab.active > a {
+  background-color: #0288D1; }
+#rules-fab > a {
+  background-color: #00C853; }
+#rules-fab ul a {
+  background-color: #03A9F4; }
+#rules-fab a.active {
+  background-color: #00C853; }
+
+#left-menu-button {
+  display: block; }
+
+@media only screen and (min-width: 1481px) {
+  #left-menu, #rules-text-row, #rules-top-nav, #rules-text {
+    transition: all 400ms; }
+
+  #left-menu-button {
+    display: none !important; }
+
+  #left-menu {
+    left: 0 !important; }
+
+  .container > .col > div {
+    margin-left: 240px; }
+
+  #rules-top-nav {
+    padding-left: 240px;
+    overflow-x: hidden; } }
+@media only screen and (min-width: 1281px) {
+  .container {
+    width: 85%; } }
+@media only screen and (min-width: 1100px) and (max-width: 1280px) {
+  .container {
+    width: 93%; } }
+@media only screen and (min-width: 993px) and (max-width: 1100px) {
+  .container {
+    width: 100%; } }
+@media only screen and (max-width: 993px) {
+  .row .col.s12 {
+    padding-left: 0;
+    padding-right: 0; }
+
+  .container {
+    margin: 0;
+    width: 100%; } }
 
 /*# sourceMappingURL=rules.css.map */

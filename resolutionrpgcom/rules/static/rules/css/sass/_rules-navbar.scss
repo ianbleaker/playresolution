@@ -11,20 +11,19 @@ nav {
     }
   }
 
+  #left-menu-button {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
   #resolution-logo {
-    margin-left: 56px;
+    margin-left: 10px;
     position: absolute;
     text-align: left;
   }
 
   #menu-expand-button {
     padding-right: 10px;
-    cursor: pointer;
-  }
-
-  #bookmarks-button {
-    padding-left: 10px;
-    margin-right: -56px;
     cursor: pointer;
   }
 
@@ -61,5 +60,26 @@ nav {
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
   }
+}
 
+#rules-fab > a > i {
+  font-size: 40px;
+  -webkit-transition: all 400ms;
+  transition: all 400ms;
+}
+#rules-fab {
+  &.active {
+    >a {
+      background-color: $primary-color-dark;
+    }
+  }
+  >a{
+    background-color: $secondary-color;
+  }
+  ul a{
+    background-color: $primary-color;
+  }
+  a.active {
+    background-color: $secondary-color;
+  }
 }

@@ -7,7 +7,7 @@ register = template.Library()
 
 
 @register.filter(is_safe=True, needs_autoescape=True)
-def child_nav_list(sections, autoescape=True):
+def section_bookmark_list(sections, autoescape=True):
     if autoescape:
         escaper = conditional_escape
     else:
