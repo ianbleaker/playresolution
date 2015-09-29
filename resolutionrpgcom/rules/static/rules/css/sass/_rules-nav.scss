@@ -1,8 +1,6 @@
 @import "defaults";
 
-.nav>li>a:focus {
-    background-color: inherit;
-}
+/* BASICS, DEFAULT BEHAVIOR */
 #rules-nav {
     margin-top: 50px;
     position: fixed;
@@ -12,47 +10,62 @@
     width: 18.1%;
     max-width: 328px;
 }
-#rules-nav ul {
-    background-color: $text-background-color;
+// no space between top level links
+#rules-nav > ul, #rules-nav li {
+    margin-top: 0;
 }
-
-/* ======================== */
-/*        RULES NAV         */
-/* ======================== */
-/* ++ TRANSITIONS ++ */
+//for all links, do this
 #rules-nav a {
-    -webkit-transition: all 300ms, background-color 200ms ease-out;
-    transition: all 300ms, background-color 200ms ease-out;
     display: block;
     padding-right: 12px;
     box-sizing: border-box;
+}
+//for all lists, do this
+#rules-nav ul {
+    background-color: $text-background-color;
+}
+//for all line items (hold 1 link and 0-1 list)
+//don't normally have any height, hide
+#rules-nav li {
+    max-height: 0;
+    overflow: hidden;
+}
+//when active, show links and lists
+#rules-nav li.active, #rules-nav > ul > li, #rules-nav > ul > li:hover li, #rules-nav > ul > li:focus li {
+    max-height: 600px;
+}
+//top level links have visible overflow for margin thing
+#rules-nav > ul > li {
+    overflow: visible;
+}
+// make the default active link have border
+#rules-nav li > ul > li.active > a {
+    border-left: 4px solid $primary-color-dark;
+}
+
+
+/* ++ TRANSITIONS ++ */
+#rules-nav > ul > li > ul li {
+    -webkit-transition: max-height 800ms;
+    transition: max-height 800ms;
+}
+#rules-nav a {
+    -webkit-transition: all 300ms, background-color 200ms ease-out;
+    transition: all 300ms, background-color 200ms ease-out;
 }
 #rules-nav ul {
     -webkit-transition: all 800ms;
     transition: all 800ms;
 }
 
-/* ++ DEFAULTS ++ */
-#rules-nav ul, #rules-nav li {
-    margin: 0;
-    padding: 0;
-    display: block;
-}
-/* make the default active link have border */
-#rules-nav li > ul > li.active > a {
-    border-left: 4px solid $primary-color-dark;
-}
-/* remove space between links */
-#rules-nav .nav-stacked>li+li {
-    margin-top: 0;
-}
-
 /* ++ TOP LEVEL LINKS ++ */
 /* current top-level link */
+//give shadow
 #rules-nav > ul > li.active > a {
     background-color: $primary-color-dark !important;
     color: $text-color-opposite;
     margin-left: -20px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 /* other top level links */
 #rules-nav > ul > li > a {
@@ -61,9 +74,10 @@
     background-color: $primary-color;
 }
 /* top level hover embiggener */
- #rules-nav > ul > li:hover > a {
+#rules-nav > ul > li:hover > a, #rules-nav > ul > li:focus > a {
     margin-left: -40px;
     color: $text-color-opposite;
+    background-color: $secondary-color;
 }
 #rules-nav > ul > li:hover ul{
     max-height: 600px;
@@ -90,6 +104,6 @@
     color: $text-color-secondary;
 }
 /* default hovered link */
-#rules-nav li ul li a:hover {
+#rules-nav li ul li a:hover, #rules-nav li ul li a:focus {
     background-color: $secondary-color-light;
 }

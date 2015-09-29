@@ -26,6 +26,15 @@
   .section-title {
     font-size: 1.2em;
   }
+  &.section-type-ex {
+    background-color: $secondary-color-light;
+    font-size: .8em;
+    font-style: oblique;
+    line-height: 1em;
+    .section-title {
+      display: none;
+    }
+  }
 }
 
 @media only screen and (max-width: 500px) {

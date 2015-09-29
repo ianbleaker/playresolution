@@ -1,3 +1,5 @@
+@import "defaults";
+
 nav {
 
   a {
@@ -37,7 +39,17 @@ nav {
     }
   }
 
+  #top-nav-buttons {
+    a.active {
+      background-color: $secondary-color;
+      pointer-events: none;
+    }
+    a:hover {
+      color: $text-color-disabled;
+    }
+  }
 }
+
 
 @media only screen and (max-width: 600px) {
   nav #resolution-logo {

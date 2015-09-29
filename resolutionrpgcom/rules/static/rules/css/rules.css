@@ -1,6 +1,4 @@
-.nav > li > a:focus {
-  background-color: inherit; }
-
+/* BASICS, DEFAULT BEHAVIOR */
 #rules-nav {
   margin-top: 50px;
   position: fixed;
@@ -10,44 +8,50 @@
   width: 18.1%;
   max-width: 328px; }
 
-#rules-nav ul {
-  background-color: white; }
+#rules-nav > ul, #rules-nav li {
+  margin-top: 0; }
 
-/* ======================== */
-/*        RULES NAV         */
-/* ======================== */
-/* ++ TRANSITIONS ++ */
 #rules-nav a {
-  -webkit-transition: all 300ms, background-color 200ms ease-out;
-  transition: all 300ms, background-color 200ms ease-out;
   display: block;
   padding-right: 12px;
   box-sizing: border-box; }
 
 #rules-nav ul {
-  -webkit-transition: all 800ms;
-  transition: all 800ms; }
+  background-color: white; }
 
-/* ++ DEFAULTS ++ */
-#rules-nav ul, #rules-nav li {
-  margin: 0;
-  padding: 0;
-  display: block; }
+#rules-nav li {
+  max-height: 0;
+  overflow: hidden; }
 
-/* make the default active link have border */
+#rules-nav li.active, #rules-nav > ul > li, #rules-nav > ul > li:hover li, #rules-nav > ul > li:focus li {
+  max-height: 600px; }
+
+#rules-nav > ul > li {
+  overflow: visible; }
+
 #rules-nav li > ul > li.active > a {
   border-left: 4px solid #0288D1; }
 
-/* remove space between links */
-#rules-nav .nav-stacked > li + li {
-  margin-top: 0; }
+/* ++ TRANSITIONS ++ */
+#rules-nav > ul > li > ul li {
+  -webkit-transition: max-height 800ms;
+  transition: max-height 800ms; }
+
+#rules-nav a {
+  -webkit-transition: all 300ms, background-color 200ms ease-out;
+  transition: all 300ms, background-color 200ms ease-out; }
+
+#rules-nav ul {
+  -webkit-transition: all 800ms;
+  transition: all 800ms; }
 
 /* ++ TOP LEVEL LINKS ++ */
 /* current top-level link */
 #rules-nav > ul > li.active > a {
   background-color: #0288D1 !important;
   color: white;
-  margin-left: -20px; }
+  margin-left: -20px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
 /* other top level links */
 #rules-nav > ul > li > a {
@@ -56,9 +60,10 @@
   background-color: #03A9F4; }
 
 /* top level hover embiggener */
-#rules-nav > ul > li:hover > a {
+#rules-nav > ul > li:hover > a, #rules-nav > ul > li:focus > a {
   margin-left: -40px;
-  color: white; }
+  color: white;
+  background-color: #00C853; }
 
 #rules-nav > ul > li:hover ul {
   max-height: 600px; }
@@ -92,7 +97,7 @@
   color: rgba(0, 0, 0, 0.54); }
 
 /* default hovered link */
-#rules-nav li ul li a:hover {
+#rules-nav li ul li a:hover, #rules-nav li ul li a:focus {
   background-color: #B9F6CA; }
 
 #rules-text {
@@ -114,6 +119,13 @@
   padding-top: 50px; }
 .rule-section .section-title {
   font-size: 1.2em; }
+.rule-section.section-type-ex {
+  background-color: #B9F6CA;
+  font-size: .8em;
+  font-style: oblique;
+  line-height: 1em; }
+  .rule-section.section-type-ex .section-title {
+    display: none; }
 
 @media only screen and (max-width: 500px) {
   #content {
@@ -150,6 +162,11 @@ nav #mobile-nav-buttons i {
   display: inline-block;
   vertical-align: middle;
   padding-right: 17px; }
+nav #top-nav-buttons a.active {
+  background-color: #00C853;
+  pointer-events: none; }
+nav #top-nav-buttons a:hover {
+  color: rgba(0, 0, 0, 0.38); }
 
 @media only screen and (max-width: 600px) {
   nav #resolution-logo {

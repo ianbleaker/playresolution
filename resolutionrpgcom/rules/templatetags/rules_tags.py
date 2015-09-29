@@ -1,10 +1,7 @@
 from django import template
 
-from django.utils.encoding import force_text
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
-
-from django.utils.text import slugify
 
 register = template.Library()
 
@@ -22,8 +19,8 @@ def child_nav_list(sections, autoescape=True):
         indent = '\t' * tabs
         shadow_string = ""
         if item.tier() is 1:
-            shadow_string = ' class="z-depth-1"'
-        output.append('%s<li role="presentation"><a href="#%s"%s>%s</a>' % (indent, slugify(item.title), shadow_string, item.title))
+            shadow_string = ' class=""'
+        output.append('%s<li role="presentation"><a href="#%s-%s"%s>%s</a>' % (indent, item.slug(), item.tier(), shadow_string, item.title))
         children = sections.filter(parent=item)
         if children.exists():
             tabs += 1
@@ -52,10 +49,13 @@ def section_text(sections, autoescape=True):
 
     def format_children(item, tabs=1):
         indent = '\t' * tabs
-        output.append('%s<div id="%s" class="rule-section section-type-%s tier-%s scrollspy">' % (indent, item.slug(), section.type, item.tier()))
+        type_string = ""
+        if "ex" in item.type:
+            type_string = " card-panel"
+        output.append('%s<div id="%s-%s" class="rule-section section-type-%s tier-%s scrollspy%s">' % (indent, item.slug(), item.tier(), item.type, item.tier(), type_string))
         tabs += 1
-        output.append('%s<div id="%s-title" class="section-title">%s</div>' % (indent, slugify(item.title), item.title))
-        output.append('%s<div id="%s-content" class="section-content">%s</div>' % (indent, slugify(item.title), item.content))
+        output.append('%s<div id="%s-title" class="section-title">%s</div>' % (indent, item.slug(), item.title))
+        output.append('%s<div id="%s-content" class="section-content">%s</div>' % (indent, item.slug(), item.content))
         children = sections.filter(parent=item)
         if children.exists():
             for child in children:
