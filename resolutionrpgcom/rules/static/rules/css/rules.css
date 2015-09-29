@@ -183,11 +183,11 @@ nav #top-nav-buttons a:hover {
   transition: all 400ms; }
 
 #rules-fab.active > a {
-  background-color: #0288D1; }
+  background-color: #03A9F4; }
 #rules-fab > a {
   background-color: #00C853; }
 #rules-fab ul a {
-  background-color: #03A9F4; }
+  background-color: #0288D1; }
 #rules-fab a.active {
   background-color: #00C853; }
 

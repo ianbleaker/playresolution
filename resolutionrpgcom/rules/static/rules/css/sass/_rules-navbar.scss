@@ -70,14 +70,14 @@ nav {
 #rules-fab {
   &.active {
     >a {
-      background-color: $primary-color-dark;
+      background-color: $primary-color;
     }
   }
   >a{
     background-color: $secondary-color;
   }
   ul a{
-    background-color: $primary-color;
+    background-color: $primary-color-dark;
   }
   a.active {
     background-color: $secondary-color;
