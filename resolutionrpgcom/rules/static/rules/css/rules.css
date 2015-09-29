@@ -121,9 +121,11 @@
   font-size: 1.2em; }
 .rule-section.section-type-ex {
   background-color: #B9F6CA;
-  font-size: .8em;
+  font-size: .85em;
   font-style: oblique;
-  line-height: 1em; }
+  line-height: 1em;
+  padding-top: 5px;
+  padding-bottom: 5px; }
   .rule-section.section-type-ex .section-title {
     display: none; }
 
