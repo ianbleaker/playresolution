@@ -17,19 +17,21 @@ def section_bookmark_list(sections, autoescape=True):
 
     def format_children(item, tabs=1):
         indent = '\t' * tabs
-        shadow_string = ""
-        if item.tier() is 1:
-            shadow_string = ' class=""'
-        output.append('%s<li role="presentation"><a href="#%s-%s"%s>%s</a>' % (indent, item.slug(), item.tier(), shadow_string, item.title))
+        output.append('%s<li><a id="%s-%s-a" href="#%s-%s">%s</a>' % (indent, item.top_parent().slug(), item.slug(), item.top_parent().slug(), item.slug(), item.title))
+        if item.tier() == 1:
+            output.append('<div class="left-menu-reveal closed"><i class="material-icons">keyboard_arrow_down</i></div>')
+            output.append('<div class="ul-wrapper" id="%s-%s-ul">' % (item.top_parent().slug(), item.slug()))
         children = sections.filter(parent=item)
         if children.exists():
             tabs += 1
-            output.append('%s<ul class="nav nav-stacked">' % indent)
+            output.append('%s<ul>' % indent)
             for child in children:
                 if "ex" not in child.type and "i" not in child.type:
                     format_children(child)
             output.append('%s</ul>' % indent)
             tabs -= 1
+        if item.tier() == 1:
+            output.append('</div>')
         output.append('%s</li>' % indent)
 
     for section in sections.filter(parent__isnull=True):
@@ -50,9 +52,11 @@ def section_text(sections, autoescape=True):
     def format_children(item, tabs=1):
         indent = '\t' * tabs
         type_string = ""
-        if "ex" in item.type:
+        scrollspy = " scrollspy"
+        if "ex" in item.type or "i" in item.type:
             type_string = " card-panel"
-        output.append('%s<div id="%s-%s" class="rule-section section-type-%s tier-%s scrollspy%s">' % (indent, item.slug(), item.tier(), item.type, item.tier(), type_string))
+            scrollspy = ""
+        output.append('%s<div id="%s-%s" class="rule-section section-type-%s tier-%s%s%s">' % (indent, item.top_parent().slug(), item.slug(), item.type, item.tier(), type_string, scrollspy))
         tabs += 1
         output.append('%s<div id="%s-title" class="section-title">%s</div>' % (indent, item.slug(), item.title))
         output.append('%s<div id="%s-content" class="section-content">%s</div>' % (indent, item.slug(), item.content))

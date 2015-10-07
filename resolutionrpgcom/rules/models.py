@@ -116,6 +116,12 @@ class Section(OrderedModel):
             answer = False
         return answer
 
+    def top_parent(self):
+        output = self
+        while output.has_parent():
+            output = output.parent
+        return output
+
     def has_child(self):
         try:
             child = self.parent.title

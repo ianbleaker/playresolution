@@ -9,11 +9,16 @@
 
 {% block content %}
     <div id="left-menu" class="side-nav">
-        {% block left-menu-content %}{% endblock left-menu-content %}
+        <div class="left-menu-header">
+            <div class="location-logo">
+                <span class="location-logo-parent">{% block left-menu-header-parent %}{% endblock left-menu-header-parent %}</span><span class="location-logo-period">.</span><span class="location-logo-after">{% block left-menu-header-after %}{% endblock left-menu-header-after %}</span>
+            </div>
+        </div>
+        <div class="left-menu-content">{% block left-menu-content %}{% endblock left-menu-content %}</div>
     </div>
     <div class="row">
         {% include "rules/rulesnavbar.html" %}
-        <div class="container">
+        <div id="content" class="container">
             <div class="col s12">
                     {% block page-content %}
                     {% endblock page-content %}

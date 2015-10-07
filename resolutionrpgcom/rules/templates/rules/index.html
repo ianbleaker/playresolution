@@ -4,9 +4,14 @@
 
 {% block title %}Rules{% endblock %}
 
+{% block left-menu-header-parent %}rules{% endblock left-menu-header-parent %}
+{% block left-menu-header-after %}sections{% endblock left-menu-header-after %}
+
 {% block left-menu-content %}
     <div id="bookmarks-menu">
-        {{ sections | section_bookmark_list }}
+        <ul>
+            {{ sections | section_bookmark_list }}
+        </ul>
     </div>
 {% endblock left-menu-content %}
 
