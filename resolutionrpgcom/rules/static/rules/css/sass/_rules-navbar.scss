@@ -1,4 +1,35 @@
+@import "defaults";
+
+#mobile-nav-buttons {
+  z-index: 10;
+  position: fixed;
+  width: 0;
+  top: 50px;
+  right: 10px;
+  a {
+    background-color: $primary-color-dark;
+    &.active {
+      background-color: $secondary-color;
+    }
+  }
+  i {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  ul {
+    float: right;
+  }
+  li {
+    position: relative;
+    margin-top: 5px;
+    opacity: 0;
+    -webkit-transition: top 400ms ease, opacity 600ms;
+    transition: top 400ms ease, opacity 600ms;
+  }
+}
+
 nav {
+  background-color: $primary-color-dark !important;
 
   a {
     &:hover {
@@ -9,10 +40,28 @@ nav {
     }
   }
 
-  #resolution-logo {
-    margin-left: 56px;
-    position: absolute;
-    text-align: left;
+  #left-menu-button {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  #right-menu-button {
+    i{
+      -webkit-transition: all 200ms;
+      transition: all 200ms;
+    }
+    margin-right: 10px;
+    cursor: pointer;
+    color: white;
+    &.open {
+      i{
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
   }
 
   #menu-expand-button {
@@ -20,27 +69,50 @@ nav {
     cursor: pointer;
   }
 
-  #bookmarks-button {
-    padding-left: 10px;
-    margin-right: -56px;
-    cursor: pointer;
+  .location-logo {
+    margin-left: 10px;
+    position: absolute;
+    text-align: left;
   }
 
-  #mobile-nav-buttons {
-    a {
-      padding-left: 5px;
+  #top-nav-buttons {
+    a.active {
+      background-color: $secondary-color;
+      cursor: default;
     }
-    i {
-      display: inline-block;
-      vertical-align: middle;
-      padding-right: 17px;
+    a:hover {
+      color: $text-color-disabled;
     }
   }
+}
 
+.location-logo {
+  font-size: 30px;
+  display: inline-block;
+  .location-logo-parent {
+    font-weight: 700;
+  }
+  .location-logo-period {
+    color: $secondary-color;
+  }
+  .location-logo-after {
+    font-weight: 300;
+  }
+}
+
+.left-menu-header {
+  border-bottom: 1px solid $divider-color;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  color: $text-color-secondary;
+}
+.left-menu-content {
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 600px) {
-  nav #resolution-logo {
+  nav .location-logo {
     margin-left: 0;
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -49,5 +121,8 @@ nav {
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
   }
-
+  #left-menu .left-menu-header{
+    height: 56px;
+    line-height: 56px;
+  }
 }

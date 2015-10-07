@@ -1,0 +1,51 @@
+#left-menu-button {
+  display: block;
+}
+
+@media only screen and (min-width: 1481px) {
+  #left-menu, #rules-text-row, #rules-top-nav, #rules-text {
+    transition: all 400ms;
+  }
+  #left-menu-button {
+    display: none !important;
+  }
+  #left-menu {
+    left: 0 !important;
+  }
+  .container > .col > div {
+    margin-left: 240px;
+  }
+  #rules-top-nav {
+    padding-left: 240px;
+    overflow-x: hidden;
+  }
+}
+
+@media only screen and (min-width: 1281px) {
+  .container {
+    width: 85%;
+  }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1280px) {
+  .container {
+    width: 93%;
+  }
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1100px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 993px) {
+  .row .col.s12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .container {
+    margin: 0;
+    width: 100%;
+  }
+}

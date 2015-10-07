@@ -81,18 +81,18 @@ class Section(OrderedModel):
         sections = Section.objects.all()
         relations = Section.list_section_relations()
         for section in sections:
-            if section.depth_string != relations[section.title]:
-                Section.objects.filter(id=section.id).update(depth_string=relations[section.title])
+            if section.depth_string != relations[section.id]:
+                Section.objects.filter(id=section.id).update(depth_string=relations[section.id])
 
     @staticmethod
     def list_section_relations():
         child_list = {}
-        sections = Section.objects.filter(parent__isnull=True)
+        sections = Section.objects.filter(parent__isnull=True).order_by('order')
         depth = [1]
 
         def get_children(child):
             depth_string = '.'.join([str(i) for i in depth])
-            child_list[child.title] = depth_string
+            child_list[child.id] = depth_string
 
             children = Section.objects.filter(parent=child).order_by('order')
             if children.exists():
@@ -101,8 +101,6 @@ class Section(OrderedModel):
                     get_children(sub_child)
                     depth[-1] += 1
                 depth.pop()
-            else:
-                child_list[child.title] += "<"
 
         for section in sections:
             get_children(section)
@@ -117,6 +115,12 @@ class Section(OrderedModel):
         except AttributeError:
             answer = False
         return answer
+
+    def top_parent(self):
+        output = self
+        while output.has_parent():
+            output = output.parent
+        return output
 
     def has_child(self):
         try:
