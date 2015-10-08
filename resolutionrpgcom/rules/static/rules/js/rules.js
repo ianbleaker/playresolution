@@ -8,6 +8,25 @@ $( document).ready(function(){
     //start all ul-wrappers in the slide up position
     $(".ul-wrapper").slideUp();
 
+    //create info images in info sections, example image in example sections
+    $(".section-type-i .section-title").each(function(){
+        var height = $(this).parent().height();
+        $(this).before("<i class='material-icons' style='margin-top: " + ( (height/2) - 12) + "px;'>info_outline</i>");
+    });
+    $(".section-type-ex .section-title").each(function(){
+        var height = $(this).parent().height();
+        $(this).before("<i class='material-icons' style='margin-top: " + ( (height/2) - 12) + "px;'>help_outline</i>");
+    });
+
+    //window resize functions
+    $( window ).resize(function() {
+        //redo margins of icons in example and info sections so they are still centered
+        $(".rule-section i").each(function(){
+            var height = $(this).parent().height();
+            $(this).css("margin-top", (($(this).parent().height()/2) - 12)+"px");
+        });
+    });
+
     //create left menu sidenav, close when click some a link
 	$("#left-menu-button").sideNav({
         edge: 'left',

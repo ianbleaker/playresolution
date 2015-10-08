@@ -30,16 +30,92 @@
   .section-content {
     padding-left: 10px;
   }
+
+  //information block and example combined
+  &.section-type-ex, &.section-type-i {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    padding: 15px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    .section-content, .section-title {
+      padding-left: 30px;
+      padding-top: 0;
+    }
+    i {
+      position: absolute;
+      margin-left: -10px;
+    }
+    p {
+      margin: 0;
+    }
+    p + p {
+      margin-top: 10px;
+    }
+  }
+
+  //example blocks
   &.section-type-ex {
-    background-color: $secondary-color-light;
-    font-size: .85em;
+    font-size: .9em;
     font-style: oblique;
-    line-height: 1em;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    line-height: 1.2em;
+    border-color: $secondary-color-light;
+    i {
+      color: $secondary-color;
+    }
     .section-title {
       display: none;
     }
+  }
+
+  //information blocks
+  &.section-type-i {
+    border-color: $primary-color-light;
+    i {
+      color: $primary-color;
+    }
+    .section-title {
+      margin-bottom: 5px;
+    }
+  }
+
+  //tables
+  .table {
+    margin: 10px 20px;
+    text-align: center;
+    caption {
+      text-transform: lowercase;
+      font-weight: 300;
+    }
+    td, th {
+      border-radius: 0;
+      padding: 5px;
+    }
+    th {
+      padding-left: 10px;
+      padding-right: 10px;
+      font-weight: 400;
+    }
+    p, th, td {
+      margin: 0;
+      text-align: center;
+    }
+    th {
+      background-color: $secondary-color;
+      color: white;
+    }
+    tr {
+      &:nth-child(odd){
+        background-color: $secondary-color-light;
+      }
+    }
+  }
+  .multi-table {
+    width: auto;
+    display: inline-block;
+    vertical-align: top;
   }
 }
 
@@ -50,7 +126,6 @@
     }
     #rules-text {
         margin-top: 0;
-        padding-top: 20px;
         width: 100%;
     }
     .section-content {

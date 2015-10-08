@@ -109,15 +109,64 @@ nav {
   font-size: 1.2em; }
 .rule-section .section-content {
   padding-left: 10px; }
+.rule-section.section-type-ex, .rule-section.section-type-i {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  padding: 15px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
+  .rule-section.section-type-ex .section-content, .rule-section.section-type-ex .section-title, .rule-section.section-type-i .section-content, .rule-section.section-type-i .section-title {
+    padding-left: 30px;
+    padding-top: 0; }
+  .rule-section.section-type-ex i, .rule-section.section-type-i i {
+    position: absolute;
+    margin-left: -10px; }
+  .rule-section.section-type-ex p, .rule-section.section-type-i p {
+    margin: 0; }
+  .rule-section.section-type-ex p + p, .rule-section.section-type-i p + p {
+    margin-top: 10px; }
 .rule-section.section-type-ex {
-  background-color: #B9F6CA;
-  font-size: .85em;
+  font-size: .9em;
   font-style: oblique;
-  line-height: 1em;
-  padding-top: 5px;
-  padding-bottom: 5px; }
+  line-height: 1.2em;
+  border-color: #B9F6CA; }
+  .rule-section.section-type-ex i {
+    color: #00C853; }
   .rule-section.section-type-ex .section-title {
     display: none; }
+.rule-section.section-type-i {
+  border-color: #B3E5FC; }
+  .rule-section.section-type-i i {
+    color: #03A9F4; }
+  .rule-section.section-type-i .section-title {
+    margin-bottom: 5px; }
+.rule-section .table {
+  margin: 10px 20px;
+  text-align: center; }
+  .rule-section .table caption {
+    text-transform: lowercase;
+    font-weight: 300; }
+  .rule-section .table td, .rule-section .table th {
+    border-radius: 0;
+    padding: 5px; }
+  .rule-section .table th {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 400; }
+  .rule-section .table p, .rule-section .table th, .rule-section .table td {
+    margin: 0;
+    text-align: center; }
+  .rule-section .table th {
+    background-color: #00C853;
+    color: white; }
+  .rule-section .table tr:nth-child(odd) {
+    background-color: #B9F6CA; }
+.rule-section .multi-table {
+  width: auto;
+  display: inline-block;
+  vertical-align: top; }
 
 @media only screen and (max-width: 500px) {
   #content {
@@ -126,7 +175,6 @@ nav {
 
   #rules-text {
     margin-top: 0;
-    padding-top: 20px;
     width: 100%; }
 
   .section-content {
