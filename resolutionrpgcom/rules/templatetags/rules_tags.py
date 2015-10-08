@@ -52,10 +52,9 @@ def section_text(sections, autoescape=True):
     def format_children(item, tabs=1):
         indent = '\t' * tabs
         type_string = ""
-        scrollspy = " scrollspy"
-        if "ex" in item.type or "i" in item.type:
-            type_string = " card-panel"
-            scrollspy = ""
+        scrollspy = ""
+        if "ex" in item.type or "n" in item.type:
+            scrollspy = " scrollspy"
         output.append('%s<div id="%s-%s" class="rule-section section-type-%s tier-%s%s%s">' % (indent, item.top_parent().slug(), item.slug(), item.type, item.tier(), type_string, scrollspy))
         tabs += 1
         output.append('%s<div id="%s-title" class="section-title">%s</div>' % (indent, item.slug(), item.title))
