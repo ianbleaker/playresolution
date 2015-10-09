@@ -154,10 +154,12 @@ class Section(OrderedModel):
 
     # define choices and the choice block
     NORMAL = 'n'
+    SUBSECTION = 's'
     EXAMPLE = 'ex'
     INFO = 'i'
     TYPE_CHOICES = (
         (NORMAL, 'Normal'),
+        (SUBSECTION, 'Subsection'),
         (EXAMPLE, 'Example'),
         (INFO, 'Info Block')
     )

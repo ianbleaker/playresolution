@@ -37,6 +37,19 @@
     padding-left: .5vw;
   }
 
+  //subsection blocks
+  &.section-type-s {
+    & > .section-title {
+      font-size: 1.1em;
+      font-weight: 500;
+      padding-top: 10px;
+    }
+    & + .section-type-i {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
   //information block and example combined
   &.section-type-ex, &.section-type-i {
     width: 95%;
@@ -58,7 +71,7 @@
       margin: 0;
     }
     p + p {
-      margin-top: 10px;
+      margin-top: 5px;
     }
   }
 
@@ -87,6 +100,7 @@
     .section-title {
       margin-bottom: 5px;
       font-size: 1.1em;
+      font-weight: 400;
     }
   }
 

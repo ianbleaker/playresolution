@@ -2,8 +2,7 @@
  * Created by ian on 9/24/2015.
  */
 $( document).ready(function(){
-    //make all images responsive
-	$("img").addClass("responsive-img");
+    $('.materialboxed').materialbox();
 
     //start all ul-wrappers in the slide up position
     $(".ul-wrapper").slideUp();

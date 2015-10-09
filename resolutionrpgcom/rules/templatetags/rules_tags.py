@@ -25,7 +25,7 @@ def section_bookmark_list(sections, autoescape=True):
             tabs += 1
             output.append('%s<ul>' % indent)
             for child in children:
-                if "ex" not in child.type and "i" not in child.type:
+                if "ex" not in child.type and "i" not in child.type and "s" not in child.type:
                     format_children(child)
             output.append('%s</ul>' % indent)
             tabs -= 1
@@ -56,9 +56,9 @@ def section_text(sections, skills_context, autoescape=True):
     def format_children(item, tabs=1):
         indent = '\t' * tabs
         type_string = ""
-        scrollspy = ""
-        if "ex" in item.type or "n" in item.type:
-            scrollspy = " scrollspy"
+        scrollspy = " scrollspy"
+        if "ex" in item.type or "i" in item.type or "s" in item.type:
+            scrollspy = ""
         output.append('%s<div id="%s-%s" class="rule-section section-type-%s tier-%s%s%s">' % (indent, item.top_parent().slug(), item.slug(), item.type, item.tier(), type_string, scrollspy))
         tabs += 1
         output.append('%s<div id="%s-title" class="section-title">%s</div>' % (indent, item.slug(), item.title))

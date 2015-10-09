@@ -121,6 +121,13 @@ nav {
 .rule-section .section-content {
   padding-left: 5px;
   padding-left: .5vw; }
+.rule-section.section-type-s > .section-title {
+  font-size: 1.1em;
+  font-weight: 500;
+  padding-top: 10px; }
+.rule-section.section-type-s + .section-type-i {
+  margin-top: 20px;
+  margin-bottom: 20px; }
 .rule-section.section-type-ex, .rule-section.section-type-i {
   width: 95%;
   margin-left: auto;
@@ -138,7 +145,7 @@ nav {
   .rule-section.section-type-ex p, .rule-section.section-type-i p {
     margin: 0; }
   .rule-section.section-type-ex p + p, .rule-section.section-type-i p + p {
-    margin-top: 10px; }
+    margin-top: 5px; }
 .rule-section.section-type-ex {
   border-color: #B9F6CA; }
   .rule-section.section-type-ex > .section-content {
@@ -155,7 +162,8 @@ nav {
     color: #03A9F4; }
   .rule-section.section-type-i .section-title {
     margin-bottom: 5px;
-    font-size: 1.1em; }
+    font-size: 1.1em;
+    font-weight: 400; }
 .rule-section .table {
   width: 95%;
   margin: 10px auto;
