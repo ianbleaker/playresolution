@@ -75,7 +75,8 @@ def section_text(sections, skills_context, autoescape=True):
             output.append('<div id="skill-text-list" class="section-content">')
 
             # set skill classes variable equal to list of distinct classes from skills
-            skill_classes = skills.values_list('skill_class', flat=True).distinct()
+            skill_classes_list = skills.values_list('skill_class', flat=True).distinct()
+            skill_classes = sorted(list(set(skill_classes_list)))
 
             # iterate through classes
             for skill_class in skill_classes:

@@ -26,7 +26,7 @@ class SkillSpecializationInline(admin.TabularInline):
     extra = 0
 
 class SkillModelAdmin(admin.ModelAdmin):
-    fields = ['name', 'base_aptitude', 'skill_class', 'what', 'when']
+    fields = ['name', 'base_aptitude', 'skill_class', 'what', 'when', 'specialization_text']
     inlines = [SkillTypeInline, SkillSpecializationInline]
 
 admin.site.register(Skill, SkillModelAdmin)
