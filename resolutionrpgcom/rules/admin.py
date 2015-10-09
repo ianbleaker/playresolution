@@ -11,8 +11,25 @@ admin.site.register(Aptitude)
 admin.site.register(Statistic)
 admin.site.register(DerivedStatistic)
 admin.site.register(Trait)
-admin.site.register(Skill)
-admin.site.register(SkillDescriptor)
+
+
+###############
+# SKILL ADMIN #
+###############
+class SkillTypeInline(admin.TabularInline):
+    model = SkillType
+    extra = 0
+
+
+class SkillSpecializationInline(admin.TabularInline):
+    model = SkillSpecialization
+    extra = 0
+
+class SkillModelAdmin(admin.ModelAdmin):
+    fields = ['name', 'base_aptitude', 'skill_class', 'what', 'when']
+    inlines = [SkillTypeInline, SkillSpecializationInline]
+
+admin.site.register(Skill, SkillModelAdmin)
 
 
 #################

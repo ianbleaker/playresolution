@@ -17,7 +17,7 @@
 
 {% block page-content %}
     <div id="rules-text">
-        {{ sections | section_text }}
+        {{ sections | section_text:skill_context}}
     </div>
 {% endblock page-content %}
 

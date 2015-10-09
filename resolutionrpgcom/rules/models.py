@@ -49,23 +49,37 @@ class Skill(models.Model):
     base_aptitude = models.ForeignKey(Aptitude)
     what = models.TextField(default='what')
     when = models.TextField(default='when')
+    specialization_text = models.CharField(max_length=200, default="As appropriate to the type")
+
+    # define choices and the choice block
+    INFO = 'information'
+    SOCIAL = 'social'
+    ACTIVE = 'active'
+    COMBAT = 'combat'
+    CLASS_CHOICES = (
+        (INFO, 'Information'),
+        (SOCIAL, 'Social'),
+        (ACTIVE, 'Active'),
+        (COMBAT, 'Combat')
+    )
+
+    skill_class = models.CharField(max_length=11, choices=CLASS_CHOICES)
 
 
-class SkillDescriptor(models.Model):
+class SkillType(models.Model):
     def __str__(self):
         return self.name
 
-    # define choices and choice block
-    TYPE = 'type'
-    SPECIAL = 'special'
-    DESCRIPTOR_CHOICES = (
-        (TYPE, 'Skill Type'),
-        (SPECIAL, 'Skill Specialization')
-    )
-
-    base_skill = models.ForeignKey('Skill')
-    descriptor = models.CharField(max_length=7, choices=DESCRIPTOR_CHOICES, default=SPECIAL)
     name = models.CharField(max_length=50, default='type')
+    base_skill = models.ForeignKey(Skill)
+
+
+class SkillSpecialization(models.Model):
+    def __str__(self):
+        return self.name
+
+    name = models.CharField(max_length=50, default='specialization')
+    base_skill = models.ForeignKey(Skill)
 
 
 class Section(OrderedModel):
@@ -145,7 +159,7 @@ class Section(OrderedModel):
     TYPE_CHOICES = (
         (NORMAL, 'Normal'),
         (EXAMPLE, 'Example'),
-        (INFO, 'Information Block')
+        (INFO, 'Info Block')
     )
 
     title = models.CharField(max_length=50, default='Section Title')

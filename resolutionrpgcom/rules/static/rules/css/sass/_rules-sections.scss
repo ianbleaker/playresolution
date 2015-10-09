@@ -11,6 +11,9 @@
 }
 
 .rule-section {
+  &>.rule-section {
+    padding-left: 10px;
+  }
   &.tier-1 {
     padding-bottom: 30px;
     padding-top: 40px;
@@ -58,9 +61,11 @@
 
   //example blocks
   &.section-type-ex {
-    font-size: .9em;
-    font-style: oblique;
-    line-height: 1.2em;
+    &>.section-content {
+      font-size: .9em;
+      font-style: oblique;
+      line-height: 1.2em;
+    }
     border-color: $secondary-color-light;
     i {
       color: $secondary-color;
@@ -78,6 +83,7 @@
     }
     .section-title {
       margin-bottom: 5px;
+      font-size: 1.1em;
     }
   }
 
@@ -97,6 +103,7 @@
       padding-left: 10px;
       padding-right: 10px;
       font-weight: 400;
+      text-transform: capitalize;
     }
     p, th, td {
       margin: 0;
@@ -111,11 +118,72 @@
         background-color: $secondary-color-light;
       }
     }
+    &.left-column-align-left {
+      tr {
+        td:first-child, th:first-child {
+          text-align: left;
+          p {
+            text-align: left;
+            padding-left: 10px;
+          }
+        }
+      }
+    }
   }
+
+  //multi centered tables
   .multi-table {
     width: auto;
     display: inline-block;
     vertical-align: top;
+  }
+  .multi-table-div {
+    text-align: center;
+  }
+
+  //wrap right table
+  .table-right-wrap {
+    width: auto;
+    float: right;
+  }
+}
+
+#skill-text-list {
+  .skill-class-title {
+    text-transform: capitalize;
+    font-size: 1.3em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .skill-title {
+    font-size: 1.15em;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  .skill-content, .skill-div {
+    padding-left: 10px;
+  }
+  .skill-div {
+    div + div {
+      margin-top: 3px;
+    }
+  }
+  .skill-content-typed {
+    font-style: oblique;
+    font-size: .9em;
+  }
+  span {
+    font-weight: 500;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .table.table-right-wrap {
+    float: none;
+    display: inline-block;
+  }
+  .table-div {
+    text-align: center;
   }
 }
 

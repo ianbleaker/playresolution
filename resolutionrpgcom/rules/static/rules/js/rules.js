@@ -8,12 +8,23 @@ $( document).ready(function(){
     //start all ul-wrappers in the slide up position
     $(".ul-wrapper").slideUp();
 
+    //move the generated skill table inside the skill list div
+    $("#skill-list-table").detach().appendTo($("#skill-list-title").next());
+
+    //wrap tables in divs
+    $(".section-content").each(function(){
+        //wrap multi tables all together
+        $(this).find(".multi-table").wrapAll("<div class='multi-table-div'></div>");
+        //wrap single tables that aren't multi tables in own div
+        $(this).find(".table").not(".multi-table").wrap("<div class='table-div'></div>");
+    });
+
     //create info images in info sections, example image in example sections
-    $(".section-type-i .section-title").each(function(){
+    $(".section-type-i > .section-title").each(function(){
         var height = $(this).parent().height();
         $(this).before("<i class='material-icons' style='margin-top: " + ( (height/2) - 12) + "px;'>info_outline</i>");
     });
-    $(".section-type-ex .section-title").each(function(){
+    $(".section-type-ex > .section-title").each(function(){
         var height = $(this).parent().height();
         $(this).before("<i class='material-icons' style='margin-top: " + ( (height/2) - 12) + "px;'>help_outline</i>");
     });
