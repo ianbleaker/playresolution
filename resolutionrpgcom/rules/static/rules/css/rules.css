@@ -97,6 +97,8 @@ nav {
   margin-bottom: calc(80vh - 64px - 30px);
   line-height: 1.2em; }
 
+.rule-section > .rule-section {
+  padding-left: 10px; }
 .rule-section.tier-1 {
   padding-bottom: 30px;
   padding-top: 40px; }
@@ -128,10 +130,11 @@ nav {
   .rule-section.section-type-ex p + p, .rule-section.section-type-i p + p {
     margin-top: 10px; }
 .rule-section.section-type-ex {
-  font-size: .9em;
-  font-style: oblique;
-  line-height: 1.2em;
   border-color: #B9F6CA; }
+  .rule-section.section-type-ex > .section-content {
+    font-size: .9em;
+    font-style: oblique;
+    line-height: 1.2em; }
   .rule-section.section-type-ex i {
     color: #00C853; }
   .rule-section.section-type-ex .section-title {
@@ -141,7 +144,8 @@ nav {
   .rule-section.section-type-i i {
     color: #03A9F4; }
   .rule-section.section-type-i .section-title {
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    font-size: 1.1em; }
 .rule-section .table {
   margin: 10px 20px;
   text-align: center; }
@@ -154,7 +158,8 @@ nav {
   .rule-section .table th {
     padding-left: 10px;
     padding-right: 10px;
-    font-weight: 400; }
+    font-weight: 400;
+    text-transform: capitalize; }
   .rule-section .table p, .rule-section .table th, .rule-section .table td {
     margin: 0;
     text-align: center; }
@@ -163,11 +168,47 @@ nav {
     color: white; }
   .rule-section .table tr:nth-child(odd) {
     background-color: #B9F6CA; }
+  .rule-section .table.left-column-align-left tr td:first-child, .rule-section .table.left-column-align-left tr th:first-child {
+    text-align: left; }
+    .rule-section .table.left-column-align-left tr td:first-child p, .rule-section .table.left-column-align-left tr th:first-child p {
+      text-align: left;
+      padding-left: 10px; }
 .rule-section .multi-table {
   width: auto;
   display: inline-block;
   vertical-align: top; }
+.rule-section .multi-table-div {
+  text-align: center; }
+.rule-section .table-right-wrap {
+  width: auto;
+  float: right; }
 
+#skill-text-list .skill-class-title {
+  text-transform: capitalize;
+  font-size: 1.3em;
+  margin-top: 40px;
+  margin-bottom: 20px; }
+#skill-text-list .skill-title {
+  font-size: 1.15em;
+  font-weight: 500;
+  margin-top: 10px; }
+#skill-text-list .skill-content, #skill-text-list .skill-div {
+  padding-left: 10px; }
+#skill-text-list .skill-div div + div {
+  margin-top: 3px; }
+#skill-text-list .skill-content-typed {
+  font-style: oblique;
+  font-size: .9em; }
+#skill-text-list span {
+  font-weight: 500; }
+
+@media only screen and (max-width: 600px) {
+  .table.table-right-wrap {
+    float: none;
+    display: inline-block; }
+
+  .table-div {
+    text-align: center; } }
 @media only screen and (max-width: 500px) {
   #content {
     width: 100%;
