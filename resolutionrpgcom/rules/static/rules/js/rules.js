@@ -49,7 +49,14 @@ $( document).ready(function(){
         var position = $(this).position();
         $(this).scrollspy({
             min: position.top,
-            max: position.top + $(this).height() + parseInt(($(this).css("padding-bottom")).replace("px", "")) + parseInt(($(this).css("padding-top")).replace("px", "")),
+            max: position.top
+                + $(this).height()
+                + parseInt(($(this).css("padding-top")).replace("px", ""))
+                + parseInt(($(this).css("padding-bottom")).replace("px", ""))
+                + parseInt(($(this).css("margin-top")).replace("px", ""))
+                + parseInt(($(this).css("margin-bottom")).replace("px", ""))
+                + parseInt(($(this).css("border-top-width")).replace("px", ""))
+                + parseInt(($(this).css("border-bottom-width")).replace("px", "")),
             onEnter: function (element, position){
                 var ul = $("#" + $(element).attr("id") + "-ul");
                 $("#" + $(element).attr("id") + "-a").addClass("active");

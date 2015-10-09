@@ -68,7 +68,7 @@ def section_text(sections, skills_context, autoescape=True):
         if item.title == 'Skill List':
             tabs += 1
             # create table to insert into document
-            table.append('<table id="skill-list-table" class="left-column-align-left table table-right-wrap">')
+            table.append('<table id="skill-list-table" class="col-1-left table table-right-wrap">')
             table.append('<caption>skill list</caption>')
             table.append('<tbody>')
 

@@ -6,20 +6,18 @@
   overflow: hidden;
   font-size: 1em;
   padding: 0 20px 20px;
-  margin-bottom: calc(80vh - 64px - 30px);
   line-height: 1.2em;
 }
 
 .rule-section {
   &>.rule-section {
-    padding-left: 10px;
+    margin-left: 5px;
+    margin-left: .5vw;
   }
   &.tier-1 {
     padding-bottom: 30px;
     padding-top: 40px;
-    >.section-title {
-      font-size: 1.6em;
-    }
+    .section-title { font-size: 1.6em;}
   }
   &.tier-1:not(:first-child) {
     border-top: 1px solid $divider-color;
@@ -27,11 +25,16 @@
   &:not(.tier-1){
     .section-title {
       padding-top: 20px;
-      font-size: 1.2em;
     }
   }
+  &.tier-2 { .section-title { font-size: 1.3em;} }
+  &.tier-3 { .section-title { font-size: 1.25em;} }
+  &.tier-4 { .section-title { font-size: 1.2em;} }
+  &.tier-5 { .section-title { font-size: 1.15em;} }
+  &.tier-6 { .section-title { font-size: 1.1em;} }
   .section-content {
-    padding-left: 10px;
+    padding-left: 5px;
+    padding-left: .5vw;
   }
 
   //information block and example combined
@@ -89,62 +92,108 @@
 
   //tables
   .table {
-    margin: 10px 20px;
+    width: 95%;
+    margin: 10px auto;
     text-align: center;
+
     caption {
       text-transform: lowercase;
       font-weight: 300;
     }
+
     td, th {
       border-radius: 0;
       padding: 5px;
     }
+
     th {
       padding-left: 10px;
       padding-right: 10px;
       font-weight: 400;
       text-transform: capitalize;
     }
+
     p, th, td {
       margin: 0;
       text-align: center;
     }
+
     th {
       background-color: $secondary-color;
       color: white;
     }
+
     tr {
       &:nth-child(odd){
         background-color: $secondary-color-light;
       }
     }
-    &.left-column-align-left {
+
+    &.col-1-left {
       tr {
         td:first-child, th:first-child {
           text-align: left;
+          padding-left: 10px;
           p {
             text-align: left;
-            padding-left: 10px;
           }
         }
       }
     }
+    &.col-2-left {
+      tr {
+        td:nth-child(2), th:nth-child(2) {
+          text-align: left;
+          padding-left: 10px;
+          p {
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    &.col-2-center {
+      tr {
+        td:nth-child(2), th:nth-child(2){
+          text-align: center;
+          p {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    //multi centered tables
+    &.multi-table {
+      width: auto;
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    //wrap right table
+    &.table-right-wrap {
+      width: auto;
+      float: right;
+      margin-left: 25px;
+    }
+
+    //left align table
+    &.table-left-align {
+      text-align: left;
+      td, th {
+        padding-left: 10px;
+      }
+      td, th, p {
+        text-align: left;
+      }
+    }
+
   }
 
-  //multi centered tables
-  .multi-table {
-    width: auto;
-    display: inline-block;
-    vertical-align: top;
-  }
   .multi-table-div {
     text-align: center;
-  }
-
-  //wrap right table
-  .table-right-wrap {
-    width: auto;
-    float: right;
   }
 }
 
@@ -161,7 +210,8 @@
     margin-top: 10px;
   }
   .skill-content, .skill-div {
-    padding-left: 10px;
+    padding-left: 5px;
+    padding-left: 1vw;
   }
   .skill-div {
     div + div {
@@ -177,13 +227,60 @@
   }
 }
 
-@media only screen and (max-width: 600px){
-  .table.table-right-wrap {
-    float: none;
-    display: inline-block;
+@media only screen and (min-width: 1000px) and (max-width: 1480px){
+  .rule-section {
+    &>.rule-section{
+      margin-left: .75vw;
+    }
+    .section-content{
+      padding-left: .75vw;
+    }
+    #skill-text-list {
+      .skill-content, .skill-div {
+        padding-left: .75vw;
+      }
+    }
   }
-  .table-div {
-    text-align: center;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1000px){
+  .rule-section {
+    &>.rule-section{
+      margin-left: 1vw;
+    }
+    .section-content{
+      padding-left: 1vw;
+    }
+    #skill-text-list {
+      .skill-content, .skill-div {
+        padding-left: 1vw;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .rule-section {
+    &>.rule-section{
+      margin-left: 1.2vw;
+    }
+    .section-content{
+      padding-left: 1.2vw;
+    }
+    #skill-text-list {
+      .skill-content, .skill-div {
+        padding-left: 1.2vw;
+      }
+    }
+    .table{
+      &.table-right-wrap {
+      float: none;
+      display: inline-block;
+      }
+    }
+    .table-div {
+      text-align: center;
+    }
   }
 }
 
