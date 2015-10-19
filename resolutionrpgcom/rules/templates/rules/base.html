@@ -1,14 +1,17 @@
 {%  extends "base.html" %}
 {% load staticfiles %}
 
-{% block title %}Resolution RPG{% endblock title %}
+{% block title %}rez.rules{% endblock title %}
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'rules/css/rules.css' %}" >
 {% endblock head %}
 
 {% block content %}
+
+<div ng-app="rules" ng-controller="SectionsController as sections">
     <div id="left-menu" class="side-nav">
+        <div id="left-menu-loader">{% include "load-spin-green.html" %}</div>
         <div class="left-menu-header">
             <div class="location-logo">
                 <span class="location-logo-parent">{% block left-menu-header-parent %}{% endblock left-menu-header-parent %}</span><span class="location-logo-period">.</span><span class="location-logo-after">{% block left-menu-header-after %}{% endblock left-menu-header-after %}</span>
@@ -19,16 +22,20 @@
     <div class="row">
         {% include "rules/rulesnavbar.html" %}
         <div id="content" class="container">
+            <div id="content-loader">{% include "load-spin-green.html" %}</div>
             <div class="col s12">
                     {% block page-content %}
                     {% endblock page-content %}
             </div>
         </div>
     </div>
+</div>
 {% endblock content %}
 
 {% block after_body %}
     <script src="{% static 'rules/js/rules.js' %}"></script>
+    <script type="text/javascript" src="{% static 'rules/ng/rules-app.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'rules/ng/rules-sections.js' %}" ></script>
     {% block script %}
     {% endblock script %}
 {% endblock after_body %}

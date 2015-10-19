@@ -86,36 +86,51 @@ class Section(OrderedModel):
     def __str__(self):
         return self.title
 
+    # on save, call update_all_depths
     def save(self, *args, **kwargs):
         super(Section, self).save(*args, **kwargs)
         self.update_all_depths()
 
+    # update depth strings
     @transaction.atomic
     def update_all_depths(self):
+        # get sections and a list of relationships
         sections = Section.objects.all()
         relations = Section.list_section_relations()
+
+        # for every section...
         for section in sections:
+            # if the depth string has changed, set the depth string
             if section.depth_string != relations[section.id]:
                 Section.objects.filter(id=section.id).update(depth_string=relations[section.id])
 
+    # create and return a list of sections and their depths
     @staticmethod
     def list_section_relations():
+        # set object, get all sections (and order by their [hidden] order), and start the depth chart
         child_list = {}
         sections = Section.objects.filter(parent__isnull=True).order_by('order')
-        depth = [1]
+        depth = [0]
 
+        # get children of a section
         def get_children(child):
+            # join the depth list together to make a string and set it into the child list
             depth_string = '.'.join([str(i) for i in depth])
             child_list[child.id] = depth_string
 
+            # get the children of the section
             children = Section.objects.filter(parent=child).order_by('order')
+            # if any children exist, add another layer to the depth list
             if children.exists():
                 depth.append(1)
+                # and do the same thing every time
                 for sub_child in children:
                     get_children(sub_child)
                     depth[-1] += 1
+                # get rid of the layer after the loop has completed
                 depth.pop()
 
+        # for every section, get the children. then add 1 to the depth
         for section in sections:
             get_children(section)
             depth[0] += 1

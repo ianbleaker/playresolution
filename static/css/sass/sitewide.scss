@@ -5,7 +5,7 @@ body {
   font-size: 15px;
   background-color: $background-color;
   color: $text-color;
-  overflow-y: auto;
+  overflow-y: scroll !important;
 }
 
 @media only screen and (max-width: 900px) {

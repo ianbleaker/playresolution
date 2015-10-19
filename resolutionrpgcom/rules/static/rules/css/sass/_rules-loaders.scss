@@ -1,0 +1,17 @@
+#content-loader, #left-menu-loader {
+  pointer-events: none;
+  left: 50%;
+  margin-left: -32px;
+  top: 50%;
+  margin-top: -32px;
+}
+
+#left-menu-loader {
+  position: absolute;
+  z-index: 999;
+}
+
+#content-loader {
+  position: fixed;
+  z-index: 997;
+}

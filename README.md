@@ -12,3 +12,7 @@ django-ckeditor
 django-ordered-model
 
 django-grappelli
+
+djangorestframework
+
+markdown

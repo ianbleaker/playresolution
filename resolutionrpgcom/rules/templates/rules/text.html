@@ -1,0 +1,13 @@
+{% extends 'rules/base.html' %}
+{% load staticfiles %}
+
+{% block left-menu-header-parent %}rules{% endblock %}
+{% block left-menu-header-after %}sections{% endblock %}
+
+{% block left-menu-content %}
+    <ul rule-bookmarks class="bookmarks-menu"></ul>
+{% endblock %}
+
+{% block page-content %}
+    <div rule-sections class="rules-text"></div>
+{% endblock page-content %}
