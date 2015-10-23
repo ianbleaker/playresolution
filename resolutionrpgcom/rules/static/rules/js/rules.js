@@ -50,59 +50,53 @@ function sectionsLoaded(){
         //wrap single tables that aren't multi tables in own div
         $(this).find(".table").not(".multi-table").wrap("<div class='table-div'></div>");
     });
-}
 
-function bookmarksLoaded(){
     //create a scrollspy that makes the links active and opens/closes on scroll
-    function sectionScrollSpy() {
-        $(".scrollspy").each(function () {
-            var position = $(this).position();
-            var max = position.top
-                + $(this).height()
-                + parseInt(($(this).css("padding-bottom")).replace("px", ""))
-                + parseInt(($(this).css("margin-bottom")).replace("px", ""))
-                + parseInt(($(this).css("border-bottom-width")).replace("px", ""))
-                + parseInt(($(this).css("padding-top")).replace("px", ""))
-                + parseInt(($(this).css("margin-top")).replace("px", ""))
-                + parseInt(($(this).css("border-top-width")).replace("px", ""));
-            //do scrollspy
-            $(this).scrollspy({
-                //set positions - use all borders, margin and padding to get accurate results
-                min: position.top,
-                max: max,
-                //on enter, add classes
-                onEnter: function (element, position) {
-                    //get all uls for the link id
-                    var ul = $("#" + $(element).attr("id") + "-ul");
-                    //add active class to a with same id
-                    $("#" + $(element).attr("id") + "-a").addClass("active");
-                    //add active class to link with same id
-                    if ($(ul).css("display") == "none") {
-                        $(ul).slideDown();
-                        $(ul).prev(".left-menu-reveal").addClass("open").removeClass("closed");
-                    }
-                },
-                onLeave: function (element, position) {
-                    //get ul for link id
-                    var ul = $("#" + $(element).attr("id") + "-ul");
-                    //remove active class
-                    $("#" + $(element).attr("id") + "-a").removeClass("active");
-                    if ($(ul).css("display") == "block") {
-                        $(ul).slideUp();
-                        $(ul).prev(".left-menu-reveal").addClass("closed").removeClass("open");
-                    }
+    $(".scrollspy").each(function () {
+        var position = $(this).position();
+        //do scrollspy
+        $(this).scrollspy({
+            //set positions - use all borders, margin and padding to get accurate results
+            min: position.top - 70,
+            max: position.top
+            + $(this).height()
+            + parseInt(($(this).css("padding-bottom")).replace("px", ""))
+            + parseInt(($(this).css("margin-bottom")).replace("px", ""))
+            + parseInt(($(this).css("border-bottom-width")).replace("px", ""))
+            + parseInt(($(this).css("padding-top")).replace("px", ""))
+            + parseInt(($(this).css("margin-top")).replace("px", ""))
+            + parseInt(($(this).css("border-top-width")).replace("px", ""))
+            - 70,
+            //on enter, add classes
+            onEnter: function (element, position) {
+                //get all uls for the link id
+                var ul = $("#" + $(element).attr("id") + "-ul");
+                //add active class to a with same id
+                $("#" + $(element).attr("id") + "-a").addClass("active");
+                //add active class to link with same id
+                if ($(ul).css("display") == "none") {
+                    $(ul).slideDown();
+                    $(ul).prev(".left-menu-reveal").addClass("open").removeClass("closed");
                 }
-            });
+            },
+            onLeave: function (element, position) {
+                //get ul for link id
+                var ul = $("#" + $(element).attr("id") + "-ul");
+                //remove active class
+                $("#" + $(element).attr("id") + "-a").removeClass("active");
+                if ($(ul).css("display") == "block") {
+                    $(ul).slideUp();
+                    $(ul).prev(".left-menu-reveal").addClass("closed").removeClass("open");
+                }
+            }
         });
-    }
-
-    sectionScrollSpy();
-    $( window).resize(function(){sectionScrollSpy();});
+    });
 
     //start all ul-wrappers in the slide up position
-    $(".left-menu-ul-wrapper").slideUp();
+    $(".left-menu-ul-wrapper").css("display", "none");
 
-    $('.bookmarks-menu').localScroll({
+    //local scroll for slow scrolling
+    $('#rules-sections-left').localScroll({
         offset: -64,
         duration: 300,
         hash: false
@@ -121,6 +115,33 @@ function bookmarksLoaded(){
             $(this).next("div").slideUp();
         }
     });
+}
+
+function beginContentLoad(fadeTime){
+    //fade in loaders
+    $('#left-menu-loader').find('.preloader-wrapper').addClass('active').fadeIn(fadeTime);
+    $('#content-loader').find('.preloader-wrapper').addClass('active').fadeIn(fadeTime);
+
+    //fade out content
+    $('#rules-left-menu-content').fadeOut(fadeTime);
+    $('#rules-page-content').fadeOut(fadeTime);
+}
+
+function setRulesContent(contentElement, leftMenuElement, fadeTime){
+    //set content and fade in
+    //this replaces the comments that angular uses with nothing, so the html is more easily readable
+    //obviously the comments remain in place on the original, so nothing breaks
+    $('#page-content').html('<div id="' + $(contentElement).attr("class").split(' ')[0] + '">'
+        + $(contentElement).html().replace(/<!--[\s\S]*?-->/g, '')
+        + '</div>').fadeIn(fadeTime);
+    $('#left-menu-content').html('<div id="' + $(leftMenuElement).attr("class").split(' ')[0] + '">'
+        + $(leftMenuElement).html().replace(/<!--[\s\S]*?-->/g, '')
+        + '</div>')
+        .fadeIn(fadeTime);
+
+    //fade out loaders
+    $('#left-menu-loader').find('.preloader-wrapper').fadeOut(fadeTime, function(){$(this).removeClass('active')});
+    $('#content-loader').find('.preloader-wrapper').fadeOut(fadeTime, function(){$(this).removeClass('active')});
 }
 
 function setActiveLink(linkTitle){

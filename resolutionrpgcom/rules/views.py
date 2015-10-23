@@ -15,8 +15,8 @@ def index(request):
     return render(request, 'rules/index.html', context)
 
 
-def text(request):
-    return render(request, 'rules/text.html')
+def rules(request):
+    return render(request, 'rules/base.html')
 
 
 def json_section(request):

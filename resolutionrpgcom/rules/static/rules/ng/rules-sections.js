@@ -1,18 +1,21 @@
 (function(){
     var rulesSections = angular.module('rules.sections', []);
 
-    rulesSections.controller("SectionsController", ['$http', '$scope', '$log', '$timeout', function($http, $scope, $log, $timeout) {
-        //create ref to this, create tree
-        var ctrl = this;
+    rulesSections.controller("SectionsController", ['$http', '$scope', function($http, $scope) {
         $scope.tree = [];
 
-        //scope request data
+        //section request data
         $scope.sectionsRequestSent = false;
         $scope.sectionsDataReceived = false;
 
-        //scope callback times
-        $scope.retryTime = 50;
-        $scope.fadeTime = 700;
+        $scope.$on('switchContent', function(event, args) {
+            if (args.targetContent != 'sections'){
+                console.log('sections caught switchContent, but ignored (target is '+args.targetContent + ')');
+            }
+            else {
+                $scope.getTree();
+            }
+        });
 
         //function to dynamically add child based on list of depths
         function addChild(tree, depth, data){
@@ -105,7 +108,7 @@
                     //organize the data
                     $scope.tree = organizeSections(json);
                     //tell the app that we are done organizing the data
-                    $scope.sectionsDataReceived = true;
+                    $scope.sectionsDataOrganized = true;
                     //after data set, callback
                     callback();
                 });
@@ -113,14 +116,16 @@
             else {
                 // if we get here, that means the request has already been sent
                 // check if DataReceived is true, and run callback if so
-                if ($scope.sectionsDataReceived == true){
-                    callback();
+                if ($scope.sectionsDataOrganized == true){
+                    setTimeout(function(){
+                        callback();
+                    }, 0);
                 }
                 else {
                     // otherwise, watch the DataReceived var, and when it changes to true, do the callback
-                    $scope.$watch(function($scope){ return $scope.sectionsDataReceived},
+                    $scope.$watch(function($scope){ return $scope.sectionsDataOrganized},
                         function(){
-                            if ($scope.sectionsDataReceived == true){
+                            if ($scope.sectionsDataOrganized == true){
                                 callback();
                             }
                     });
@@ -129,115 +134,44 @@
         };
     }]);
 
-    rulesSections.directive('ruleSections', ['$compile', '$timeout', '$log', function($compile, $timeout, $log){
+    rulesSections.directive('ruleSections', ['$compile', function($compile){
         //write a link function
         var linkFunction = function ($scope, element, attrs){
-            //create a function that is called after the http request
-            function insertSectionContent(){
-                //template to inject
-                var template = '<div ng-repeat="section in tree" ng-include="\'/static/html/rules/text/rule-section.html\'"></div>';
-                //compile and inject into element
-                element.append($compile(template)($scope));
+            //when this exists, switch content to this
+            $scope.$emit('ctrlSwitchContent', {targetContent: 'sections'});
+            beginContentLoad($scope.fadeTime);
 
-                //test that manually injects divs
-                /*var template = [];
-                function createSection(section){
-                    template.push('<div class="rule-section'
-                        + ' tier-' + section.tier
-                        + ' section-type-' + section.type
-                        + '"'
-                        + 'id="' + section.topParent + '_' + section.slug + '"'
-                        + '>');
-                    if(section.type == "ex") template.push('<i class="material-icons">help_outline</i>');
-                    if(section.type == "i") template.push('<i class="material-icons">info_outline</i>');
-                    template.push('<div class="section-title">' + section.title + '</div>');
-                    template.push('<div class="section-content">' +section.content + '</div>');
-                    for (var j = 1; j < section.children.length; j++){
-                        createSection(section.children[j]);
-                    }
-                    template.push('</div>')
-                }
-
-                for (var i = 0; i < $scope.tree.length; i++) {
-                    createSection($scope.tree[i]);
-                }*/
-
-
-                //create function to run after compilation
-                var after = function() {
+            var afterSectionsCompile = function() {
                     //make it set itself to the end
                     setTimeout(function () {
                         //if it doesn't detect that the rules are done loading, it ends itself and calls itself again with
                         //a delay of $scope.retryTime
-                        if ($('.rule-section').length < 0) {
-                            after();
+                        if ($('.rule-section').length < 100 || $('.section-bookmark-link').length < 100) {
+                            afterSectionsCompile();
                             return
                         }
-                        //otherwise, run the sectionsLoaded js
+                        //inject the content, and do fades
+                        setRulesContent($('.rules-sections'), $('.rules-sections-left'), $scope.fadeTime);
+                        //then run the js to hook to current content
                         sectionsLoaded();
-                        //fade in the rules text, and fade out the loader
-                        $('.rules-text').fadeIn($scope.fadeTime);
-                        $('#content-loader').find('.preloader-wrapper').each(function(){
-                            //after it disappears, remove active to disable it and fadeIn so it can be used again
-                            $(this).fadeOut($scope.fadeTime, function(){$(this).removeClass('active').fadeIn();});
-                        });
+                        //set active section
+                        $scope.loaded.sections = true;
+                        $scope.active = 'sections';
                     }, $scope.retryTime);
                 };
-                //run the after function
-                after();
-            }
 
-            //get the tree, and run insertSectionContent as a callback
-            $scope.getTree(insertSectionContent);
+            //run the after function
+            afterSectionsCompile();
+
         };
 
         return {
-            restrict: 'A',
+            restrict: 'E',
+            templateUrl: '/static/html/rules/sections/rule-sections.html',
+            controller: 'SectionsController',
+            controllerAs: 'sections',
             link: linkFunction
         }
     }]);
 
-    rulesSections.directive('ruleBookmarks', ['$log', '$compile', function($log, $compile){
-        //create link function
-        var linkFunction = function ($scope, element, attrs){
-            //create function to run after http request
-            function insertSectionBookmarks(){
-                //create template to inject into element
-                var template = '<li class="bookmark-tier-{{section.tier}}" ng-repeat="section in tree" ng-include="\'/static/html/rules/text/rule-bookmark.html\'" ng-if="section.type != \'ex\' && section.type != \'i\' && section.type != \'s\'"></li>';
-                //compile and inject into element
-                element.append($compile(template)($scope));
-
-                //create a function to run after compilation
-                var after = function(){
-                    //set itself to end of queue
-                    setTimeout(function(){
-                        //if it doesn't detect that the bookmarks menu is done, end current function and call itself
-                        //again with a delay of $scope.retryTime
-                        if ($('.bookmarks-menu').find('a').length < 100) {
-                            after();
-                            return
-                        }
-                        //otherwise, run the js
-                        bookmarksLoaded();
-                        //fade in info, fade out loader - disable and fade in loader after it disappears
-                        $('.bookmarks-menu').fadeIn($scope.fadeTime);
-                        $('#left-menu-loader').find('.preloader-wrapper').each(function(){
-                            $(this).fadeOut($scope.fadeTime, function(){$(this).removeClass('active').fadeIn();});
-                        });
-                    }, $scope.retryTime);
-                };
-
-                //run the after function
-                after();
-            }
-
-            //get the tree, calling insertSectionBookmarks after it's done
-            $scope.getTree(insertSectionBookmarks);
-        };
-
-        return {
-            restrict: 'A',
-            link: linkFunction
-        }
-    }]);
 })();

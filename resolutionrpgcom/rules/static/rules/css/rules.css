@@ -87,24 +87,16 @@ nav {
   #left-menu .left-menu-header {
     height: 56px;
     line-height: 56px; } }
-.rules-text {
-  position: relative;
-  z-index: 5;
-  overflow: hidden;
-  font-size: 1em;
-  padding: 0 20px 20px;
-  line-height: 1.2em;
+.rules-sections {
   display: none; }
-
-.tier-1 {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
 
 .rule-section > div > .rule-section {
   margin-left: 5px;
   margin-left: .5vw; }
 .rule-section.tier-1 {
   padding-bottom: 30px;
-  padding-top: 40px; }
+  padding-top: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
   .rule-section.tier-1 .section-title {
     font-size: 1.6em; }
 .rule-section:not(.tier-1) .section-title {
@@ -317,16 +309,18 @@ nav {
   .container {
     margin: 0;
     width: 100%; } }
-.bookmarks-menu {
-  list-style: none;
+.rules-sections-left {
   display: none; }
-  .bookmarks-menu > .bookmark-tier-1 > a {
+
+#rules-sections-left {
+  list-style: none; }
+  #rules-sections-left > .bookmark-tier-1 > a {
     font-size: 18px;
     padding-bottom: 4px;
     padding-top: 4px; }
-  .bookmarks-menu .section-bookmark-ex, .bookmarks-menu .section-bookmark-i, .bookmarks-menu .section-bookmark-s {
+  #rules-sections-left .section-bookmark-ex, #rules-sections-left .section-bookmark-i, #rules-sections-left .section-bookmark-s {
     display: none; }
-  .bookmarks-menu a {
+  #rules-sections-left a {
     text-decoration: none;
     padding: 2px 10px;
     display: block;
@@ -334,31 +328,31 @@ nav {
     line-height: normal;
     -webkit-transition: all 200ms;
     transition: all 200ms; }
-    .bookmarks-menu a:hover {
+    #rules-sections-left a:hover {
       background-color: #B9F6CA; }
-    .bookmarks-menu a.active {
+    #rules-sections-left a.active {
       border-left: 2px solid #00C853; }
-  .bookmarks-menu ul {
+  #rules-sections-left ul {
     margin: 0;
     transition: all 500ms; }
-  .bookmarks-menu > ul > li > a {
+  #rules-sections-left > ul > li > a {
     font-size: 18px;
     padding-bottom: 4px;
     padding-top: 4px; }
-  .bookmarks-menu li {
+  #rules-sections-left li {
     padding-left: 0;
     padding-right: 0; }
-    .bookmarks-menu li li a {
+    #rules-sections-left li li a {
       padding-left: 20px; }
-    .bookmarks-menu li li li a {
+    #rules-sections-left li li li a {
       padding-left: 30px; }
-    .bookmarks-menu li li li li a {
+    #rules-sections-left li li li li a {
       padding-left: 40px; }
-    .bookmarks-menu li li li li li a {
+    #rules-sections-left li li li li li a {
       padding-left: 50px; }
-    .bookmarks-menu li:hover {
+    #rules-sections-left li:hover {
       background-color: inherit; }
-  .bookmarks-menu .left-menu-reveal {
+  #rules-sections-left .left-menu-reveal {
     display: inline-block;
     position: absolute;
     right: 0;
@@ -372,13 +366,13 @@ nav {
     -ms-transform: rotate(0deg);
     -o-transform: rotate(0deg);
     transform: rotate(0deg); }
-  .bookmarks-menu div.open {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-    margin-top: -33px; }
+    #rules-sections-left .left-menu-reveal.open {
+      -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg);
+      margin-top: -33px; }
 
 #content-loader, #left-menu-loader {
   pointer-events: none;
@@ -394,5 +388,14 @@ nav {
 #content-loader {
   position: fixed;
   z-index: 997; }
+
+#page-content, #left-menu-content {
+  display: none; }
+
+#left-menu-content {
+  list-style: none; }
+
+#rules-hidden {
+  display: none; }
 
 /*# sourceMappingURL=rules.css.map */
