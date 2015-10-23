@@ -13,11 +13,11 @@
         $scope.fadeTime = 700;
 
         //track which sections have been loaded
-        $scope.loaded = {
+        $scope.data = {
             sections: {
-                dataRequestSent: false,
-                dataReceived: false,
-                data
+                requestSent: false,
+                received: false,
+                loaded: false
             },
             traits: false
         };
