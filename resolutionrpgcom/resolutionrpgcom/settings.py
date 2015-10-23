@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'ckeditor',
     'ordered_model',
     'chargen',
@@ -118,7 +119,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.dirname(BASE_DIR) + '/public/static/'
 STATICFILES_DIRS = (
     os.path.dirname(BASE_DIR) + '/static',
-    os.path.dirname(BASE_DIR) + '/static/bootstrap-3.3.5',
 )
 
 # ckeditor jquery

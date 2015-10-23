@@ -1,0 +1,14 @@
+{% extends 'rules/base.html' %}
+{% load staticfiles %}
+
+{% block left-menu-header-parent %}rules{% endblock %}
+{% block left-menu-header-after %}sections{% endblock %}
+
+{% block left-menu-content %}
+    <div class="rules-left-menu-content"></div>
+{% endblock %}
+
+{% block page-content %}
+    <div id="rules-page-content"></div>
+    <div rule-sections class="rules-sections"></div>
+{% endblock page-content %}

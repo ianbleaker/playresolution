@@ -13,5 +13,4 @@ django-ordered-model
 
 django-grappelli
 
-## known issues
-- scrolling in small width window on computer is buggy. small width devices seem to work fine
+markdown

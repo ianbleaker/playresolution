@@ -1,0 +1,7 @@
+<div id="{{ section.topParent }}_{{ section.slug }}" class="rule-section section-type-{{ section.type }} tier-{{ section.tier }} scrollspy" ng-if="section.title">
+    <i class='material-icons' ng-if="section.type == 'ex'">help_outline</i>
+    <i class='material-icons' ng-if="section.type == 'i'">info_outline</i>
+    <div class="section-title">{{ section.title }}</div>
+    <div class="section-content" ng-bind-html="section.content | rawHtml"></div>
+    <div class="section-child" ng-repeat="section in section.children" ng-include="'/static/html/rules/sections/rule-section.html'" ng-if="section.title"></div>
+</div>

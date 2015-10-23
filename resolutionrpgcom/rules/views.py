@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.core import serializers
+from django.http import HttpResponse
 from .models import Section, Skill, SkillType, SkillSpecialization
 
 
@@ -11,3 +13,12 @@ def index(request):
     skill_context = {'skills': skills, 'skill_types': skill_types, 'skill_specializations': skill_specializations}
     context = {'sections': sections, 'skill_context': skill_context}
     return render(request, 'rules/index.html', context)
+
+
+def rules(request):
+    return render(request, 'rules/base.html')
+
+
+def json_section(request):
+    sections = serializers.serialize("json", Section.objects.all().order_by('depth_string'))
+    return HttpResponse(sections, content_type='application/json')
