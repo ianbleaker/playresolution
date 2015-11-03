@@ -1,0 +1,2 @@
+<tr class="skill-class"><th>{{ class.name }} skills</th><th>Base Aptitude</th></tr>
+<tr ng-repeat="skill in class.skills"><td>{{ skill.name }}<span ng-show="skill.types.length"> ()</span></td><td>{{ skill.base_aptitude.name }}</td></tr>

@@ -4,7 +4,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.rules),
-    url(r'^json/', include([
-        url(r'^section/$', views.json_section)
-    ])),
+    url(r'^json/(\w+)/$', views.query_json),
 ]

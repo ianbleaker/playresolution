@@ -1,4 +1,4 @@
-$( document).ready(function(){
+$(document).ready(function(){
 
     //create left menu sidenav, close when click some a link
 	$("#left-menu-button").sideNav({
@@ -39,35 +39,44 @@ $( document).ready(function(){
     });
 });
 
-function sectionsLoaded(){
-    //move the generated skill table inside the skill list div
-    $("#skill-list-table").detach().appendTo($("#skill-list-title").next());
+function beginContentLoad(fadeTime){
+    //fade in loaders
+    $('#left-menu-loader').find('.preloader-wrapper').addClass('active').fadeIn(fadeTime);
+    $('#content-loader').find('.preloader-wrapper').addClass('active').fadeIn(fadeTime);
 
-    //wrap tables in divs
-    $(".section-content").each(function(){
-        //wrap multi tables all together
-        $(this).find(".multi-table").wrapAll("<div class='multi-table-div'></div>");
-        //wrap single tables that aren't multi tables in own div
-        $(this).find(".table").not(".multi-table").wrap("<div class='table-div'></div>");
-    });
+    //fade out content
+    $('#left-menu-content').fadeOut(fadeTime);
+    $('#page-content').fadeOut(fadeTime);
+}
 
-    //create a scrollspy that makes the links active and opens/closes on scroll
+function setRulesContent(contentElement, leftMenuElement, fadeTime){
+        //set content and fade in
+        //this replaces the comments that angular uses with nothing, so the html is more easily readable
+        //obviously the comments remain in place on the original, so nothing breaks
+        $('#page-content').html('<div id="' + $(contentElement).attr("class").split(' ')[0] + '">'
+            + removeHtmlBlockComments($(contentElement).html())
+            + '</div>').fadeIn(fadeTime);
+        $('#left-menu-content').html('<div id="' + $(leftMenuElement).attr("class").split(' ')[0] + '">'
+            + removeHtmlBlockComments($(leftMenuElement).html())
+            + '</div>')
+            .fadeIn(fadeTime);
+
+        //fade out loaders
+        $('#left-menu-loader').find('.preloader-wrapper').fadeOut(fadeTime, function(){$(this).removeClass('active')});
+        $('#content-loader').find('.preloader-wrapper').fadeOut(fadeTime, function(){$(this).removeClass('active')});
+}
+
+//create a scrollspy that makes the links active and opens/closes on scroll
+function sectionsScrollSpy(){
+    $(this).unbind("scroll");
+    $('#left-menu-content').find('a').removeClass('active');
     $(".scrollspy").each(function () {
-        var position = $(this).position();
         //do scrollspy
-        $(this).scrollspy({
+        var element = this;
+        $(element).scrollspy({
             //set positions - use all borders, margin and padding to get accurate results
-            min: position.top - 70,
-            max: position.top
-            + $(this).height()
-            + parseInt(($(this).css("padding-bottom")).replace("px", ""))
-            + parseInt(($(this).css("margin-bottom")).replace("px", ""))
-            + parseInt(($(this).css("border-bottom-width")).replace("px", ""))
-            + parseInt(($(this).css("padding-top")).replace("px", ""))
-            + parseInt(($(this).css("margin-top")).replace("px", ""))
-            + parseInt(($(this).css("border-top-width")).replace("px", ""))
-            - 70,
-            //on enter, add classes
+            min: $(element).position().top - $('#rules-top-nav').outerHeight() - 15,
+            max: $(element).position().top + $(element).outerHeight() - $('#rules-top-nav').outerHeight() - 15,
             onEnter: function (element, position) {
                 //get all uls for the link id
                 var ul = $("#" + $(element).attr("id") + "-ul");
@@ -91,6 +100,31 @@ function sectionsLoaded(){
             }
         });
     });
+}
+
+function sectionsLoaded(){
+    //create loading thing for skills
+    $('#skills_skill-list').append('<div class="rule-section section-child text-list-container loaded-async"></div>')
+        .find('.text-list-container').append($('#content-loader').html())
+        .find('.preloader-wrapper').removeClass('big').addClass('small').addClass('active')
+        .find('.spinner-layer').removeClass('spinner-green-only').addClass('spinner-blue-only');
+
+    //and another for traits
+    $('#traits_trait-list').append('<div class="rule-section section-child text-list-container loaded-async"></div>')
+        .find('.text-list-container').append($('#content-loader').html())
+        .find('.preloader-wrapper').removeClass('big').addClass('small').addClass('active')
+        .find('.spinner-layer').removeClass('spinner-green-only').addClass('spinner-blue-only');
+
+    //wrap tables in divs
+    $(".section-content").each(function(){
+        //wrap multi tables all together
+        $(this).find(".multi-table").wrapAll("<div class='multi-table-div'></div>");
+        //wrap single tables that aren't multi tables in own div
+        $(this).find(".table").not(".multi-table").wrap("<div class='table-div'></div>");
+    });
+
+    //run the scrollspy inject
+    sectionsScrollSpy();
 
     //start all ul-wrappers in the slide up position
     $(".left-menu-ul-wrapper").css("display", "none");
@@ -103,7 +137,7 @@ function sectionsLoaded(){
     });
 
     //make arrows on bookmark menu reveal ULs underneath through sliding
-	$(".left-menu-reveal").click(function (){
+    $(".left-menu-reveal").click(function (){
         if($(this).hasClass("closed")){
             $(this).removeClass("closed");
             $(this).addClass("open");
@@ -115,33 +149,6 @@ function sectionsLoaded(){
             $(this).next("div").slideUp();
         }
     });
-}
-
-function beginContentLoad(fadeTime){
-    //fade in loaders
-    $('#left-menu-loader').find('.preloader-wrapper').addClass('active').fadeIn(fadeTime);
-    $('#content-loader').find('.preloader-wrapper').addClass('active').fadeIn(fadeTime);
-
-    //fade out content
-    $('#rules-left-menu-content').fadeOut(fadeTime);
-    $('#rules-page-content').fadeOut(fadeTime);
-}
-
-function setRulesContent(contentElement, leftMenuElement, fadeTime){
-    //set content and fade in
-    //this replaces the comments that angular uses with nothing, so the html is more easily readable
-    //obviously the comments remain in place on the original, so nothing breaks
-    $('#page-content').html('<div id="' + $(contentElement).attr("class").split(' ')[0] + '">'
-        + $(contentElement).html().replace(/<!--[\s\S]*?-->/g, '')
-        + '</div>').fadeIn(fadeTime);
-    $('#left-menu-content').html('<div id="' + $(leftMenuElement).attr("class").split(' ')[0] + '">'
-        + $(leftMenuElement).html().replace(/<!--[\s\S]*?-->/g, '')
-        + '</div>')
-        .fadeIn(fadeTime);
-
-    //fade out loaders
-    $('#left-menu-loader').find('.preloader-wrapper').fadeOut(fadeTime, function(){$(this).removeClass('active')});
-    $('#content-loader').find('.preloader-wrapper').fadeOut(fadeTime, function(){$(this).removeClass('active')});
 }
 
 function setActiveLink(linkTitle){
@@ -162,4 +169,8 @@ function makeOpaque(opacityValue, elements){
 //slugify functionality
 function slugify(text){
     return text.toLowerCase().replace(/-/g,' ').replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+}
+
+function removeHtmlBlockComments(text){
+    return text.replace(/<!--[\s\S]*?-->/g, '');
 }

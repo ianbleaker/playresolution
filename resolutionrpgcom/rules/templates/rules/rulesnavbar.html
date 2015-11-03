@@ -2,23 +2,23 @@
     <nav id="rules-top-nav">
         <div class="nav-wrapper">
             <a id="left-menu-button" class="button-collapse" data-activates="left-menu"><i class="material-icons">menu</i></a>
-            <div class="location-logo"><a class="location-logo-parent" href="#" ng-bind="navbarLogoBefore">rez</a><span class="location-logo-period">.</span><a href="#" class="location-logo-after" ng-bind="navbarLogoAfter">rules</a></div>
+            <div class="location-logo"><a class="location-logo-parent" href="#" ng-bind="logo.navbar.before">rez</a><span class="location-logo-period">.</span><a href="#" class="location-logo-after" ng-bind="logo.navbar.after">rules</a></div>
             <a id="right-menu-button" class="button-collapse right hide-on-med-and-up"><i class="material-icons">keyboard_arrow_down</i></a>
             <ul id="top-nav-buttons" class="right hide-on-small-and-down">
-                <li><a href="#" class="rules-a tooltipped" ng-class="(active=sections) ? 'active' : ''" data-position="bottom" data-delay="10" data-tooltip="Rules"><i class="material-icons">subject</i><div class="current-location"></div></a></li>
-                <li><a href="#" class="tables-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Tables"><i class="material-icons">view_list</i><div class="current-location"></div></a></li>
-                <li><a href="#" class="genetics-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Genetics"><i class="material-icons">accessibility</i><div class="current-location"></div></a></li>
-                <li><a href="#" class="traits-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Traits"><i class="material-icons">face</i><div class="current-location"></div></a></li>
-                <li><a href="#" class="gear-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Gear"><i class="material-icons">local_mall</i><div class="current-location"></div></a></li>
-                <li><a href="#" class="create-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Create"><i class="material-icons">create</i><div class="current-location"></div></a></li>
+                <li><a href="" class="rules-a tooltipped" ng-class="{active: (status.active == 'sections')}" ng-click="status.active = 'sections'" data-position="bottom" data-delay="10" data-tooltip="Rules"><i class="material-icons">subject</i><div class="current-location"></div></a></li>
+                <li><a href="" class="tables-a tooltipped" ng-class="{active: (status.active == 'tables')}" ng-click="status.active = 'tables'" data-position="bottom" data-delay="10" data-tooltip="Tables"><i class="material-icons">view_list</i><div class="current-location"></div></a></li>
+                <li><a href="" class="genetics-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Genetics"><i class="material-icons">accessibility</i><div class="current-location"></div></a></li>
+                <li><a href="" class="traits-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Traits"><i class="material-icons">face</i><div class="current-location"></div></a></li>
+                <li><a href="" class="gear-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Gear"><i class="material-icons">local_mall</i><div class="current-location"></div></a></li>
+                <li><a href="" class="create-a tooltipped" data-position="bottom" data-delay="10" data-tooltip="Create"><i class="material-icons">create</i><div class="current-location"></div></a></li>
             </ul>
         </div>
     </nav>
 </div>
 <div id="mobile-nav-buttons" class="hidden">
     <ul id="mobile-nav-ul">
-        <li class="mobile-nav-li"><a href ="#" class="rules-a btn-floating" ng-class="(active=sections) ? 'active' : ''"><i class="material-icons">subject</i></a></li>
-        <li class="mobile-nav-li"><a href ="#" class="tables-a btn-floating"><i class="material-icons">view_list</i></a></li>
+        <li class="mobile-nav-li"><a href ="#" class="rules-a btn-floating" ng-class="{active: (status.active == 'sections')}" ng-click="status.active = 'sections'"><i class="material-icons">subject</i></a></li>
+        <li class="mobile-nav-li"><a href ="#" class="tables-a btn-floating" ng-class="{active: (status.active == 'tables')}" ng-click="status.active = 'tables'"><i class="material-icons">view_list</i></a></li>
         <li class="mobile-nav-li"><a href ="#" class="genetics-a btn-floating"><i class="material-icons">accessibility</i></a></li>
         <li class="mobile-nav-li"><a href ="#" class="traits-a btn-floating"><i class="material-icons">face</i></a></li>
         <li class="mobile-nav-li"><a href ="#" class="gear-a btn-floating"><i class="material-icons">local_mall</i></a></li>

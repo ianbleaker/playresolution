@@ -2,20 +2,16 @@
     var rulesSections = angular.module('rules.sections', []);
 
     rulesSections.controller("SectionsController", ['$http', '$scope', function($http, $scope) {
-        $scope.tree = [];
 
-        //section request data
-        $scope.sectionsRequestSent = false;
-        $scope.sectionsDataReceived = false;
-
-        $scope.$on('switchContent', function(event, args) {
-            if (args.targetContent != 'sections'){
-                console.log('sections caught switchContent, but ignored (target is '+args.targetContent + ')');
-            }
-            else {
-                $scope.getTree();
-            }
-        });
+        //set up content controller stuff
+        $scope.data.sections = {};
+        $scope.status.sections = {
+            dataRequestSent: false,
+            dataRetrieved: false,
+            loaded: false
+        };
+        $scope.promises.sections = {};
+        $scope.functions.sections = {};
 
         //function to dynamically add child based on list of depths
         function addChild(tree, depth, data){
@@ -56,7 +52,7 @@
             }
         }
 
-        function organizeSections(json){
+        function organizeSections(data){
             //set vars out of loop to reduce process time
             var tier = 0;
             var depth = 0;
@@ -64,24 +60,24 @@
             var topParent = "";
 
             //loop through every item
-            for (var i = 0; i < json.length; i++){
+            for (var i = 0; i < data.length; i++){
                 //set depth and tier vars
-                depth = json[i].fields.depth_string.split('.');
+                depth = data[i].depth_string.split('.');
                 tier = depth.length;
                 //set tier in data
-                json[i].fields.tier = tier;
+                data[i].tier = tier;
                 //set topParent if tier 1
-                if (tier == 1) topParent = json[i].fields.title;
+                if (tier == 1) topParent = data[i].title;
                 //set all parents regardless of tier (tier 1 will be their own parent)
-                json[i].fields.topParent = topParent;
+                data[i].topParent = topParent;
 
                 //if parent, add to top
                 if (tier == 1){
-                    tree[depth[0]] = sectionData(json[i].fields);
+                    tree[depth[0]] = sectionData(data[i]);
                 }
                 //otherwise, use depth list to add a child and send json data
                 else {
-                    addChild(tree, depth, json[i].fields);
+                    addChild(tree, depth, data[i]);
                 }
             }
 
@@ -89,85 +85,88 @@
             return tree;
         }
 
-        //variable function to get tree
-        $scope.getTree = function(callback){
-            //if called without callback, make a fake callback function
-            if (callback == null){
-                callback = function(){};
-            }
-            //check if data has been requested
-            if(!$scope.sectionsRequestSent){
-                //store that we have requested data
-                $scope.sectionsRequestSent = true;
-                //toast
-                Materialize.toast('Loading rules...', 2000);
-                //async get section data
-                $scope.getSectionsPromise = $http.get('json/section').then(function(response) {
-                    //get json
-                    var json = response.data;
-                    //organize the data
-                    $scope.tree = organizeSections(json);
-                    //tell the app that we are done organizing the data
-                    $scope.sectionsDataOrganized = true;
-                    //after data set, callback
-                    callback();
-                });
-            }
-            else {
-                // if we get here, that means the request has already been sent
-                // check if DataReceived is true, and run callback if so
-                if ($scope.sectionsDataOrganized == true){
-                    setTimeout(function(){
-                        callback();
-                    }, 0);
-                }
-                else {
-                    // otherwise, watch the DataReceived var, and when it changes to true, do the callback
-                    $scope.$watch(function($scope){ return $scope.sectionsDataOrganized},
-                        function(){
-                            if ($scope.sectionsDataOrganized == true){
-                                callback();
-                            }
-                    });
+        //watch the raw data, and when it is available, convert it
+        $scope.$watch(function($scope){return $scope.data.sections.raw},
+            function(newValue, oldValue){
+                if ($scope.status.sections.dataRetrieved) {
+                    $scope.data.sections.organized = organizeSections(newValue);
                 }
             }
+        );
+
+        $scope.functions.sections.injectSkills = function(){
+            setTimeout(function(){
+                var start = $('rule-skills');
+                //remove inside of section child
+                $('#skills_skill-list').find('.section-child').html('')
+                    //then add the table
+                    .append(removeHtmlBlockComments($(start).find('.class-table-terse').html()))
+                    //then add the list
+                    .append(removeHtmlBlockComments($(start).find('.skill-text').html()));
+                //redo scrollspy
+                sectionsScrollSpy();
+            }, $scope.retryTime);
+        };
+
+        $scope.functions.sections.injectTraits = function(){
+            setTimeout(function(){
+                var start = $('rule-traits');
+                //remove inside of section child
+                $('#traits_trait-list').find('.section-child').html('')
+                    //then add the list
+                    .append(removeHtmlBlockComments($(start).find('.trait-list-characters').html()));
+                //redo scrollspy
+                sectionsScrollSpy();
+            }, $scope.retryTime);
         };
     }]);
 
-    rulesSections.directive('ruleSections', ['$compile', function($compile){
+    rulesSections.directive('ruleSections', ['$rootScope', function($rootScope){
         //write a link function
         var linkFunction = function ($scope, element, attrs){
-            //when this exists, switch content to this
-            $scope.$emit('ctrlSwitchContent', {targetContent: 'sections'});
-            beginContentLoad($scope.fadeTime);
+            $scope.status.active = 'sections';
+            //define load function
+            $scope.functions.sections.load = function() {
+                //start loading, fade, etc
+                beginContentLoad($scope.fadeTime);
 
-            var afterSectionsCompile = function() {
-                    //make it set itself to the end
-                    setTimeout(function () {
-                        //if it doesn't detect that the rules are done loading, it ends itself and calls itself again with
-                        //a delay of $scope.retryTime
-                        if ($('.rule-section').length < 100 || $('.section-bookmark-link').length < 100) {
-                            afterSectionsCompile();
-                            return
-                        }
+                var afterLoad = function(){
+                    setTimeout(function(){
                         //inject the content, and do fades
                         setRulesContent($('.rules-sections'), $('.rules-sections-left'), $scope.fadeTime);
                         //then run the js to hook to current content
-                        sectionsLoaded();
-                        //set active section
-                        $scope.loaded.sections = true;
-                        $scope.active = 'sections';
-                    }, $scope.retryTime);
+                        sectionsLoaded($scope.fadeTime);
+                        //make scrollspy happen again on refresh
+                        $(document).ready(function(){
+                            $(window).resize(sectionsScrollSpy());
+                        });
+
+                        //INJECTION of OTHER LOADED CONTENT
+                        $scope.functions.ctrl.get('skills');
+                        $scope.functions.ctrl.checkLoaded('skills', $scope.functions.sections.injectSkills);
+
+                        $scope.functions.ctrl.get('traits');
+                        $scope.functions.ctrl.checkLoaded('traits', $scope.functions.sections.injectTraits);
+
+                    }, 0);
                 };
 
-            //run the after function
-            afterSectionsCompile();
+                //get the sections
+                $scope.functions.ctrl.get('sections', {toast: 'Loading sections...'});
+                //check if sections are loaded, and then run
+                $scope.functions.ctrl.checkLoaded('sections', afterLoad);
+            };
 
+            //define unload function
+            $scope.functions.sections.unload = function() {
+                //remove scrollspy
+                $(window).off("resize", sectionsScrollSpy());
+            }
         };
 
         return {
             restrict: 'E',
-            templateUrl: '/static/html/rules/sections/rule-sections.html',
+            templateUrl: '/static/html/rules/sections/sections.html',
             controller: 'SectionsController',
             controllerAs: 'sections',
             link: linkFunction

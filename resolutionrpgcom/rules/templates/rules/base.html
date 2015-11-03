@@ -14,7 +14,7 @@
             <div id="left-menu-loader">{% include "load-spin-green.html" %}</div>
             <div class="left-menu-header">
                 <div class="location-logo">
-                    <span class="location-logo-before" ng-bind="leftMenuLogoBefore"></span><span class="location-logo-period">.</span><span class="location-logo-after" ng-bind="leftMenuLogoAfter"></span>
+                    <span class="location-logo-before" ng-bind="logo.left.before"></span><span class="location-logo-period">.</span><span class="location-logo-after" ng-bind="logo.left.after"></span>
                 </div>
             </div>
             <div id="left-menu-content">
@@ -35,6 +35,8 @@
         <div id="rules-hidden">
             <rule-sections></rule-sections>
             <rule-traits></rule-traits>
+            <rule-skills></rule-skills>
+            <rule-tables></rule-tables>
         </div>
     </div>
 </div>
@@ -44,7 +46,9 @@
     <script src="{% static 'rules/js/rules.js' %}"></script>
     <script type="text/javascript" src="{% static 'rules/ng/rules-app.js' %}" ></script>
     <script type="text/javascript" src="{% static 'rules/ng/rules-sections.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'rules/ng/rules-skills.js' %}" ></script>
     <script type="text/javascript" src="{% static 'rules/ng/rules-traits.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'rules/ng/rules-tables.js' %}" ></script>
     {% block script %}
     {% endblock script %}
 {% endblock after_body %}
