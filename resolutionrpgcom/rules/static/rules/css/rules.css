@@ -249,6 +249,9 @@ nav {
 .text-list-container span.line-suffix {
   font-style: italic;
   font-size: .8em; }
+.text-list-container p {
+  margin-top: 5px;
+  margin-bottom: 0; }
 
 @media only screen and (min-width: 1000px) and (max-width: 1480px) {
   .rule-section {

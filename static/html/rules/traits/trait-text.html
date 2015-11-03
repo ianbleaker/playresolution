@@ -6,9 +6,9 @@
             <div class="trait-cost"><span class="line-prefix">Cost: </span>{{ trait.value }} <span class="line-suffix">CP/XP</span></div>
             <div class="trait-gist"><span class="line-prefix">Gist: </span>{{ trait.short_description }}</div>
             <div class="trait-requirements">
-                <div class="trait-prereq" ng-if="trait.trait_requisite">has a requisite</div>
+                <div class="trait-prereq" ng-if="trait.requirements"><span class="line-prefix">Requirements: </span>{{ trait.requirements }}</div>
             </div>
-            <div class="trait-description">{{ trait.description }}</div>
+            <div class="trait-description" ng-bind-html="trait.description | rawHtml"></div>
         </div>
     </div>
 </div>
