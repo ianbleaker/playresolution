@@ -1,0 +1,9 @@
+<div class="skill-text">
+    <div ng-repeat="category in data.skills.organized" ng-include="'/static/html/rules/skills/skill-text.html'"></div>
+</div>
+<div class="class-table-terse">
+    <table class="table list-table">
+        <caption>skill list</caption>
+        <tbody ng-repeat="class in data.skills.organized" ng-include="'/static/html/rules/skills/class-table-terse.html'"></tbody>
+    </table>
+</div>

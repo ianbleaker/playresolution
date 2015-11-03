@@ -1,0 +1,15 @@
+<div class="category-title">{{ category.name }} traits</div>
+<div class="category-content">
+    <div class="item" ng-repeat="trait in category.traits">
+        <div class="item-title">{{ trait.name }}</div>
+        <div class="item-content">
+            <div class="trait-cost"><span class="line-prefix">Cost: </span>{{ trait.value }} <span class="line-suffix">CP/XP</span></div>
+            <div class="trait-gist"><span class="line-prefix">Gist: </span>{{ trait.short_description }}</div>
+            <div class="trait-requirements">
+                <div class="trait-prereq" ng-if="trait.trait_requisite">has a requisite</div>
+            </div>
+            <div class="trait-description">{{ trait.description }}</div>
+        </div>
+    </div>
+</div>
+

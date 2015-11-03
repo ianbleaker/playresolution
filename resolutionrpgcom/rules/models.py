@@ -34,12 +34,27 @@ class DerivedStatistic(models.Model):
 class Trait(models.Model):
     def __str__(self):
         return self.name
+
+    # define choices and the choice block
+    BACKGROUND = 'background'
+    PERSONALITY = 'personality'
+    PHYSICAL = 'physical'
+    FEATURE = 'feature'
+    VEHICLE = 'vehicle'
+    TYPE_CHOICES = (
+        (BACKGROUND, 'Background'),
+        (PERSONALITY, 'Personality'),
+        (PHYSICAL, 'Physical'),
+        (FEATURE, 'Feature'),
+        (VEHICLE, 'Vehicle')
+    )
+
     name = models.CharField(max_length=200)
+    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default=BACKGROUND)
     short_description = models.CharField(max_length=200, blank=True, null=True)
     description = models.TextField()
-    value = models.IntegerField(default=10)
-    race_requisite = models.CharField(max_length=20, blank=True, null=True)
-    trait_requisite = models.ForeignKey('self', blank=True, null=True)
+    value = models.CharField(max_length=20, default=10)
+    requirements = models.TextField(max_length=100, blank=True, null=True)
 
 
 class Skill(models.Model):
@@ -71,7 +86,7 @@ class SkillType(models.Model):
         return self.name
 
     name = models.CharField(max_length=50, default='type')
-    base_skill = models.ForeignKey(Skill)
+    base_skill = models.ForeignKey(Skill, related_name='types')
 
 
 class SkillSpecialization(models.Model):
@@ -79,7 +94,7 @@ class SkillSpecialization(models.Model):
         return self.name
 
     name = models.CharField(max_length=50, default='specialization')
-    base_skill = models.ForeignKey(Skill)
+    base_skill = models.ForeignKey(Skill, related_name='specializations')
 
 
 class Section(OrderedModel):

@@ -1,0 +1,20 @@
+<div class="category-title">{{ category.name }} skills</div>
+<div class="category-content">
+    <div class="item" ng-repeat="skill in category.skills">
+        <div class="item-title">{{ skill.name }}<span ng-show="skill.types.length"> ()</span></div>
+        <div class="item-content">
+            <div class="item-subtitle" ng-show="skill.types.length">Typed skill</div>
+            <div class="skill-what"><span class="line-prefix">What: </span>{{ skill.what }}</div>
+            <div class="skill-when"><span class="line-prefix">When: </span>{{ skill.when }}</div>
+            <div class="skill-types" ng-show="skill.types.length">
+                <span class="line-prefix">Sample Types: </span>
+                <span ng-repeat="type in skill.types">{{ type.name }}{{{true: '', false: ', '} [$last]}}</span>
+            </div>
+            <div class="skill-specializations">
+                <span class="line-prefix">Sample Specializations: </span>
+                <span ng-show="skill.types.length || !skill.specializations.length">{{ skill.specialization_text }}</span>
+                <span ng-show="skill.specializations.length || !skill.types.length" ng-repeat="special in skill.specializations">{{ special.name }}{{{true: '', false: ', '} [$last]}}</span>
+            </div>
+        </div>
+    </div>
+</div>

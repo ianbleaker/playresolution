@@ -13,4 +13,8 @@ django-ordered-model
 
 django-grappelli
 
+djangorestframework
+
 markdown
+
+django-filter

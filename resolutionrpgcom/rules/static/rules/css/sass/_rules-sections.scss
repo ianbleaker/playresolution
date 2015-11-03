@@ -5,10 +5,8 @@
 }
 
 .rule-section {
-  &>div>.rule-section {
-    margin-left: 5px;
-    margin-left: .5vw;
-  }
+  margin-left: 5px;
+  margin-left: .5vw;
   &.tier-1 {
     padding-bottom: 30px;
     padding-top: 40px;
@@ -205,46 +203,57 @@
   }
 }
 
-#skill-text-list {
-  .skill-class-title {
+.loaded-async {
+  .preloader-wrapper {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.text-list-container {
+  .list-table {
+    width: auto;
+    float: right;
+    margin-left: 20px;
+  }
+  .category-title {
     text-transform: capitalize;
-    font-size: 1.3em;
-    margin-top: 40px;
+    font-size: 1.2em;
+    margin-top: 30px;
     margin-bottom: 20px;
   }
-  .skill-title {
+  .item-title {
     font-size: 1.15em;
     font-weight: 500;
     margin-top: 10px;
   }
-  .skill-content, .skill-div {
+  .item, .item-content {
     padding-left: 5px;
     padding-left: 1vw;
   }
-  .skill-div {
-    div + div {
-      margin-top: 3px;
-    }
-  }
-  .skill-content-typed {
-    font-style: oblique;
+  .item-subtitle {
+    font-style: italic;
     font-size: .9em;
   }
-  span {
+  span.line-prefix {
     font-weight: 500;
+  }
+  span.line-suffix {
+    font-style: italic;
+    font-size: .8em;
   }
 }
 
 @media only screen and (min-width: 1000px) and (max-width: 1480px){
   .rule-section {
-    &>.rule-section{
-      margin-left: .75vw;
-    }
+    margin-left: .75vw;
+    margin-right: .75vw;
     .section-content{
       padding-left: .75vw;
     }
-    #skill-text-list {
-      .skill-content, .skill-div {
+    .skill-list-container {
+      .skill-content, .skill {
         padding-left: .75vw;
       }
     }
@@ -253,14 +262,13 @@
 
 @media only screen and (min-width: 600px) and (max-width: 1000px){
   .rule-section {
-    &>.rule-section{
-      margin-left: 1vw;
-    }
+    margin-left: 1vw;
+    margin-right: 1vw;
     .section-content{
       padding-left: 1vw;
     }
-    #skill-text-list {
-      .skill-content, .skill-div {
+    .skill-list-container {
+      .skill-content, .skill {
         padding-left: 1vw;
       }
     }
@@ -269,14 +277,13 @@
 
 @media only screen and (max-width: 600px){
   .rule-section {
-    &>.rule-section{
-      margin-left: 1.2vw;
-    }
+    margin-left: 1.2vw;
+    margin-right: 1.2vw;
     .section-content{
       padding-left: 1.2vw;
     }
-    #skill-text-list {
-      .skill-content, .skill-div {
+    .skill-list-container {
+      .skill-content, .skill {
         padding-left: 1.2vw;
       }
     }
@@ -297,7 +304,7 @@
         width:100%;
         overflow: hidden;
     }
-    #rules-text {
+    .rules-sections {
         margin-top: 0;
         width: 100%;
     }
