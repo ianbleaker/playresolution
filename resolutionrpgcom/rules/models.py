@@ -50,7 +50,7 @@ class Trait(models.Model):
     )
 
     name = models.CharField(max_length=200)
-    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default=BACKGROUND)
+    type = models.CharField(max_length=15, choices=TYPE_CHOICES, default=BACKGROUND)
     short_description = models.CharField(max_length=200, blank=True, null=True)
     description = RichTextField()
     value = models.CharField(max_length=20, default=10)

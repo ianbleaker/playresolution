@@ -10,7 +10,17 @@ from ordered_model.admin import OrderedModelAdmin
 admin.site.register(Aptitude)
 admin.site.register(Statistic)
 admin.site.register(DerivedStatistic)
-admin.site.register(Trait)
+
+###############
+# TRAIT ADMIN #
+###############
+
+
+class TraitModelAdmin(admin.ModelAdmin):
+    list_display = ('name', 'type', 'value', 'short_description', 'requirements',)
+    ordering = ('type', 'name')
+
+admin.site.register(Trait, TraitModelAdmin)
 
 
 ###############
