@@ -8,7 +8,8 @@
         $scope.status.sections = {
             dataRequestSent: false,
             dataRetrieved: false,
-            loaded: false
+            loaded: false,
+            subContentLoaded: false
         };
         $scope.promises.sections = {};
         $scope.functions.sections = {};
@@ -52,7 +53,7 @@
             }
         }
 
-        function organizeSections(data){
+        $scope.functions.sections.organize = function(data){
             //set vars out of loop to reduce process time
             var tier = 0;
             var depth = 0;
@@ -81,43 +82,50 @@
                 }
             }
 
-            //return the final tree value
-            return tree;
-        }
-
-        //watch the raw data, and when it is available, convert it
-        $scope.$watch(function($scope){return $scope.data.sections.raw},
-            function(newValue, oldValue){
-                if ($scope.status.sections.dataRetrieved) {
-                    $scope.data.sections.organized = organizeSections(newValue);
-                }
-            }
-        );
-
-        $scope.functions.sections.injectSkills = function(){
-            setTimeout(function(){
-                var start = $('rule-skills');
-                //remove inside of section child
-                $('#skills_skill-list').find('.section-child').html('')
-                    //then add the table
-                    .append(removeHtmlBlockComments($(start).find('.class-table-terse').html()))
-                    //then add the list
-                    .append(removeHtmlBlockComments($(start).find('.skill-text').html()));
-                //redo scrollspy
-                sectionsScrollSpy();
-            }, $scope.retryTime);
+            //set organized as tree
+            $scope.data.sections.organized = tree;
         };
 
-        $scope.functions.sections.injectTraits = function(){
-            setTimeout(function(){
-                var start = $('rule-traits');
-                //remove inside of section child
-                $('#traits_trait-list').find('.section-child').html('')
-                    //then add the list
-                    .append(removeHtmlBlockComments($(start).find('.trait-list-characters').html()));
-                //redo scrollspy
-                sectionsScrollSpy();
-            }, $scope.retryTime);
+        $scope.functions.sections.injectSkills = function(args){
+            if(!args) args = {};
+            if(args.time == 'before') {
+                //create loading thing for skills
+                injectSmallLoader('.skills_skill-list');
+            }
+            else {
+                setTimeout(function(){
+                    var start = $('rule-skills');
+                    //remove inside of section child
+                    $('.skills_skill-list').find('.text-list-container').html('')
+                        //then add the table
+                        .append(removeHtmlBlockComments($(start).find('.class-table-terse').html()))
+                        //then add the list
+                        .append(removeHtmlBlockComments($(start).find('.skill-text').html()));
+                    //redo scrollspy
+                    sectionsScrollSpy();
+                }, $scope.retryTime);
+            }
+        };
+
+        $scope.functions.sections.injectTraits = function(args){
+            if(!args) args = {};
+            if(args.time == 'before'){
+                //create loading thing for skills
+                injectSmallLoader('.traits_trait-list');
+                injectSmallLoader('.vehicles_vehicle-traits');
+            }
+            else {
+                setTimeout(function(){
+                    var start = $('rule-traits');
+                    //remove inside of section child
+                    $('.traits_trait-list').find('.text-list-container').html('')
+                        .append(removeHtmlBlockComments($(start).find('.trait-list-characters').html()));
+                    $('.vehicles_vehicle-traits').find('.text-list-container').html('')
+                        .append(removeHtmlBlockComments($(start).find('.trait-list-vehicles').html()));
+                    //redo scrollspy
+                    sectionsScrollSpy();
+                }, $scope.retryTime);
+            }
         };
     }]);
 
@@ -133,7 +141,11 @@
                 var afterLoad = function(){
                     setTimeout(function(){
                         //inject the content, and do fades
-                        setRulesContent($('.rules-sections'), $('.rules-sections-left'), $scope.fadeTime);
+                        setRulesContent({
+                            pageContent: $('.rules-sections'),
+                            leftContent: $('.rules-sections-left'),
+                            fadeTime: $scope.fadeTime
+                        });
                         //then run the js to hook to current content
                         sectionsLoaded($scope.fadeTime);
                         //make scrollspy happen again on refresh
@@ -142,19 +154,31 @@
                         });
 
                         //INJECTION of OTHER LOADED CONTENT
-                        $scope.functions.ctrl.get('skills');
-                        $scope.functions.ctrl.checkLoaded('skills', $scope.functions.sections.injectSkills);
+                        //only do this if we haven't fully loaded it yet
+                        if(!$scope.status.sections.subContentLoaded){
+                            $scope.functions.ctrl.get(['skills', 'traits'], {
+                                toast: 'Loading lists..',
+                                before: {
+                                    skills: [$scope.functions.sections.injectSkills, {time: 'before'}],
+                                    traits: [$scope.functions.sections.injectTraits, {time: 'before'}]
+                                },
+                                after: {
+                                    skills: $scope.functions.sections.injectSkills,
+                                    traits: $scope.functions.sections.injectTraits
+                                }
+                            });
 
-                        $scope.functions.ctrl.get('traits');
-                        $scope.functions.ctrl.checkLoaded('traits', $scope.functions.sections.injectTraits);
+                            $scope.status.sections.subContentLoaded = true;
+                        }
 
                     }, 0);
                 };
 
                 //get the sections
-                $scope.functions.ctrl.get('sections', {toast: 'Loading sections...'});
-                //check if sections are loaded, and then run
-                $scope.functions.ctrl.checkLoaded('sections', afterLoad);
+                $scope.functions.ctrl.get('sections', {
+                    toast: 'Loading sections...',
+                    after: afterLoad
+                });
             };
 
             //define unload function

@@ -1,12 +1,11 @@
 <div class="category-title">{{ category.name }} traits</div>
 <div class="category-content">
-    <div class="item" ng-repeat="trait in category.traits">
+    <div class="item" ng-repeat="trait in category.content">
         <div class="item-title">{{ trait.name }}</div>
         <div class="item-content">
-            <div class="trait-cost"><span class="line-prefix">Cost: </span>{{ trait.value }} <span class="line-suffix">CP/XP</span></div>
+            <div class="trait-cost" ng-if="category.name != 'genetic' && category.name != 'vehicle'"><span class="line-prefix" ng-show="trait.value.indexOf('-')!=-1">Cost: </span><span class="line-prefix" ng-hide="trait.value.indexOf('-')!=-1">Benefit: </span>{{ trait.value }} <span class="line-suffix">CP/XP</span></div>
             <div class="trait-gist"><span class="line-prefix">Gist: </span>{{ trait.short_description }}</div>
             <div class="trait-requirements">
-                <div class="trait-prereq" ng-if="trait.requirements"><span class="line-prefix">Requirements: </span>{{ trait.requirements }}</div>
             </div>
             <div class="trait-description" ng-bind-html="trait.description | rawHtml"></div>
         </div>

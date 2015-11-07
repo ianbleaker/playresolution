@@ -1,3 +1,9 @@
 <div class="trait-list-characters">
-    <div ng-repeat="category in data.traits.organized" ng-if="category.name != vehicle" ng-include="'/static/html/rules/traits/trait-text.html'"></div>
+    <div ng-repeat="category in data.traits.organized" ng-if="category.name != 'genetic' && category.name != 'vehicle'" ng-include="'/static/html/rules/traits/trait-text.html'"></div>
+</div>
+<div class="trait-list-genetics">
+    <div ng-repeat="category in data.traits.organized" ng-if="category.name == 'genetic'" ng-include="'/static/html/rules/traits/trait-text.html'"></div>
+</div>
+<div class="trait-list-vehicles">
+    <div ng-repeat="category in data.traits.organized" ng-if="category.name == 'vehicle'" ng-include="'/static/html/rules/traits/trait-text.html'"></div>
 </div>

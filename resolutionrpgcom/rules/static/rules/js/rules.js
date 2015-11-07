@@ -49,21 +49,35 @@ function beginContentLoad(fadeTime){
     $('#page-content').fadeOut(fadeTime);
 }
 
-function setRulesContent(contentElement, leftMenuElement, fadeTime){
-        //set content and fade in
-        //this replaces the comments that angular uses with nothing, so the html is more easily readable
-        //obviously the comments remain in place on the original, so nothing breaks
-        $('#page-content').html('<div id="' + $(contentElement).attr("class").split(' ')[0] + '">'
-            + removeHtmlBlockComments($(contentElement).html())
-            + '</div>').fadeIn(fadeTime);
-        $('#left-menu-content').html('<div id="' + $(leftMenuElement).attr("class").split(' ')[0] + '">'
-            + removeHtmlBlockComments($(leftMenuElement).html())
-            + '</div>')
-            .fadeIn(fadeTime);
+function injectSmallLoader(element){
+    $(element).append('<div class="rule-section section-child text-list-container loaded-async"></div>')
+        .find('.text-list-container').append($('#content-loader').html())
+        .find('.preloader-wrapper').removeClass('big').addClass('small').addClass('active')
+        .find('.spinner-layer').removeClass('spinner-green-only').addClass('spinner-blue-only');
+}
 
-        //fade out loaders
-        $('#left-menu-loader').find('.preloader-wrapper').fadeOut(fadeTime, function(){$(this).removeClass('active')});
-        $('#content-loader').find('.preloader-wrapper').fadeOut(fadeTime, function(){$(this).removeClass('active')});
+function setRulesContent(args){
+    //default fade time
+    if(args.fadeTime == null) args.fadeTime = 500;
+    //set content and fade in
+    //this replaces the comments that angular uses with nothing, so the html is more easily readable
+    //the comments remain in place on the original, so nothing breaks
+    //additionally, it only replaces the content that it is fed
+    if(args.pageContent != null){
+        $('#page-content').html('<div id="' + $(args.pageContent).attr("class").split(' ')[0] + '">'
+            + removeHtmlBlockComments($(args.pageContent).html())
+            + '</div>')
+            .fadeIn(args.fadeTime);
+    }
+    if(args.leftContent != null){
+        $('#left-menu-content').html('<div id="' + $(args.leftContent).attr("class").split(' ')[0] + '">'
+            + removeHtmlBlockComments($(args.leftContent).html())
+            + '</div>')
+            .fadeIn(args.fadeTime);
+    }
+
+    $('#left-menu-loader').find('.preloader-wrapper').fadeOut(args.fadeTime, function(){$(this).removeClass('active')});
+    $('#content-loader').find('.preloader-wrapper').fadeOut(args.fadeTime, function(){$(this).removeClass('active')});
 }
 
 //create a scrollspy that makes the links active and opens/closes on scroll
@@ -103,18 +117,6 @@ function sectionsScrollSpy(){
 }
 
 function sectionsLoaded(){
-    //create loading thing for skills
-    $('#skills_skill-list').append('<div class="rule-section section-child text-list-container loaded-async"></div>')
-        .find('.text-list-container').append($('#content-loader').html())
-        .find('.preloader-wrapper').removeClass('big').addClass('small').addClass('active')
-        .find('.spinner-layer').removeClass('spinner-green-only').addClass('spinner-blue-only');
-
-    //and another for traits
-    $('#traits_trait-list').append('<div class="rule-section section-child text-list-container loaded-async"></div>')
-        .find('.text-list-container').append($('#content-loader').html())
-        .find('.preloader-wrapper').removeClass('big').addClass('small').addClass('active')
-        .find('.spinner-layer').removeClass('spinner-green-only').addClass('spinner-blue-only');
-
     //wrap tables in divs
     $(".section-content").each(function(){
         //wrap multi tables all together

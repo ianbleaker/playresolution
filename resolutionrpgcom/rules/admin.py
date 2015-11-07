@@ -7,6 +7,7 @@ from ordered_model.admin import OrderedModelAdmin
 
 # Register your models here.
 
+admin.site.register(Species)
 admin.site.register(Aptitude)
 admin.site.register(Statistic)
 admin.site.register(DerivedStatistic)
@@ -17,7 +18,7 @@ admin.site.register(DerivedStatistic)
 
 
 class TraitModelAdmin(admin.ModelAdmin):
-    list_display = ('name', 'type', 'value', 'short_description', 'requirements',)
+    list_display = ('name', 'type', 'value', 'short_description')
     ordering = ('type', 'name')
 
 admin.site.register(Trait, TraitModelAdmin)
