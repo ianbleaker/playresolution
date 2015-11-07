@@ -6,6 +6,14 @@ from django.db import transaction
 
 
 # Create your models here.
+class Species(models.Model):
+    def __str__(self):
+        return self.name
+    name = models.CharField(max_length=50)
+    short_description = models.CharField(max_length=200, blank=True)
+    description = RichTextField(blank=True, null=True)
+
+
 class Aptitude(models.Model):
     def __str__(self):
         return self.name
@@ -41,12 +49,14 @@ class Trait(models.Model):
     PHYSICAL = 'physical'
     FEATURE = 'feature'
     VEHICLE = 'vehicle'
+    GENETIC = 'genetic'
     TYPE_CHOICES = (
         (BACKGROUND, 'Background'),
         (PERSONALITY, 'Personality'),
         (PHYSICAL, 'Physical'),
         (FEATURE, 'Feature'),
-        (VEHICLE, 'Vehicle')
+        (VEHICLE, 'Vehicle'),
+        (GENETIC, 'Genetic')
     )
 
     name = models.CharField(max_length=200)
@@ -54,7 +64,9 @@ class Trait(models.Model):
     short_description = models.CharField(max_length=200, blank=True, null=True)
     description = RichTextField()
     value = models.CharField(max_length=20, default=10)
-    requirements = models.TextField(max_length=100, blank=True, null=True)
+    species_requirement = models.ForeignKey(Species, blank=True, null=True)
+    trait_requirement = models.ManyToManyField('self', blank=True)
+    replace_requirement = models.ManyToManyField('self', blank=True)
 
 
 class Skill(models.Model):
