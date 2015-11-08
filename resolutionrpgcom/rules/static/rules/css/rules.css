@@ -356,38 +356,38 @@ nav {
   position: fixed;
   z-index: 997; }
 
-.dynamic-table .dyn-row {
-  -webkit-transition: all 100ms;
-  transition: all 100ms;
-  cursor: pointer; }
-  .dynamic-table .dyn-row.hover {
-    background-color: #B3E5FC; }
-.dynamic-table #search {
-  color: #0288D1;
-  border-color: #03A9F4; }
-  .dynamic-table #search + label {
-    color: #03A9F4; }
-.dynamic-table .table {
+.dynamic-table {
   width: 100%;
   margin: auto; }
-  .dynamic-table .table thead {
+  .dynamic-table .dyn-row {
+    -webkit-transition: all 100ms;
+    transition: all 100ms;
+    cursor: pointer; }
+    .dynamic-table .dyn-row.hover {
+      background-color: #B3E5FC; }
+  .dynamic-table #search {
+    color: #0288D1;
+    border-color: #03A9F4; }
+    .dynamic-table #search + label {
+      color: #03A9F4; }
+  .dynamic-table thead {
     border: 1px; }
-  .dynamic-table .table th {
+  .dynamic-table th {
     color: white; }
-    .dynamic-table .table th a {
+    .dynamic-table th a {
       color: white;
       font-weight: 500; }
-  .dynamic-table .table .filter-row {
+  .dynamic-table .filter-row {
     background-color: #00C853; }
-    .dynamic-table .table .filter-row .table-filter {
+    .dynamic-table .filter-row .table-filter {
       margin: 0;
       text-align: center; }
-      .dynamic-table .table .filter-row .table-filter .caret {
+      .dynamic-table .filter-row .table-filter .caret {
         color: #B3E5FC;
         position: relative;
         margin-right: -10px;
         top: inherit; }
-      .dynamic-table .table .filter-row .table-filter input {
+      .dynamic-table .filter-row .table-filter input {
         text-align: center;
         width: auto;
         display: inline;

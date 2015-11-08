@@ -1,57 +1,55 @@
 @import "defaults";
 
 .dynamic-table {
-  .dyn-row{
+  .dyn-row {
     -webkit-transition: all 100ms;
     transition: all 100ms;
     cursor: pointer;
-    &.hover{
+    &.hover {
       background-color: $primary-color-light;
     }
   }
-  #search{
+  #search {
     color: $primary-color-dark;
     border-color: $primary-color;
     + label {
       color: $primary-color;
     }
   }
-  .table {
-    width: 100%;
-    margin: auto;
-    thead {
-      border: 1px;
-    }
-    th {
+  width: 100%;
+  margin: auto;
+  thead {
+    border: 1px;
+  }
+  th {
+    color: white;
+    a {
       color: white;
-      a {
-        color: white;
-        font-weight: 500;
-      }
+      font-weight: 500;
     }
-    .filter-row {
-      background-color: $secondary-color;
-      .table-filter {
-        margin: 0;
+  }
+  .filter-row {
+    background-color: $secondary-color;
+    .table-filter {
+      margin: 0;
+      text-align: center;
+      .caret {
+        color: $primary-color-light;
+        position: relative;
+        margin-right: -10px;
+        top: inherit;
+      }
+      input {
         text-align: center;
-        .caret {
-          color: $primary-color-light;
-          position: relative;
-          margin-right: -10px;
-          top: inherit;
-        }
-        input {
-          text-align: center;
-          width: auto;
-          display: inline;
-          color: $primary-color-light;
-          margin-top: -10px;
-          margin-bottom: 3px;
-          border-color: $primary-color-light;
-          height: 35px;
-        }
-        li {
-        }
+        width: auto;
+        display: inline;
+        color: $primary-color-light;
+        margin-top: -10px;
+        margin-bottom: 3px;
+        border-color: $primary-color-light;
+        height: 35px;
+      }
+      li {
       }
     }
   }
@@ -91,7 +89,7 @@
   }
 
   tr {
-    &:nth-child(odd){
+    &:nth-child(odd) {
       background-color: $secondary-color-light;
     }
   }
@@ -121,7 +119,7 @@
 
   &.col-2-center {
     tr {
-      td:nth-child(2), th:nth-child(2){
+      td:nth-child(2), th:nth-child(2) {
         text-align: center;
         p {
           text-align: center;

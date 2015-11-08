@@ -16,23 +16,29 @@
         var linkFunction = function ($scope, element, attrs){
 
             $scope.functions.tables.load = function(){
-                beginContentLoad($scope.fadeTime);
-
                 var afterLoad = function(){
                     setRulesContent({pageContent: '<table id="tables-table" class="table dynamic-table"></table>'});
                     var table = $('#tables-table');
                     $(table).dataTable({
+                        sDom: '<"dynamic-table-wrapper"t>',
                         paging: false,
                         stateSave: false,
                         data: $scope.data.traits.raw,
                         columns: [
                             {title: 'Name', data: 'name'},
-                            {title: 'Type', data: 'type'}
+                            {title: 'Type', data: 'type'},
+                            {title: 'Value', data: 'value'},
+                            {title: 'Short Description', data: 'short_description'}
                         ]
-                    })
+                    });
+                    contentLoaders({begin: false, fadeTime: $scope.fadeTime});
                 };
 
-                $scope.functions.ctrl.get('traits', afterLoad);
+                $scope.functions.ctrl.get('traits', {
+                    toast: 'Loading tables..',
+                    before: [contentLoaders, {begin: true, fadeTime: $scope.fadeTime}],
+                    after: afterLoad
+                });
             }
 
         };
