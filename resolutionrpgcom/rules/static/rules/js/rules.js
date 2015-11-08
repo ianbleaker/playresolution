@@ -28,7 +28,7 @@ $(document).ready(function(){
     });
 
     //when the mobile nav is open, if you click anywhere except the menu, it closes the menu
-    $('body').click(function(event) {
+    $(window).click(function(event) {
         if($(rmb).hasClass("open")) {
             if (!($(event.target).closest($(rmb)).length || $(event.target).closest($("#mobile-nav-ul")).length)) {
                 $(rmb).removeClass("open");
@@ -64,16 +64,22 @@ function setRulesContent(args){
     //the comments remain in place on the original, so nothing breaks
     //additionally, it only replaces the content that it is fed
     if(args.pageContent != null){
-        $('#page-content').html('<div id="' + $(args.pageContent).attr("class").split(' ')[0] + '">'
-            + removeHtmlBlockComments($(args.pageContent).html())
-            + '</div>')
-            .fadeIn(args.fadeTime);
+        if(typeof args.pageContent == 'string') $('#page-content').html(args.pageContent).fadeIn(args.fadeTime);
+        else {
+            $('#page-content').html('<div id="' + $(args.pageContent).attr("class").split(' ')[0] + '">'
+                + removeHtmlBlockComments($(args.pageContent).html())
+                + '</div>')
+                .fadeIn(args.fadeTime);
+        }
     }
     if(args.leftContent != null){
-        $('#left-menu-content').html('<div id="' + $(args.leftContent).attr("class").split(' ')[0] + '">'
-            + removeHtmlBlockComments($(args.leftContent).html())
-            + '</div>')
-            .fadeIn(args.fadeTime);
+        if(typeof args.leftContent == 'string') $('#left-menu-content').html(args.leftContent).fadeIn(args.fadeTime);
+        else {
+            $('#left-menu-content').html('<div id="' + $(args.leftContent).attr("class").split(' ')[0] + '">'
+                + removeHtmlBlockComments($(args.leftContent).html())
+                + '</div>')
+                .fadeIn(args.fadeTime);
+        }
     }
 
     $('#left-menu-loader').find('.preloader-wrapper').fadeOut(args.fadeTime, function(){$(this).removeClass('active')});

@@ -64,8 +64,6 @@
                 }
             }
 
-
-            console.log(args);
             //run before all function if it exists
             runner('before');
 
@@ -125,7 +123,6 @@
                     //if the data request hasn't been sent yet
                     if(!$scope.status[content].dataRequestSent){
                         //tell the app that we have sent the data request
-                        console.log('request for ' + content + ' sent');
                         $scope.status[content].dataRequestSent = true;
                         //toast if need be - use weird slugged content titles as 'unique' identifier class for toast
                         //toast in this spot means it'll only happen if the data hasn't already been gotten

@@ -19,20 +19,17 @@
                 beginContentLoad($scope.fadeTime);
 
                 var afterLoad = function(){
-                    setRulesContent({pageContent: $('.traits-table')});
-                    $('#traits-table').find('table').dynatable({
-                        features: {
-                            paginate: false,
-                            recordCount: false,
-                            pushState: false
-                        },
-                        dataset: {
-                            records: $scope.data.traits.raw
-                        },
-                        table: {
-                            defaultColumnIdStyle: 'underscore'
-                        }
-                    });
+                    setRulesContent({pageContent: '<table id="tables-table" class="table dynamic-table"></table>'});
+                    var table = $('#tables-table');
+                    $(table).dataTable({
+                        paging: false,
+                        stateSave: false,
+                        data: $scope.data.traits.raw,
+                        columns: [
+                            {title: 'Name', data: 'name'},
+                            {title: 'Type', data: 'type'}
+                        ]
+                    })
                 };
 
                 $scope.functions.ctrl.get('traits', afterLoad);

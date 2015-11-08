@@ -1,0 +1,164 @@
+@import "defaults";
+
+.dynamic-table {
+  .dyn-row{
+    -webkit-transition: all 100ms;
+    transition: all 100ms;
+    cursor: pointer;
+    &.hover{
+      background-color: $primary-color-light;
+    }
+  }
+  #search{
+    color: $primary-color-dark;
+    border-color: $primary-color;
+    + label {
+      color: $primary-color;
+    }
+  }
+  .table {
+    width: 100%;
+    margin: auto;
+    thead {
+      border: 1px;
+    }
+    th {
+      color: white;
+      a {
+        color: white;
+        font-weight: 500;
+      }
+    }
+    .filter-row {
+      background-color: $secondary-color;
+      .table-filter {
+        margin: 0;
+        text-align: center;
+        .caret {
+          color: $primary-color-light;
+          position: relative;
+          margin-right: -10px;
+          top: inherit;
+        }
+        input {
+          text-align: center;
+          width: auto;
+          display: inline;
+          color: $primary-color-light;
+          margin-top: -10px;
+          margin-bottom: 3px;
+          border-color: $primary-color-light;
+          height: 35px;
+        }
+        li {
+        }
+      }
+    }
+  }
+}
+
+//tables
+.table {
+  width: 95%;
+  margin: 10px auto;
+  text-align: center;
+
+  caption {
+    text-transform: lowercase;
+    font-weight: 300;
+  }
+
+  td, th {
+    border-radius: 0;
+    padding: 5px;
+  }
+
+  th {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+
+  p, th, td {
+    margin: 0;
+    text-align: center;
+  }
+
+  th {
+    background-color: $secondary-color;
+    color: white;
+  }
+
+  tr {
+    &:nth-child(odd){
+      background-color: $secondary-color-light;
+    }
+  }
+
+  &.col-1-left {
+    tr {
+      td:first-child, th:first-child {
+        text-align: left;
+        padding-left: 10px;
+        p {
+          text-align: left;
+        }
+      }
+    }
+  }
+  &.col-2-left {
+    tr {
+      td:nth-child(2), th:nth-child(2) {
+        text-align: left;
+        padding-left: 10px;
+        p {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &.col-2-center {
+    tr {
+      td:nth-child(2), th:nth-child(2){
+        text-align: center;
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  //multi centered tables
+  &.multi-table {
+    width: auto;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  //wrap right table
+  &.table-right-wrap {
+    width: auto;
+    float: right;
+    margin-left: 25px;
+  }
+
+  //left align table
+  &.table-left-align {
+    text-align: left;
+    td, th {
+      padding-left: 10px;
+    }
+    td, th, p {
+      text-align: left;
+    }
+  }
+
+}
+
+.multi-table-div {
+  text-align: center;
+}
