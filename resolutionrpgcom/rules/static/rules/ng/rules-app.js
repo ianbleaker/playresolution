@@ -11,7 +11,7 @@
 
         //scope time constants
         $scope.retryTime = 300;
-        $scope.fadeTime = 700;
+        $scope.fadeTime = 400;
 
         //containers to track status, promises, functions, data
         $scope.status = {active: ''};
@@ -48,8 +48,8 @@
             args.loadTarget = args.loadTarget || slug;
 
             //handle before or after being a single function or array (rather than time.all)
-            if (typeof args.before == 'function' || args.before.constructor === Array) args.before = {all: args.before};
-            if (typeof args.after == 'function' || args.after.constructor === Array) args.after = {all: args.after};
+            if (args.before != undefined && (typeof args.before == 'function' || args.before.constructor === Array)) args.before = {all: args.before};
+            if (args.after != undefined && (typeof args.after == 'function' || args.after.constructor === Array)) args.after = {all: args.after};
 
             //handle arg being a single function, assume they want 'after.all'
             if (typeof args == 'function') args.after = {all: args};

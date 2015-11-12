@@ -356,46 +356,119 @@ nav {
   position: fixed;
   z-index: 997; }
 
+#tables-left-menu li {
+  padding: 0; }
+#tables-left-menu a {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  font-size: 1.2em; }
+  #tables-left-menu a:hover {
+    background-color: #B9F6CA; }
+#tables-left-menu a.active {
+  cursor: default;
+  pointer-events: none;
+  border-left: 4px solid #00C853;
+  font-weight: 500; }
+  #tables-left-menu a.active:hover {
+    background-color: #B9F6CA; }
+
+div.row-slider {
+  display: none;
+  background-color: #B3E5FC; }
+  div.row-slider table tr td {
+    padding: 10px;
+    text-align: left;
+    font-size: 0.95em;
+    line-height: 1.2em; }
+    div.row-slider table tr td p {
+      font-size: 0.95em;
+      line-height: 1.2em;
+      text-align: left; }
+      div.row-slider table tr td p + p {
+        margin-top: 5px; }
+    div.row-slider table tr td:first-of-type {
+      font-weight: 500;
+      text-align: center; }
+  div.row-slider table tr + tr {
+    border-top: 1px solid rgba(0, 0, 0, 0.06); }
+
+table.dataTable tbody td.no-padding {
+  padding: 0; }
+
+td.details-control {
+  cursor: pointer; }
+
+td.details-control, th.details-control {
+  width: 40px; }
+
+.details-control i {
+  color: #00C853;
+  transition: 300ms; }
+.details-control.rotated i {
+  color: #B9F6CA;
+  transform: rotate(180deg); }
+
+#tables-table-search {
+  color: #0288D1;
+  border-color: #03A9F4; }
+  #tables-table-search + label {
+    color: #03A9F4; }
+
+td.nowrap {
+  white-space: nowrap; }
+
+td.bold {
+  font-weight: 500; }
+
+td.align-left {
+  text-align: left !important; }
+
 .dynamic-table {
-  width: 100%;
-  margin: auto; }
-  .dynamic-table .dyn-row {
-    -webkit-transition: all 100ms;
-    transition: all 100ms;
-    cursor: pointer; }
-    .dynamic-table .dyn-row.hover {
-      background-color: #B3E5FC; }
-  .dynamic-table #search {
-    color: #0288D1;
-    border-color: #03A9F4; }
-    .dynamic-table #search + label {
-      color: #03A9F4; }
+  margin-top: 0 !important;
+  width: 100% !important; }
+  .dynamic-table tr {
+    transition: all 300ms; }
+  .dynamic-table tbody tr.shown {
+    background-color: #03A9F4;
+    color: white; }
+  .dynamic-table tr.odd {
+    background-color: #B9F6CA; }
   .dynamic-table thead {
     border: 1px; }
+    .dynamic-table thead .sorting, .dynamic-table thead .sorting_asc, .dynamic-table thead .sorting_desc {
+      cursor: pointer; }
+    .dynamic-table thead .sorted {
+      opacity: 0;
+      transition: all 200ms;
+      position: absolute; }
+    .dynamic-table thead .sorting_desc .sorted {
+      transform: rotate(0deg);
+      opacity: 1; }
+    .dynamic-table thead .sorting_asc .sorted {
+      transform: rotate(180deg);
+      opacity: 1; }
   .dynamic-table th {
+    white-space: nowrap;
     color: white; }
     .dynamic-table th a {
       color: white;
       font-weight: 500; }
-  .dynamic-table .filter-row {
-    background-color: #00C853; }
-    .dynamic-table .filter-row .table-filter {
-      margin: 0;
-      text-align: center; }
-      .dynamic-table .filter-row .table-filter .caret {
-        color: #B3E5FC;
-        position: relative;
-        margin-right: -10px;
-        top: inherit; }
-      .dynamic-table .filter-row .table-filter input {
-        text-align: center;
-        width: auto;
-        display: inline;
-        color: #B3E5FC;
-        margin-top: -10px;
-        margin-bottom: 3px;
-        border-color: #B3E5FC;
-        height: 35px; }
+  .dynamic-table #filter-row .caret {
+    display: none; }
+  .dynamic-table #filter-row input {
+    line-height: inherit;
+    height: 20px;
+    text-align: center;
+    font-style: italic;
+    color: #B3E5FC;
+    border-color: #B3E5FC;
+    margin-bottom: 0; }
+  .dynamic-table #filter-row li {
+    line-height: inherit; }
+    .dynamic-table #filter-row li span {
+      font-size: inherit;
+      padding: 3px 5px;
+      color: #03A9F4; }
 
 .table {
   width: 95%;
@@ -418,8 +491,6 @@ nav {
   .table th {
     background-color: #00C853;
     color: white; }
-  .table tr:nth-child(odd) {
-    background-color: #B9F6CA; }
   .table.col-1-left tr td:first-child, .table.col-1-left tr th:first-child {
     text-align: left;
     padding-left: 10px; }
@@ -434,6 +505,8 @@ nav {
     text-align: center; }
     .table.col-2-center tr td:nth-child(2) p, .table.col-2-center tr th:nth-child(2) p {
       text-align: center; }
+  .table.section-table tr:nth-child(odd) {
+    background-color: #B9F6CA; }
   .table.multi-table {
     width: auto;
     display: inline-block;

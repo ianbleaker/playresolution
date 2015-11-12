@@ -1,35 +1,16 @@
-<div class="traits-table">
-    <div class="dynamic-table">
-        <div class="inputs">
-            <div class="input-field">
-                <input type="text" id="search">
-                <label for="search">Search</label>
-            </div>
-        </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Value</th>
-                    <th class="small-replace">Short description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="filter-row">
-                    <td></td>
-                    <td>
-                    <div class="input-field table-filter">
-                        <select name="type" class="table-filter">
-                            <option selected value=""></option>
-                            <option ng-repeat="type in data.traits.organized">{{ type.name }}</option>
-                        </select>
-                    </div>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="tables-left-menu">
+        <ul>
+        <li><a href=""
+               ng-class="{active: (status.tables.active == 'equipment')}"
+               ng-click="functions.tables.switch('equipment')">Equipment</a>
+        </li>
+        <li>
+            <a href=""
+               ng-class="{active: (status.tables.active == 'skills')}"
+               ng-click="functions.tables.switch('skills')">Skills</a>
+        </li>
+        <li><a href=""
+               ng-class="{active: (status.tables.active == 'traits')}"
+               ng-click="functions.tables.switch('traits')">Traits</a></li>
+        </ul>
 </div>

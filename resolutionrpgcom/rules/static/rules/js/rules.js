@@ -41,8 +41,8 @@ $(document).ready(function(){
 
 var contentLoaders = function(args){
     args = args || {begin: true};
-    args.pageContent = args.pageContent || true;
-    args.leftContent = args.leftContent || true;
+    if(args.pageContent == undefined) args.pageContent = true;
+    if(args.leftContent == undefined) args.leftContent = true;
     args.fadeTime = args.fadeTime || 500;
     if(args.begin){
         //fade in loaders and out content

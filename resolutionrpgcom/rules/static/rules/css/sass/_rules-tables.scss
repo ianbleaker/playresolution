@@ -1,55 +1,161 @@
 @import "defaults";
 
+#tables-left-menu {
+  li {
+    padding: 0;
+  }
+  a {
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
+    font-size: 1.2em;
+    &:hover {
+      background-color: $secondary-color-light;
+    }
+  }
+  a.active {
+    cursor: default;
+    pointer-events: none;
+    border-left: 4px solid $secondary-color;
+    font-weight: 500;
+    &:hover {
+      background-color: $secondary-color-light;
+    }
+  }
+}
+
+div.row-slider {
+  display: none;
+  background-color: $primary-color-light;
+  table tr {
+    td {
+      padding: 10px;
+      text-align: left;
+      font-size: 0.95em;
+      line-height: 1.2em;
+      p {
+        font-size: 0.95em;
+        line-height: 1.2em;
+        text-align: left;
+        & + p {
+          margin-top: 5px;
+        }
+      }
+      &:first-of-type {
+        //white-space: nowrap;
+        font-weight: 500;
+        text-align: center;
+      }
+    }
+    & + tr {
+      border-top: 1px solid $divider-color-light;
+    }
+  }
+}
+
+table.dataTable tbody td.no-padding {
+  padding: 0;
+}
+
+td.details-control {
+  cursor: pointer;
+}
+
+td.details-control, th.details-control {
+  width: 40px;
+}
+
+.details-control {
+  i {
+    color: $secondary-color;
+    transition: 300ms;
+  }
+  &.rotated i {
+    color: $secondary-color-light;
+    transform: rotate(180deg);
+  }
+}
+
+#tables-table-search {
+  color: $primary-color-dark;
+  border-color: $primary-color;
+  + label {
+    color: $primary-color;
+  }
+}
+
+td.nowrap {
+  white-space: nowrap;
+}
+
+td.bold {
+  font-weight: 500;
+}
+
+td.align-left {
+  text-align: left !important;
+}
+
 .dynamic-table {
-  .dyn-row {
-    -webkit-transition: all 100ms;
-    transition: all 100ms;
-    cursor: pointer;
-    &.hover {
-      background-color: $primary-color-light;
-    }
+  margin-top: 0 !important;
+  width: 100% !important;
+
+  tr {
+    transition: all 300ms;
   }
-  #search {
-    color: $primary-color-dark;
-    border-color: $primary-color;
-    + label {
-      color: $primary-color;
-    }
+  tbody tr.shown {
+    background-color: $primary-color;
+    color: white;
   }
-  width: 100%;
-  margin: auto;
+  tr.odd {
+    background-color: $secondary-color-light;
+  }
+
   thead {
     border: 1px;
+    .sorting, .sorting_asc, .sorting_desc {
+      cursor: pointer;
+    }
+    .sorted {
+      opacity: 0;
+      transition: all 200ms;
+      position: absolute;
+    }
+    .sorting_desc .sorted {
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+    .sorting_asc .sorted {
+      transform: rotate(180deg);
+      opacity: 1;
+    }
   }
   th {
+    white-space: nowrap;
     color: white;
     a {
       color: white;
       font-weight: 500;
     }
   }
-  .filter-row {
-    background-color: $secondary-color;
-    .table-filter {
-      margin: 0;
+  #filter-row {
+    .caret {
+      display: none;
+    }
+    input {
+      line-height: inherit;
+      height: 20px;
       text-align: center;
-      .caret {
-        color: $primary-color-light;
-        position: relative;
-        margin-right: -10px;
-        top: inherit;
-      }
-      input {
-        text-align: center;
-        width: auto;
-        display: inline;
-        color: $primary-color-light;
-        margin-top: -10px;
-        margin-bottom: 3px;
-        border-color: $primary-color-light;
-        height: 35px;
-      }
-      li {
+      font-style: italic;
+      color: $primary-color-light;
+      border-color: $primary-color-light;
+      margin-bottom: 0;
+    }
+    li {
+      line-height: inherit;
+      span {
+        font-size: inherit;
+        padding: 3px 5px;
+        color: $primary-color;
       }
     }
   }
@@ -88,12 +194,6 @@
     color: white;
   }
 
-  tr {
-    &:nth-child(odd) {
-      background-color: $secondary-color-light;
-    }
-  }
-
   &.col-1-left {
     tr {
       td:first-child, th:first-child {
@@ -124,6 +224,14 @@
         p {
           text-align: center;
         }
+      }
+    }
+  }
+
+  &.section-table {
+    tr {
+      &:nth-child(odd) {
+        background-color: $secondary-color-light;
       }
     }
   }
