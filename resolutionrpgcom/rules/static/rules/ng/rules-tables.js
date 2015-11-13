@@ -80,6 +80,21 @@
                     {row: ['Specializations', 'specializations']}
                 ];
             }
+            else if (args.target == 'equipment'){
+                args.data = $scope.data.equipment.organized;
+                args.columns = [
+                    {title: "Name", data: "name", className: "bold"},
+                    {title: "Type", data: "category", className: "filtered-column-select"},
+                    {title: "Subtype", data: "sub_category", className: "filtered-column-text"},
+                    {title: "Cost", data: "cost"},
+                    {title: "Short Description", data: "short_description", className: "align-left hide-on-small-and-down"}
+                ];
+                args.order = [[1, "asc"],[2, "asc"],[0, "asc"]];
+                args.childRows = [
+                    {classes: {row: 'hide-on-med-and-up'}, row: ['Short Description', 'short_description']},
+                    {row: ['Description', 'description']}
+                ];
+            }
 
             //make blank order if none provided
             if (args.order == undefined) args.order = [];
@@ -257,9 +272,11 @@
                     contentLoaders({begin: false, fadeTime: $scope.fadeTime, leftContent: false});
                 };
 
-                $scope.functions.ctrl.get(args.target, {
-                    toast: 'Loading ' + args.target + '..',
-                    after: [switchTable]
+
+                //get the data we need, then switch to that table
+                $scope.functions.ctrl.get(target, {
+                    toast: 'Loading ' + target + '..',
+                    after: switchTable
                 });
             };
 

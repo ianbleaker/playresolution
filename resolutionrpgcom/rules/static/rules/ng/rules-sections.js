@@ -7,9 +7,7 @@
         $scope.data.sections = {};
         $scope.status.sections = {
             dataRequestSent: false,
-            dataRetrieved: false,
-            loaded: false,
-            subContentLoaded: false
+            dataRetrieved: false
         };
         $scope.promises.sections = {};
         $scope.functions.sections = {};
@@ -151,7 +149,7 @@
                         });
 
                         //INJECTION of OTHER LOADED CONTENT
-                       /* $scope.functions.ctrl.get(['skills', 'traits'], {
+                        $scope.functions.ctrl.get(['skills', 'traits'], {
                             toast: 'Loading lists..',
                             before: {
                                 skills: [$scope.functions.sections.injectSkills, {time: 'before'}],
@@ -161,7 +159,7 @@
                                 skills: $scope.functions.sections.injectSkills,
                                 traits: $scope.functions.sections.injectTraits
                             }
-                        });*/
+                        });
                     }, 0);
                 };
 

@@ -1,5 +1,11 @@
 (function () {
-    var app = angular.module('rules', ['rules.sections', 'rules.traits', 'rules.skills', 'rules.tables']);
+    var app = angular.module('rules', [
+        'rules.sections',
+        'rules.traits',
+        'rules.skills',
+        'rules.tables',
+        'rules.equipment'
+    ]);
 
     app.controller("ContentController", ['$scope', '$http', function ($scope, $http) {
         //logo text

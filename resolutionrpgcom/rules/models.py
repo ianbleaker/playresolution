@@ -6,30 +6,37 @@ from django.db import transaction
 
 
 # Create your models here.
-# class Equipment(models.Model):
-#     def __str__(self):
-#         return self._check_column_name_clashes()
-#
-#     # define choices and the choice block
-#     ARMOR = 'armor'
-#     WEAPON = 'weapon'
-#     TECH = 'tech'
-#     VEHICLE = 'vehicle'
-#     COMPUTING = 'computing'
-#     FOOD = 'food'
-#     SERVICE = 'service'
-#
-#     TYPE_CHOICES = (
-#         (BACKGROUND, 'Background'),
-#         (PERSONALITY, 'Personality'),
-#         (PHYSICAL, 'Physical'),
-#         (FEATURE, 'Feature'),
-#         (VEHICLE, 'Vehicle'),
-#         (GENETIC, 'Genetic')
-#     )
-#
-#     name = models.CharField(max_length=50)
-#     category = models.CharField(max_length=20, choices=TYPE_CHOICES)
+class Equipment(models.Model):
+    def __str__(self):
+        return self.name
+
+    # define choices and the choice block
+    ARMOR = 'armor'
+    COMPUTERS = 'computers'
+    FOOD = 'food'
+    GEAR = 'gear'
+    SERVICE = 'service'
+    TECH = 'tech'
+    VEHICLE = 'vehicle'
+    WEAPON = 'weapon'
+
+    TYPE_CHOICES = (
+        (ARMOR, 'Armor'),
+        (COMPUTERS, 'Computers'),
+        (FOOD, 'Food'),
+        (GEAR, 'Gear'),
+        (SERVICE, 'Service'),
+        (TECH, 'Tech'),
+        (VEHICLE, 'Vehicle'),
+        (WEAPON, 'Weapon')
+    )
+
+    name = models.CharField(max_length=50)
+    category = models.CharField(max_length=20, choices=TYPE_CHOICES)
+    sub_category = models.CharField(max_length=20, blank=True, null=True)
+    cost = models.CharField(max_length=20, blank=True, null=True)
+    short_description = models.TextField(blank=True, null=True)
+    description = RichTextField(blank=True, null=True)
 
 
 class Species(models.Model):
