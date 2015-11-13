@@ -28,7 +28,7 @@ $(document).ready(function(){
     });
 
     //when the mobile nav is open, if you click anywhere except the menu, it closes the menu
-    $('body').click(function(event) {
+    $(window).click(function(event) {
         if($(rmb).hasClass("open")) {
             if (!($(event.target).closest($(rmb)).length || $(event.target).closest($("#mobile-nav-ul")).length)) {
                 $(rmb).removeClass("open");
@@ -39,15 +39,34 @@ $(document).ready(function(){
     });
 });
 
-function beginContentLoad(fadeTime){
-    //fade in loaders
-    $('#left-menu-loader').find('.preloader-wrapper').addClass('active').fadeIn(fadeTime);
-    $('#content-loader').find('.preloader-wrapper').addClass('active').fadeIn(fadeTime);
-
-    //fade out content
-    $('#left-menu-content').fadeOut(fadeTime);
-    $('#page-content').fadeOut(fadeTime);
-}
+var contentLoaders = function(args){
+    args = args || {begin: true};
+    if(args.pageContent == undefined) args.pageContent = true;
+    if(args.leftContent == undefined) args.leftContent = true;
+    args.fadeTime = args.fadeTime || 500;
+    if(args.begin){
+        //fade in loaders and out content
+        if(args.leftContent) {
+            $('#left-menu-loader').find('.preloader-wrapper').addClass('active').fadeIn(args.fadeTime);
+            $('#left-menu-content').fadeOut(args.fadeTime);
+        }
+        if(args.pageContent){
+            $('#content-loader').find('.preloader-wrapper').addClass('active').fadeIn(args.fadeTime);
+            $('#page-content').fadeOut(args.fadeTime);
+        }
+    }
+    else {
+        //fade out loaders and in content
+        if(args.leftContent) {
+            $('#left-menu-loader').find('.preloader-wrapper').fadeOut(args.fadeTime, function(){$(this).removeClass('active')});
+            $('#left-menu-content').fadeIn(args.fadeTime);
+        }
+        if(args.pageContent){
+            $('#content-loader').find('.preloader-wrapper').fadeOut(args.fadeTime, function(){$(this).removeClass('active')});
+            $('#page-content').fadeIn(args.fadeTime);
+        }
+    }
+};
 
 function injectSmallLoader(element){
     $(element).append('<div class="rule-section section-child text-list-container loaded-async"></div>')
@@ -57,27 +76,28 @@ function injectSmallLoader(element){
 }
 
 function setRulesContent(args){
-    //default fade time
-    if(args.fadeTime == null) args.fadeTime = 500;
+    //default args
+    args = args || {};
     //set content and fade in
     //this replaces the comments that angular uses with nothing, so the html is more easily readable
     //the comments remain in place on the original, so nothing breaks
     //additionally, it only replaces the content that it is fed
     if(args.pageContent != null){
-        $('#page-content').html('<div id="' + $(args.pageContent).attr("class").split(' ')[0] + '">'
-            + removeHtmlBlockComments($(args.pageContent).html())
-            + '</div>')
-            .fadeIn(args.fadeTime);
+        if(typeof args.pageContent == 'string') $('#page-content').html(args.pageContent).fadeIn(args.fadeTime);
+        else {
+            $('#page-content').html('<div id="' + $(args.pageContent).attr("class").split(' ')[0] + '">'
+                + removeHtmlBlockComments($(args.pageContent).html())
+                + '</div>');
+        }
     }
     if(args.leftContent != null){
-        $('#left-menu-content').html('<div id="' + $(args.leftContent).attr("class").split(' ')[0] + '">'
-            + removeHtmlBlockComments($(args.leftContent).html())
-            + '</div>')
-            .fadeIn(args.fadeTime);
+        if(typeof args.leftContent == 'string') $('#left-menu-content').html(args.leftContent).fadeIn(args.fadeTime);
+        else {
+            $('#left-menu-content').html('<div id="' + $(args.leftContent).attr("class").split(' ')[0] + '">'
+                + removeHtmlBlockComments($(args.leftContent).html())
+                + '</div>');
+        }
     }
-
-    $('#left-menu-loader').find('.preloader-wrapper').fadeOut(args.fadeTime, function(){$(this).removeClass('active')});
-    $('#content-loader').find('.preloader-wrapper').fadeOut(args.fadeTime, function(){$(this).removeClass('active')});
 }
 
 //create a scrollspy that makes the links active and opens/closes on scroll

@@ -1,10 +1,16 @@
 from rest_framework import serializers
-from .models import Skill, Aptitude, SkillSpecialization, SkillType, Section, Trait
+from .models import Skill, Aptitude, SkillSpecialization, SkillType, Section, Trait, Equipment
+
+
+class EquipmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Equipment
 
 
 class TraitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Trait
+
 
 class AptitudeSerializer(serializers.ModelSerializer):
     class Meta:

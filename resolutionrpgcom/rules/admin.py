@@ -12,11 +12,17 @@ admin.site.register(Aptitude)
 admin.site.register(Statistic)
 admin.site.register(DerivedStatistic)
 
+
+# EQUIPMENT ADMIN
+class EquipmentModelAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'sub_category', 'cost', 'short_description')
+    ordering = ('category', 'sub_category', 'name')
+
+admin.site.register(Equipment, EquipmentModelAdmin)
+
 ###############
 # TRAIT ADMIN #
 ###############
-
-
 class TraitModelAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'value', 'short_description')
     ordering = ('type', 'name')

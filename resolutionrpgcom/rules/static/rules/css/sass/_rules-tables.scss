@@ -1,0 +1,272 @@
+@import "defaults";
+
+#tables-left-menu {
+  li {
+    padding: 0;
+  }
+  a {
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
+    font-size: 1.2em;
+    &:hover {
+      background-color: $secondary-color-light;
+    }
+  }
+  a.active {
+    cursor: default;
+    pointer-events: none;
+    border-left: 4px solid $secondary-color;
+    font-weight: 500;
+    &:hover {
+      background-color: $secondary-color-light;
+    }
+  }
+}
+
+div.row-slider {
+  display: none;
+  background-color: $primary-color-light;
+  table tr {
+    td {
+      padding: 10px;
+      text-align: left;
+      font-size: 0.95em;
+      line-height: 1.2em;
+      p {
+        font-size: 0.95em;
+        line-height: 1.2em;
+        text-align: left;
+        & + p {
+          margin-top: 5px;
+        }
+      }
+      &:first-of-type {
+        //white-space: nowrap;
+        font-weight: 500;
+        text-align: center;
+      }
+    }
+    & + tr {
+      border-top: 1px solid $divider-color-light;
+    }
+  }
+}
+
+table.dataTable tbody td.no-padding {
+  padding: 0;
+}
+
+td.details-control {
+  cursor: pointer;
+}
+
+td.details-control, th.details-control {
+  width: 40px;
+}
+
+.details-control {
+  i {
+    color: $secondary-color;
+    transition: 300ms;
+  }
+  &.rotated i {
+    color: $secondary-color-light;
+    transform: rotate(180deg);
+  }
+}
+
+#tables-table-search {
+  color: $primary-color-dark;
+  border-color: $primary-color;
+  + label {
+    color: $primary-color;
+  }
+}
+
+td.nowrap {
+  white-space: nowrap;
+}
+
+td.bold {
+  font-weight: 500;
+}
+
+td.align-left {
+  text-align: left !important;
+}
+
+.dynamic-table {
+  margin-top: 0 !important;
+  width: 100% !important;
+
+  tr {
+    transition: all 300ms;
+  }
+  tbody tr.shown {
+    background-color: $primary-color;
+    color: white;
+  }
+  tr.odd {
+    background-color: $secondary-color-light;
+  }
+
+  thead {
+    border: 1px;
+    tr:not(#filter-row) {
+      .sorting, .sorting_asc, .sorting_desc {
+        cursor: pointer;
+      }
+      .sorted {
+        opacity: 0;
+        transition: all 200ms;
+        position: absolute;
+      }
+      .sorting_desc .sorted {
+        transform: rotate(0deg);
+        opacity: 1;
+      }
+      .sorting_asc .sorted {
+        transform: rotate(180deg);
+        opacity: 1;
+      }
+    }
+  }
+  th {
+    white-space: nowrap;
+    color: white;
+    a {
+      color: white;
+      font-weight: 500;
+    }
+  }
+  #filter-row {
+    .caret {
+      display: none;
+    }
+    input {
+      line-height: inherit;
+      height: 20px;
+      text-align: center;
+      font-style: italic;
+      color: $primary-color-light;
+      border-color: $primary-color-light;
+      margin-bottom: 0;
+    }
+    li {
+      line-height: inherit;
+      span {
+        font-size: inherit;
+        padding: 3px 5px;
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+//tables
+.table {
+  width: 95%;
+  margin: 10px auto;
+  text-align: center;
+
+  caption {
+    text-transform: lowercase;
+    font-weight: 300;
+  }
+
+  td, th {
+    border-radius: 0;
+    padding: 5px;
+  }
+
+  th {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+
+  p, th, td {
+    margin: 0;
+    text-align: center;
+  }
+
+  th {
+    background-color: $secondary-color;
+    color: white;
+  }
+
+  &.col-1-left {
+    tr {
+      td:first-child, th:first-child {
+        text-align: left;
+        padding-left: 10px;
+        p {
+          text-align: left;
+        }
+      }
+    }
+  }
+  &.col-2-left {
+    tr {
+      td:nth-child(2), th:nth-child(2) {
+        text-align: left;
+        padding-left: 10px;
+        p {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &.col-2-center {
+    tr {
+      td:nth-child(2), th:nth-child(2) {
+        text-align: center;
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &.section-table {
+    tr {
+      &:nth-child(odd) {
+        background-color: $secondary-color-light;
+      }
+    }
+  }
+
+  //multi centered tables
+  &.multi-table {
+    width: auto;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  //wrap right table
+  &.table-right-wrap {
+    width: auto;
+    float: right;
+    margin-left: 25px;
+  }
+
+  //left align table
+  &.table-left-align {
+    text-align: left;
+    td, th {
+      padding-left: 10px;
+    }
+    td, th, p {
+      text-align: left;
+    }
+  }
+
+}
+
+.multi-table-div {
+  text-align: center;
+}

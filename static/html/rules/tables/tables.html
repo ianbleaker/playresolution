@@ -1,10 +1,16 @@
-<div class="traits-table">
-    <table class="table">
-        <thead>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Value</th>
-        <th>Short description</th>
-        </thead>
-    </table>
+<div class="tables-left-menu">
+        <ul>
+        <li><a href=""
+               ng-class="{active: (status.tables.active == 'equipment')}"
+               ng-click="functions.tables.switch('equipment')">Equipment</a>
+        </li>
+        <li>
+            <a href=""
+               ng-class="{active: (status.tables.active == 'skills')}"
+               ng-click="functions.tables.switch('skills')">Skills</a>
+        </li>
+        <li><a href=""
+               ng-class="{active: (status.tables.active == 'traits')}"
+               ng-click="functions.tables.switch('traits')">Traits</a></li>
+        </ul>
 </div>

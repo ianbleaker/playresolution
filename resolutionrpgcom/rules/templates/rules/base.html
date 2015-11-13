@@ -37,6 +37,7 @@
             <rule-traits></rule-traits>
             <rule-skills></rule-skills>
             <rule-tables></rule-tables>
+            <rule-equipment></rule-equipment>
         </div>
     </div>
 </div>
@@ -45,11 +46,13 @@
 {% block after_body %}
     <script src="{% static 'rules/js/rules.js' %}"></script>
     <script src="{% static 'js/jquery.dynatable.js' %}"></script>
+    <script src="https://cdn.datatables.net/r/dt/dt-1.10.9,fh-3.0.0,r-1.0.7,sc-1.3.0/datatables.min.js"></script>
     <script type="text/javascript" src="{% static 'rules/ng/rules-app.js' %}" ></script>
     <script type="text/javascript" src="{% static 'rules/ng/rules-sections.js' %}" ></script>
     <script type="text/javascript" src="{% static 'rules/ng/rules-skills.js' %}" ></script>
     <script type="text/javascript" src="{% static 'rules/ng/rules-traits.js' %}" ></script>
     <script type="text/javascript" src="{% static 'rules/ng/rules-tables.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'rules/ng/rules-equipment.js' %}" ></script>
     {% block script %}
     {% endblock script %}
 {% endblock after_body %}

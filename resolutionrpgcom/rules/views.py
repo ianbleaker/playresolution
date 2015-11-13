@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.core import serializers
 from django.http import HttpResponse
-from .models import Section, Skill, Trait
-from .serializers import SkillSerializer, SectionSerializer, TraitSerializer
+from .models import Section, Skill, Trait, Equipment
+from .serializers import SkillSerializer, SectionSerializer, TraitSerializer, EquipmentSerializer
 from rest_framework.renderers import JSONRenderer
 
 
@@ -20,6 +20,9 @@ def query_json(request, name):
     if name == 'traits':
         queryset = Trait.objects.all()
         serializer = TraitSerializer(queryset, many=True)
+    if name == 'equipment':
+        queryset = Equipment.objects.all()
+        serializer = EquipmentSerializer(queryset, many=True)
 
     json = JSONRenderer().render(serializer.data)
 
