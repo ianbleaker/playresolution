@@ -431,7 +431,7 @@ td.align-left {
   .dynamic-table tbody tr.shown {
     background-color: #03A9F4;
     color: white; }
-  .dynamic-table tr.odd {
+  .dynamic-table tr.even {
     background-color: #B9F6CA; }
   .dynamic-table thead {
     border: 1px; }
@@ -469,6 +469,9 @@ td.align-left {
       font-size: inherit;
       padding: 3px 5px;
       color: #03A9F4; }
+
+.table:not(.dynamic-table) tr:nth-child(odd) {
+  background-color: #B9F6CA; }
 
 .table {
   width: 95%;

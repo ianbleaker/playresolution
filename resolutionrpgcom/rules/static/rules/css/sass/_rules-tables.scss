@@ -106,7 +106,7 @@ td.align-left {
     background-color: $primary-color;
     color: white;
   }
-  tr.odd {
+  tr.even {
     background-color: $secondary-color-light;
   }
 
@@ -164,6 +164,11 @@ td.align-left {
 }
 
 //tables
+.table:not(.dynamic-table){
+  tr:nth-child(odd){
+    background-color: $secondary-color-light;
+  }
+}
 .table {
   width: 95%;
   margin: 10px auto;
