@@ -435,16 +435,16 @@ td.align-left {
     background-color: #B9F6CA; }
   .dynamic-table thead {
     border: 1px; }
-    .dynamic-table thead .sorting, .dynamic-table thead .sorting_asc, .dynamic-table thead .sorting_desc {
+    .dynamic-table thead tr:not(#filter-row) .sorting, .dynamic-table thead tr:not(#filter-row) .sorting_asc, .dynamic-table thead tr:not(#filter-row) .sorting_desc {
       cursor: pointer; }
-    .dynamic-table thead .sorted {
+    .dynamic-table thead tr:not(#filter-row) .sorted {
       opacity: 0;
       transition: all 200ms;
       position: absolute; }
-    .dynamic-table thead .sorting_desc .sorted {
+    .dynamic-table thead tr:not(#filter-row) .sorting_desc .sorted {
       transform: rotate(0deg);
       opacity: 1; }
-    .dynamic-table thead .sorting_asc .sorted {
+    .dynamic-table thead tr:not(#filter-row) .sorting_asc .sorted {
       transform: rotate(180deg);
       opacity: 1; }
   .dynamic-table th {

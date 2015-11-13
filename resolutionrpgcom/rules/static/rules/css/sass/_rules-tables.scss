@@ -112,21 +112,23 @@ td.align-left {
 
   thead {
     border: 1px;
-    .sorting, .sorting_asc, .sorting_desc {
-      cursor: pointer;
-    }
-    .sorted {
-      opacity: 0;
-      transition: all 200ms;
-      position: absolute;
-    }
-    .sorting_desc .sorted {
-      transform: rotate(0deg);
-      opacity: 1;
-    }
-    .sorting_asc .sorted {
-      transform: rotate(180deg);
-      opacity: 1;
+    tr:not(#filter-row) {
+      .sorting, .sorting_asc, .sorting_desc {
+        cursor: pointer;
+      }
+      .sorted {
+        opacity: 0;
+        transition: all 200ms;
+        position: absolute;
+      }
+      .sorting_desc .sorted {
+        transform: rotate(0deg);
+        opacity: 1;
+      }
+      .sorting_asc .sorted {
+        transform: rotate(180deg);
+        opacity: 1;
+      }
     }
   }
   th {

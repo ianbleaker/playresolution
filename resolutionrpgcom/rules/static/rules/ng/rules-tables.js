@@ -50,7 +50,7 @@
                 args.data = $scope.data.traits.raw;
                 args.columns = [
                     {title: "Name", data: "name", className: "bold"},
-                    {title: "Type", data: "type", className: "filtered-column"},
+                    {title: "Type", data: "type", className: "filtered-column-select"},
                     {title: "Value", data: "value"},
                     {
                         title: "Short Description",
@@ -69,7 +69,7 @@
                 args.columns = [
                     {title: "Name", data: "name", className: "bold"},
                     {title: "Base Aptitude", data: "base_aptitude"},
-                    {title: "Class", data: "skill_class", className: "filtered-column"},
+                    {title: "Class", data: "skill_class", className: "filtered-column-select"},
                     {title: "What", data: "what", className: "align-left hide-on-med-and-down"}
                 ];
                 args.order = [[2, "asc"], [0, "asc"]];
@@ -186,11 +186,13 @@
                     //create icon to show which way columns are sorted (if at all)
                     $('thead').find('th').append('<i class="sorted material-icons">arrow_drop_down</i>');
 
-                    //COLUMN DROPDOWN FILTERS
+                    //COLUMN FILTERS
                     //get columns that we should filter
-                    var filteredColumns = $('.filtered-column');
+                    var filteredColumnSelect = $('.filtered-column-select');
+                    var filteredColumnText = $('.filtered-column-text');
+
                     //if there are any filtered columns, create a header and add the filters as necessary
-                    if ($(filteredColumns).length > 0) {
+                    if ($(filteredColumnSelect).length + $(filteredColumnText).length > 0) {
                         //create a row for the filters
                         $(tableElement).find('thead').append('<tr id="filter-row"></tr>');
 
@@ -201,9 +203,9 @@
                             var thClass = $(this.header()).attr('class');
                             var filter = $('#filter-row').append('<th class="' + thClass + '"></th>').find('th')[index];
                             //if asked to be filtered, go through data
-                            if ($(this.header()).hasClass('filtered-column')) {
+                            if ($(this.header()).hasClass('filtered-column-select')) {
                                 //add a select
-                                $(filter).append('<select id="select-filter-' + index + '"><option value="">no filter</option></select>');
+                                $(filter).append('<select class="select-filter" id="select-filter-' + index + '"><option value="">no filter</option></select>');
 
                                 //sort the data, and add an option for each unique value
                                 this.data().unique().sort().each(function (d, j) {
@@ -227,14 +229,29 @@
                                         .draw();
                                 });
                             }
+                            //if it has the text filter
+                            else if ($(this.header()).hasClass('filtered-column-text')){
+                                //create an input for filtering
+                                $(filter).append('<input type="text" id="text-filter-'+index+'">');
+                                //save the element
+                                var filterText = $('#text-filter-' + index);
+                                //on keyup or change, if the search doesn't equal the value, search the value
+                                $(filterText).on('keyup change', function(){
+                                    if(column.search() !== this.value){
+                                        column.search(this.value).draw();
+                                    }
+                                });
+                            }
                         });
                     }
-                    //END COLUMN DROPDOWN FILTERS
+                    //END COLUMN FILTERS
 
                     //search when you press a key in the searchbar
                     $(searchElement).on('keyup', function () {
                         table.search(this.value).draw();
                     });
+
+                    $('th.filtered-column').find('select').change(function(){console.log('changed a filter')});
 
                     //fade out the pageContent loaders
                     contentLoaders({begin: false, fadeTime: $scope.fadeTime, leftContent: false});
