@@ -49,7 +49,7 @@
             if (args.target == 'traits') {
                 args.data = $scope.data.traits.raw;
                 args.columns = [
-                    {title: "Name", data: "name", className: "bold"},
+                    {title: "Name", data: "name", className: "bold align-left"},
                     {title: "Type", data: "type", className: "filtered-column-select"},
                     {title: "Value", data: "value"},
                     {
@@ -67,7 +67,7 @@
             else if (args.target == 'skills') {
                 args.data = $scope.data.skills.list;
                 args.columns = [
-                    {title: "Name", data: "name", className: "bold"},
+                    {title: "Name", data: "name", className: "bold align-left"},
                     {title: "Base Aptitude", data: "base_aptitude"},
                     {title: "Class", data: "skill_class", className: "filtered-column-select"},
                     {title: "What", data: "what", className: "align-left hide-on-med-and-down"}
@@ -83,7 +83,7 @@
             else if (args.target == 'equipment'){
                 args.data = $scope.data.equipment.organized;
                 args.columns = [
-                    {title: "Name", data: "name", className: "bold"},
+                    {title: "Name", data: "name", className: "bold align-left"},
                     {title: "Type", data: "category", className: "filtered-column-select"},
                     {title: "Subtype", data: "sub_category", className: "filtered-column-text"},
                     {title: "Cost", data: "cost"},

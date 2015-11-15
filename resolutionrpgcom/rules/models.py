@@ -33,7 +33,7 @@ class Equipment(models.Model):
 
     name = models.CharField(max_length=50)
     category = models.CharField(max_length=20, choices=TYPE_CHOICES)
-    sub_category = models.CharField(max_length=20, blank=True, null=True)
+    sub_category = models.CharField(max_length=50, blank=True, null=True)
     cost = models.CharField(max_length=20, blank=True, null=True)
     short_description = models.TextField(blank=True, null=True)
     description = RichTextField(blank=True, null=True)
