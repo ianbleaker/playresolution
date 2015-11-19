@@ -16,7 +16,7 @@
         $scope.logo.left.after = 'sections';
 
         //scope time constants
-        $scope.retryTime = 300;
+        $scope.retryTime = 500;
         $scope.fadeTime = 400;
 
         //containers to track status, promises, functions, data

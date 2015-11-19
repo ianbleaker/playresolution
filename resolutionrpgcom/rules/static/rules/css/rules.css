@@ -96,6 +96,9 @@ nav {
 .rules-sections {
   display: none; }
 
+.container {
+  max-width: 1400px; }
+
 .rule-section {
   margin-left: 5px;
   margin-left: .5vw; }
